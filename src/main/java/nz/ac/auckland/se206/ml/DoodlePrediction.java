@@ -17,6 +17,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javax.imageio.ImageIO;
 import org.imgscalr.Scalr;
 
@@ -68,6 +70,17 @@ public class DoodlePrediction {
     }
 
     System.out.println(sb);
+  }
+
+  public static List<String> getPredictionsList(
+      final List<Classifications.Classification> predictions) {
+    ObservableList<String> predictionsList = FXCollections.observableArrayList();
+
+    for (final Classifications.Classification classification : predictions) {
+      predictionsList.add(classification.getClassName().replaceAll("_", " "));
+    }
+
+    return predictionsList;
   }
 
   private final ZooModel<Image, Classifications> model;

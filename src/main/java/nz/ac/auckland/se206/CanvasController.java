@@ -1,21 +1,37 @@
 package nz.ac.auckland.se206;
 
-import static nz.ac.auckland.se206.ml.DoodlePrediction.printPredictions;
-
 import ai.djl.ModelException;
 import ai.djl.translate.TranslateException;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
+import javafx.application.Platform;
+import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import nz.ac.auckland.se206.ml.DoodlePrediction;
+import nz.ac.auckland.se206.speech.TextToSpeech;
+import nz.ac.auckland.se206.words.CategorySelector;
+import nz.ac.auckland.se206.words.CategorySelector.Difficulty;
 
 /**
  * This is the controller of the canvas. You are free to modify this class and the corresponding
@@ -32,25 +48,118 @@ import nz.ac.auckland.se206.ml.DoodlePrediction;
 public class CanvasController {
 
   @FXML private Canvas canvas;
+  @FXML private Label categoryLabel;
+  @FXML private Label timeLabel;
+  @FXML private ListView<?> predictionsList;
+  @FXML private Button clearButton;
+  @FXML private VBox gameOverComponents;
+  @FXML private Label gameOverLabel;
+  @FXML private Button restartButton;
+  @FXML private Button readyButton;
+  @FXML private Button eraseButton;
+  @FXML private Button paintButton;
+  @FXML private Pane canvasPane;
 
   private GraphicsContext graphic;
-
   private DoodlePrediction model;
+  private int secondsLeft = 60;
+  private int predictionWinNumber = 3;
+  private boolean gameEnd = false;
+
+  private String randomWord;
 
   // mouse coordinates
   private double currentX;
   private double currentY;
-  /**
-   * JavaFX calls this method once the GUI elements are loaded. In our case we create a listener for
-   * the drawing, and we load the ML model.
-   *
-   * @throws ModelException If there is an error in reading the input/output of the DL model.
-   * @throws IOException If the model cannot be found on the file system.
-   */
-  public void initialize() throws ModelException, IOException {
-    graphic = canvas.getGraphicsContext2D();
 
-    // save coordinates when mouse is pressed on the canvas
+  @FXML
+  private void onStartGame() {
+    Timer timer = new Timer();
+    TextToSpeech textToSpeech = new TextToSpeech();
+    // creates task to speak the random category name
+    Task<Void> sayCategoryTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            textToSpeech.speak(randomWord);
+            return null;
+          }
+        };
+
+    // assigns speaking task to thread
+    Thread newThreadTwo = new Thread(sayCategoryTask);
+    newThreadTwo.start();
+
+    // create a new timer task for updating top 10 predictions list
+    TimerTask timedTask =
+        new TimerTask() {
+          public void run() {
+            secondsLeft--;
+            // if time runs out or if already won, stops the timer
+            if (secondsLeft == 0 || gameEnd) {
+              this.cancel();
+              endGame(false);
+              return;
+            } else {
+              // gives task to main thread
+              Platform.runLater(
+                  () -> {
+                    timeLabel.setText(String.valueOf(secondsLeft));
+                    displayPrediction();
+                  });
+            }
+          }
+        };
+
+    // creates new thread task for updating top 10 predictions list
+    Task<Void> updateTimerTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            timer.scheduleAtFixedRate(timedTask, 1000, 1000);
+            return null;
+          }
+        };
+
+    // creates new thread and assigns tasks
+    Thread newThread = new Thread(updateTimerTask);
+    newThread.start();
+
+    readyButton.setVisible(false);
+    canvas.setDisable(false);
+    canvasPane.setVisible(true);
+  }
+
+  /**
+   * endGame is called whenever the player has won/run out of time. It sets certain nodes
+   * off/invisible
+   *
+   * @param hasWon the game win status
+   */
+  private void endGame(boolean hasWon) {
+    TextToSpeech textToSpeech = new TextToSpeech();
+    if (hasWon) {
+      Task<Void> sayYouWinTask =
+          new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+              textToSpeech.speak("YOU WIN!");
+              return null;
+            }
+          };
+      Thread newThread = new Thread(sayYouWinTask);
+      newThread.start();
+      gameOverLabel.setText("YOU WIN!");
+    }
+    gameEnd = true;
+
+    // disables the canvas and clear button
+    canvas.setDisable(true);
+    clearButton.setDisable(true);
+    gameOverComponents.setVisible(true); // shows the game over components
+  }
+
+  private void setBrushType(Color brushType) {
     canvas.setOnMousePressed(
         e -> {
           currentX = e.getX();
@@ -66,7 +175,7 @@ public class CanvasController {
           final double y = e.getY() - size / 2;
 
           // This is the colour of the brush.
-          graphic.setFill(Color.BLACK);
+          graphic.setFill(brushType);
           graphic.setLineWidth(size);
 
           // Create a line that goes from the point (currentX, currentY) and (x,y)
@@ -76,14 +185,87 @@ public class CanvasController {
           currentX = x;
           currentY = y;
         });
+  }
+
+  /** displayPrediction task gets the predictions from the DL model and puts it into the list */
+  private void displayPrediction() {
+
+    BufferedImage thisImage = getCurrentSnapshot(); // current canvas image as BufferedImage
+
+    // sets the prediction task
+    Task<Void> predictTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            ObservableList predictions =
+                (ObservableList)
+                    DoodlePrediction.getPredictionsList(
+                        model.getPredictions(thisImage, 10)); // get top 10 predictions
+
+            boolean isInTop =
+                DoodlePrediction.getPredictionsList(
+                        model.getPredictions(thisImage, predictionWinNumber))
+                    .contains(randomWord); // get top predictions based
+            Platform.runLater(
+                () -> {
+                  // puts the top 10 predictions in the list
+                  predictionsList.setItems(predictions);
+                  if (isInTop) {
+                    // if the chosen topic is in the top 3, then the game ends (user wins!)
+                    endGame(true);
+                    System.out.println("YOU WIN!");
+                  }
+                });
+            return null;
+          }
+        };
+
+    // assigns the task
+    Thread newThread = new Thread(predictTask);
+    newThread.start();
+  }
+
+  /**
+   * JavaFX calls this method once the GUI elements are loaded. In our case we create a listener for
+   * the drawing, and we load the ML model.
+   *
+   * @throws ModelException If there is an error in reading the input/output of the DL model.
+   * @throws IOException If the model cannot be found on the file system.
+   */
+  public void initialize() throws ModelException, IOException {
+    graphic = canvas.getGraphicsContext2D();
+
+    // makes the brush black by default
+    setBrushType(Color.BLACK);
 
     model = new DoodlePrediction();
+    displayPrediction(); // puts top 10 guesses on the listview
+
+    CategorySelector categorySelector = new CategorySelector();
+    randomWord = categorySelector.getRandomCategory(Difficulty.E); // sets to easy mode
+
+    gameOverComponents.setVisible(false);
+    canvas.setDisable(true);
+    canvasPane.setVisible(false);
+    categoryLabel.setText(randomWord);
   }
 
   /** This method is called when the "Clear" button is pressed. */
   @FXML
   private void onClear() {
     graphic.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+  }
+
+  @FXML
+  private void onPaint() {
+    System.out.println("paint");
+    setBrushType(Color.BLACK);
+  }
+
+  @FXML
+  private void onErase() {
+    System.out.println("erase");
+    setBrushType(Color.WHITE);
   }
 
   /**
@@ -94,15 +276,33 @@ public class CanvasController {
    * @throws TranslateException If there is an error in reading the input/output of the DL model.
    */
   @FXML
-  private void onPredict() throws TranslateException {
-    System.out.println("==== PREDICTION  ====");
-    System.out.println("Top 5 predictions");
+  private void onPredict() throws TranslateException {}
 
-    final long start = System.currentTimeMillis();
+  @FXML
+  private void onRestartGame(ActionEvent event) {
+    System.out.println("RESTART PRESSED");
+    Button button = (Button) event.getSource();
+    Scene currentScene = button.getScene();
 
-    printPredictions(model.getPredictions(getCurrentSnapshot(), 5));
+    try {
 
-    System.out.println("prediction performed in " + (System.currentTimeMillis() - start) + " ms");
+      // restarts game back to the landing page
+      currentScene.setRoot(App.loadFxml("landingpage"));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @FXML
+  private void onSaveImage(ActionEvent event) {
+    Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+
+    try {
+      // saves the image
+      saveCurrentSnapshotOnFile(stage);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   /**
@@ -134,20 +334,16 @@ public class CanvasController {
    * @return The file of the saved image.
    * @throws IOException If the image cannot be saved.
    */
-  private File saveCurrentSnapshotOnFile() throws IOException {
-    // You can change the location as you see fit.
-    final File tmpFolder = new File("tmp");
+  private File saveCurrentSnapshotOnFile(Stage stage) throws IOException {
+    // file chooser so the user can choose directory/name of the file to save
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Save");
+    fileChooser.setInitialFileName("your-" + randomWord + "-drawing");
+    fileChooser.getExtensionFilters().addAll(new ExtensionFilter("BMP files (*.bmp)", "*.bmp"));
+    File tmpFolder = fileChooser.showSaveDialog(stage);
 
-    if (!tmpFolder.exists()) {
-      tmpFolder.mkdir();
-    }
-
-    // We save the image to a file in the tmp folder.
-    final File imageToClassify =
-        new File(tmpFolder.getName() + "/snapshot" + System.currentTimeMillis() + ".bmp");
-
-    // Save the image to a file.
-    ImageIO.write(getCurrentSnapshot(), "bmp", imageToClassify);
+    final File imageToClassify = new File(tmpFolder.getCanonicalPath() + ".bmp");
+    ImageIO.write(getCurrentSnapshot(), "bmp", imageToClassify); // Save the image to a file
 
     return imageToClassify;
   }
