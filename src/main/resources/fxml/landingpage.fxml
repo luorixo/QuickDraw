@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="420.0" prefWidth="440.0" spacing="20.0" style="-fx-background-color: #005267;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.LandingPageController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="23.0" prefWidth="355.0" style="-fx-background-color: aLSKJD; -fx-font-weight: 900;" text="QUICK," textAlignment="CENTER" textFill="#ff9736">
+               <font>
+                  <Font name="Source Sans Pro Black" size="35.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" graphicTextGap="0.0" prefHeight="23.0" prefWidth="355.0" style="-fx-background-color: aLSKJD; -fx-font-weight: 900;" text="DRAW!" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Source Sans Pro Black" size="52.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Button fx:id="startButton" mnemonicParsing="false" onAction="#onStartGame" prefHeight="51.0" prefWidth="168.0" style="-fx-cursor: pointer; -fx-background-color: #FF9736;" text="START" textFill="WHITE">
+               <font>
+                  <Font name="Source Sans Pro Black" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>
