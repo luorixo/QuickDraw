@@ -31,6 +31,8 @@ public class User {
   public User(String name, int id) {
     this.name = name;
     this.id = id;
+    this.hasBeenCreated = true;
+    this.saveToJSON();
   }
 
   /**
@@ -55,6 +57,19 @@ public class User {
    */
   private static String readFileAsString(String file) throws Exception {
     return new String(Files.readAllBytes(Paths.get(file)));
+  }
+
+  /** Resets all fields associated with user and saves to JSON data file */
+  public void resetUser() {
+    this.gamesPlayed = 0;
+    this.gamesWon = 0;
+    this.bestTime = 0;
+    this.totalTime = 0;
+    this.wordsSeen = new ArrayList<>();
+    this.hasSeenAllWords = false;
+    this.hasBeenCreated = false;
+    this.name = "";
+    this.saveToJSON();
   }
 
   /**
@@ -156,9 +171,5 @@ public class User {
 
   public void setHasSeenAllWords(boolean hasSeenAllWords) {
     this.hasSeenAllWords = hasSeenAllWords;
-  }
-
-  public void setHasBeenCreated(boolean hasBeenCreated) {
-    this.hasBeenCreated = hasBeenCreated;
   }
 }
