@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0" stylesheets="@../css/statsPageCSS.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane prefHeight="150.0" prefWidth="200.0">
          <children>
-            <ImageView fitHeight="440.0" fitWidth="420.0" pickOnBounds="true">
+            <ImageView fitHeight="582.0" fitWidth="610.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/teal_background.png" />
                </image>
@@ -22,15 +22,16 @@
             <VBox prefHeight="440.0" prefWidth="407.0">
                <children>
                   <HBox prefHeight="27.0" prefWidth="420.0" />
-                  <HBox prefHeight="53.0" prefWidth="420.0">
+                  <HBox prefHeight="66.0" prefWidth="610.0">
                      <children>
-                        <VBox prefHeight="53.0" prefWidth="20.0" />
+                        <VBox prefHeight="53.0" prefWidth="30.0" />
                         <ImageView fitHeight="51.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/quick_draw_img.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="75.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <VBox prefHeight="53.0" prefWidth="80.0" />
+                        <ImageView fitHeight="84.0" fitWidth="229.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/stats_text/statistics-word.png" />
                            </image>
@@ -38,10 +39,10 @@
                               <DropShadow />
                            </effect>
                         </ImageView>
-                        <VBox prefHeight="53.0" prefWidth="27.0" />
+                        <VBox prefHeight="57.0" prefWidth="84.0" />
                         <Button alignment="CENTER" mnemonicParsing="false" style="-fx-shape: circle;">
                            <graphic>
-                              <ImageView id="buttonBack" fx:id="buttonBack" fitHeight="42.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView id="buttonBack" fx:id="buttonBack" fitHeight="48.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/back-button.png" />
                                  </image>
@@ -50,12 +51,13 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="26.0" prefWidth="420.0" />
+                  <HBox prefHeight="34.0" prefWidth="610.0" />
                   <HBox prefHeight="100.0" prefWidth="420.0">
                      <children>
+                        <VBox prefHeight="100.0" prefWidth="61.0" />
                         <VBox alignment="TOP_CENTER" prefHeight="85.0" prefWidth="205.0">
                            <children>
-                              <ImageView fitHeight="46.0" fitWidth="156.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="60.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/stats_text/games-won.png" />
                                  </image>
@@ -67,9 +69,10 @@
                               </Label>
                            </children>
                         </VBox>
+                        <VBox prefHeight="100.0" prefWidth="89.0" />
                         <VBox alignment="TOP_CENTER" prefHeight="85.0" prefWidth="213.0">
                            <children>
-                              <ImageView fitHeight="42.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="65.0" fitWidth="205.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/stats_text/games-played.png" />
                                  </image>
@@ -84,11 +87,13 @@
                         <VBox prefHeight="115.0" prefWidth="19.0" />
                      </children>
                   </HBox>
+                  <HBox prefHeight="47.0" prefWidth="610.0" />
                   <HBox prefHeight="93.0" prefWidth="420.0">
                      <children>
+                        <VBox prefHeight="93.0" prefWidth="63.0" />
                         <VBox alignment="TOP_CENTER" prefHeight="85.0" prefWidth="205.0">
                            <children>
-                              <ImageView fitHeight="43.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="47.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/stats_text/games-lost.png" />
                                  </image>
@@ -100,9 +105,10 @@
                               </Label>
                            </children>
                         </VBox>
+                        <VBox prefHeight="93.0" prefWidth="87.0" />
                         <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="213.0">
                            <children>
-                              <ImageView fitHeight="53.0" fitWidth="190.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="51.0" fitWidth="206.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/stats_text/best-time.png" />
                                  </image>
@@ -117,11 +123,12 @@
                         <VBox prefHeight="115.0" prefWidth="19.0" />
                      </children>
                   </HBox>
+                  <HBox prefHeight="47.0" prefWidth="610.0" />
                   <HBox alignment="CENTER" prefHeight="108.0" prefWidth="420.0">
                      <children>
                         <VBox alignment="CENTER" prefHeight="100.0" prefWidth="213.0">
                            <children>
-                              <ImageView fitHeight="38.0" fitWidth="253.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="48.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/stats_text/average-time.png" />
                                  </image>
