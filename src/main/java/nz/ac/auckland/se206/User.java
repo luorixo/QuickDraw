@@ -107,4 +107,58 @@ public class User {
     }
     return null;
   }
+
+  // INSTANCE FIELD GETTERS
+  public String getName() {
+    return this.name;
+  }
+
+  public int getGamesPlayed() {
+    return this.gamesPlayed;
+  }
+
+  public int getGamesWon() {
+    return this.gamesWon;
+  }
+
+  public int getGamesLost() {
+    return this.gamesPlayed - this.gamesWon;
+  }
+
+  public int getBestTime() {
+    return this.bestTime;
+  }
+
+  public int getTotalTime() {
+    return this.totalTime;
+  }
+
+  public int getAverageTime() {
+    return this.totalTime / this.gamesPlayed;
+  }
+
+  public List<String> getWordsSeen() {
+    return this.wordsSeen;
+  }
+
+  public boolean hasSeenAllWords() {
+    return this.hasSeenAllWords;
+  }
+
+  public boolean hasBeenCreated() {
+    return this.hasBeenCreated;
+  }
+
+  // INSTANCE FIELD SETTERS
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setHasSeenAllWords(boolean hasSeenAllWords) {
+    this.hasSeenAllWords = hasSeenAllWords;
+  }
+
+  public void setHasBeenCreated(boolean hasBeenCreated) {
+    this.hasBeenCreated = hasBeenCreated;
+  }
 }
