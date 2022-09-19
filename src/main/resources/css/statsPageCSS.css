@@ -1,4 +1,10 @@
 .button:hover {
-	-fx-border-color: #ff9736;
+	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, .7), 20, 0.3, 0.0, 0.0);
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
 }
 
+#labelLogo:hover {
+	-fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}
