@@ -149,6 +149,9 @@ public class User {
   }
 
   public int getAverageTime() {
+    if (this.gamesPlayed == 0) {
+      return 0;
+    }
     return this.totalTime / this.gamesPlayed;
   }
 
