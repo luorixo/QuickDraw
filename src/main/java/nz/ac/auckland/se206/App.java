@@ -36,7 +36,7 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    final Scene scene = new Scene(loadFxml("landingpage"), 640, 480);
+    final Scene scene = new Scene(loadFxml("landingpage"), 610, 582);
 
     stage.setScene(scene);
     stage.show();
