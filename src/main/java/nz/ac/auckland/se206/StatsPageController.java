@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 
 public class StatsPageController {
 
+  public static int id;
   @FXML private ImageView labelLogo;
   @FXML private Button buttonBack;
   @FXML private Label labelGamesWon;
@@ -17,7 +18,6 @@ public class StatsPageController {
   @FXML private Label labelGamesLost;
   @FXML private Label labelBestTime;
   @FXML private Label labelAverageTime;
-  public static int id;
   private User user;
 
   /**
@@ -40,7 +40,7 @@ public class StatsPageController {
    * @param event
    */
   @FXML
-  public void onBackButton(ActionEvent event) {
+  private void onBackButton(ActionEvent event) {
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
