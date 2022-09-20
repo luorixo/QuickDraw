@@ -4,7 +4,9 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -41,106 +43,98 @@
                   <Image url="@../images/Group_26.png" />
                </image>
             </ImageView>
-            <Label fx:id="usernameOne" alignment="CENTER" layoutX="30.0" layoutY="73.0" text="Username" />
-            <ImageView fx:id="addUserOne" fitHeight="31.0" fitWidth="38.0" layoutX="45.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+            <HBox alignment="CENTER" layoutY="57.0" prefHeight="31.0" prefWidth="120.0" style="-fx-alignment: center;">
+               <children>
+                  <Label fx:id="usernameOne" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="119.0" style="-fx-text-alignment: center;" text="Username" />
+               </children>
+            </HBox>
+            <ImageView fx:id="addUserOne" fitHeight="31.0" fitWidth="38.0" layoutX="45.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/Test.png" />
                </image>
             </ImageView>
-            <Button fx:id="userButtonOne" alignment="CENTER" mnemonicParsing="false" onAction="#onPressUserProfile" prefHeight="145.0" prefWidth="120.0" style="-fx-background-color: transparent; -fx-border-radius: 20px;">
+            <TextField fx:id="userCreateOne" layoutX="18.0" layoutY="60.0" onAction="#onNameEnteredOne" prefHeight="19.0" prefWidth="85.0" style="-fx-background-color: E7E7E7; -fx-background-radius: 15px;">
                <cursor>
-                  <Cursor fx:constant="HAND" />
+                  <Cursor fx:constant="TEXT" />
                </cursor>
-            </Button>
-         </children></Pane>
-      <Pane layoutX="171.0" layoutY="291.0" prefHeight="145.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
-         <children>
-            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="41.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="41.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+            </TextField>
+            <ImageView fx:id="yourNameOne" fitHeight="18.0" fitWidth="97.0" layoutX="12.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/Group_84.png" />
+                  <Image url="@../images/YOUR%20NAME_.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="28.0" layoutY="73.0" text="Username" />
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="145.0" prefWidth="120.0" style="-fx-background-color: transparent; -fx-border-radius: 20px;">
+            <Button fx:id="userButtonOne" alignment="CENTER" mnemonicParsing="false" onAction="#onUserCreateOne" prefHeight="145.0" prefWidth="120.0" style="-fx-background-color: transparent; -fx-border-radius: 20px;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
          </children>
-      </Pane>
-      <Pane layoutX="324.0" layoutY="291.0" prefHeight="145.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
+         <effect>
+            <DropShadow />
+         </effect></Pane>
+      <Pane fx:id="userProfileTwo" layoutX="171.0" layoutY="291.0" prefHeight="145.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
          <children>
-            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="41.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="userIconTwo" fitHeight="38.0" fitWidth="38.0" layoutX="41.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Group_84.png" />
+               </image></ImageView>
+            <Label fx:id="usernameTwo" alignment="CENTER" layoutX="28.0" layoutY="73.0" text="Username" />
+            <ImageView fx:id="addUserTwo" fitHeight="31.0" fitWidth="38.0" layoutX="45.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Test.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="userButtonTwo" alignment="CENTER" mnemonicParsing="false" prefHeight="145.0" prefWidth="120.0" style="-fx-background-color: transparent; -fx-border-radius: 20px;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <Shadow />
+               </effect>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="userProfileThree" layoutX="324.0" layoutY="291.0" prefHeight="145.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
+         <children>
+            <ImageView fx:id="userIconThree" fitHeight="38.0" fitWidth="38.0" layoutX="41.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/Group_85.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="29.0" layoutY="71.0" text="Username" />
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="145.0" prefWidth="120.0" style="-fx-background-color: transparent; -fx-border-radius: 20px;">
+            <Label fx:id="usernameThree" alignment="CENTER" layoutX="29.0" layoutY="71.0" text="Username" />
+            <ImageView fx:id="addUserThree" fitHeight="31.0" fitWidth="38.0" layoutX="44.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Test.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="userButtonThree" alignment="CENTER" mnemonicParsing="false" prefHeight="145.0" prefWidth="120.0" style="-fx-background-color: transparent; -fx-border-radius: 20px;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
          </children>
       </Pane>
-      <Pane layoutX="476.0" layoutY="291.0" prefHeight="145.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
+      <Pane fx:id="userProfileFour" layoutX="476.0" layoutY="291.0" prefHeight="145.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
          <children>
-            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="41.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="userIconFour" fitHeight="38.0" fitWidth="38.0" layoutX="41.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/Group_85_1.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="31.0" layoutY="71.0" text="Username" />
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="145.0" prefWidth="120.0" style="-fx-background-color: transparent; -fx-border-radius: 20px;">
+            <Label fx:id="usernameFour" alignment="CENTER" layoutX="31.0" layoutY="71.0" text="Username" />
+            <ImageView fx:id="addUserFour" fitHeight="31.0" fitWidth="38.0" layoutX="47.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Test.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="userButtonFour" alignment="CENTER" mnemonicParsing="false" prefHeight="145.0" prefWidth="120.0" style="-fx-background-color: transparent; -fx-border-radius: 20px;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
          </children>
       </Pane>
-      <ImageView fitHeight="38.0" fitWidth="92.0" layoutX="212.0" layoutY="461.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/Vector.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <effect>
-            <DropShadow />
-         </effect>
-      </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="92.0" layoutX="365.0" layoutY="461.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/Vector.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <effect>
-            <DropShadow />
-         </effect>
-      </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="92.0" layoutX="517.0" layoutY="461.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/Vector.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <effect>
-            <DropShadow />
-         </effect>
-      </ImageView>
-      <Label fx:id="cancelDeleteOne" alignment="CENTER" layoutX="54.0" layoutY="502.0" onMouseClicked="#onCancelDeletionUserOne" text="Cancel">
-         <font>
-            <Font name="System Bold Italic" size="12.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Label>
-      <ImageView fx:id="redDeleteUserOne" fitHeight="38.0" fitWidth="38.0" layoutX="54.0" layoutY="461.0" onMouseClicked="#confirmDeletionOne" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="redDeleteUserThree" fitHeight="38.0" fitWidth="38.0" layoutX="365.0" layoutY="461.0" onMouseClicked="#onConfirmDeletionThree" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/delete2.png" />
          </image>
@@ -148,7 +142,96 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="deleteUserOne" fitHeight="38.0" fitWidth="92.0" layoutX="55.0" layoutY="461.0" onMouseClicked="#onPressDelete" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="deleteUserThree" fitHeight="38.0" fitWidth="92.0" layoutX="365.0" layoutY="461.0" onMouseClicked="#onDeleteUserThree" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Vector.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <ImageView fx:id="redDeleteUserFour" fitHeight="38.0" fitWidth="38.0" layoutX="517.0" layoutY="461.0" onMouseClicked="#onConfirmDeletionFour" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/delete2.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="deleteUserFour" fitHeight="38.0" fitWidth="92.0" layoutX="517.0" layoutY="461.0" onMouseClicked="#onDeleteUserFour" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Vector.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <Label fx:id="cancelDeleteOne" alignment="CENTER" layoutX="54.0" layoutY="443.0" onMouseClicked="#onCancelDeletionOne" text="Cancel">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <ImageView fx:id="redDeleteUserOne" fitHeight="38.0" fitWidth="38.0" layoutX="54.0" layoutY="461.0" onMouseClicked="#onConfirmDeletionOne" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/delete2.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="deleteUserOne" fitHeight="38.0" fitWidth="92.0" layoutX="55.0" layoutY="461.0" onMouseClicked="#onDeleteUserOne" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Vector.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <Label fx:id="cancelDeleteTwo" alignment="CENTER" layoutX="212.0" layoutY="443.0" onMouseClicked="#onCancelDeletionTwo" text="Cancel">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="cancelDeleteThree" alignment="CENTER" layoutX="365.0" layoutY="443.0" onMouseClicked="#onCancelDeletionThree" text="Cancel">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="cancelDeleteFour" alignment="CENTER" layoutX="517.0" layoutY="443.0" onMouseClicked="#onCancelDeletionFour" text="Cancel">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <ImageView fx:id="redDeleteUserTwo" fitHeight="38.0" fitWidth="38.0" layoutX="212.0" layoutY="461.0" onMouseClicked="#onConfirmDeletionTwo" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/delete2.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="deleteUserTwo" fitHeight="38.0" fitWidth="92.0" layoutX="212.0" layoutY="461.0" onMouseClicked="#onDeleteUserTwo" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Vector.png" />
          </image>
