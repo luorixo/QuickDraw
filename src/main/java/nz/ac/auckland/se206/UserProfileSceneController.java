@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 public class UserProfileSceneController {
@@ -50,6 +51,11 @@ public class UserProfileSceneController {
 	private ImageView redDeleteUserTwo;
 	@FXML
 	private Label cancelDeleteTwo;
+	@FXML
+	private ImageView yourNameTwo;
+	@FXML
+	private TextField userCreateTwo;
+	private User userTwo = User.getUser(2);
 
 	// GUI elements for userThree
 	@FXML
@@ -68,6 +74,11 @@ public class UserProfileSceneController {
 	private ImageView redDeleteUserThree;
 	@FXML
 	private Label cancelDeleteThree;
+	@FXML
+	private ImageView yourNameThree;
+	@FXML
+	private TextField userCreateThree;
+	private User userThree = User.getUser(3);
 
 	// GUI elements for userFour
 	@FXML
@@ -86,7 +97,11 @@ public class UserProfileSceneController {
 	private ImageView redDeleteUserFour;
 	@FXML
 	private Label cancelDeleteFour;
-	private User userFour;
+	@FXML
+	private ImageView yourNameFour;
+	@FXML
+	private TextField userCreateFour;
+	private User userFour = User.getUser(4);
 
 	public void initialize() {
 		setUserOne();
@@ -96,184 +111,273 @@ public class UserProfileSceneController {
 	}
 
 	@FXML
-	public void onUserCreateOne() {
+	public void onUserCreationOrHomePage(ActionEvent event) {
 
-		if (!userOne.hasBeenCreated()) {
-			userIconOne.setVisible(false);
-			usernameOne.setVisible(false);
-			addUserOne.setVisible(false);
-			deleteUserOne.setVisible(false);
-			deleteUserOne.setDisable(true);
-			cancelDeleteOne.setVisible(false);
-			cancelDeleteOne.setDisable(true);
-			redDeleteUserOne.setVisible(false);
-			redDeleteUserOne.setDisable(true);
-			userButtonOne.setDisable(true);
-			// userButtonOne.setVisible(false);
-			yourNameOne.setVisible(true);
-			userCreateOne.setVisible(true);
-			userCreateOne.setDisable(false);
+		// checks to see which fxid the event is from
+		Object userCreateButton = event.getSource();
+
+		// based on the fxid, GUI elements are disabled/visible
+		if (userCreateButton.equals(userButtonOne)) {
+
+			if (!userOne.hasBeenCreated()) {
+				userIconOne.setVisible(false);
+				usernameOne.setVisible(false);
+				addUserOne.setVisible(false);
+				deleteUserOne.setVisible(false);
+				deleteUserOne.setDisable(true);
+				cancelDeleteOne.setVisible(false);
+				cancelDeleteOne.setDisable(true);
+				redDeleteUserOne.setVisible(false);
+				redDeleteUserOne.setDisable(true);
+				userButtonOne.setDisable(true);
+				yourNameOne.setVisible(true);
+				userCreateOne.setVisible(true);
+				userCreateOne.setDisable(false);
+			} else {
+				System.out.println("Take me to user 1 home page");
+			}
+
+		} else if (userCreateButton.equals(userButtonTwo)) {
+
+			if (!userTwo.hasBeenCreated()) {
+				userIconTwo.setVisible(false);
+				usernameTwo.setVisible(false);
+				addUserTwo.setVisible(false);
+				deleteUserTwo.setVisible(false);
+				deleteUserTwo.setDisable(true);
+				cancelDeleteTwo.setVisible(false);
+				cancelDeleteTwo.setDisable(true);
+				redDeleteUserTwo.setVisible(false);
+				redDeleteUserTwo.setDisable(true);
+				userButtonTwo.setDisable(true);
+				yourNameTwo.setVisible(true);
+				userCreateTwo.setVisible(true);
+				userCreateTwo.setDisable(false);
+			} else {
+				System.out.println("Take me to user 2 home page");
+			}
+
+		} else if (userCreateButton.equals(userButtonThree)) {
+
+			if (!userThree.hasBeenCreated()) {
+				userIconThree.setVisible(false);
+				usernameThree.setVisible(false);
+				addUserThree.setVisible(false);
+				deleteUserThree.setVisible(false);
+				deleteUserThree.setDisable(true);
+				cancelDeleteThree.setVisible(false);
+				cancelDeleteThree.setDisable(true);
+				redDeleteUserThree.setVisible(false);
+				redDeleteUserThree.setDisable(true);
+				userButtonThree.setDisable(true);
+				yourNameThree.setVisible(true);
+				userCreateThree.setVisible(true);
+				userCreateThree.setDisable(false);
+			} else {
+				System.out.println("Take me to user 3 home page");
+			}
 		} else {
-			System.out.println("Take me to user home page");
+
+			if (!userFour.hasBeenCreated()) {
+				userIconFour.setVisible(false);
+				usernameFour.setVisible(false);
+				addUserFour.setVisible(false);
+				deleteUserFour.setVisible(false);
+				deleteUserFour.setDisable(true);
+				cancelDeleteFour.setVisible(false);
+				cancelDeleteFour.setDisable(true);
+				redDeleteUserFour.setVisible(false);
+				redDeleteUserFour.setDisable(true);
+				userButtonFour.setDisable(true);
+				yourNameFour.setVisible(true);
+				userCreateFour.setVisible(true);
+				userCreateFour.setDisable(false);
+			} else {
+				System.out.println("Take me to user 4 home page");
+			}
 		}
 	}
 
 	@FXML
-	public void onDeleteUserOne() {
-		deleteUserOne.setVisible(false);
-		deleteUserOne.setDisable(true);
-		redDeleteUserOne.setVisible(true);
-		redDeleteUserOne.setDisable(false);
-		cancelDeleteOne.setVisible(true);
-		cancelDeleteOne.setDisable(false);
-	}
+	public void onDeleteUser(MouseEvent event) {
 
-	@FXML
-	public void onCancelDeletionOne() {
-		deleteUserOne.setVisible(true);
-		deleteUserOne.setDisable(false);
-		redDeleteUserOne.setVisible(false);
-		redDeleteUserOne.setDisable(true);
-		cancelDeleteOne.setVisible(false);
-		cancelDeleteOne.setDisable(true);
-	}
+		// Checks to see which fxid the event is associated to
+		Object deleteUserImage = event.getSource();
 
-	@FXML
-	public void onConfirmDeletionOne() {
-		cancelDeleteOne.setVisible(false);
-		cancelDeleteOne.setDisable(true);
-		userIconOne.setVisible(false);
-		usernameOne.setVisible(false);
-		addUserOne.setVisible(true);
-		// userButtonOne.setDisable(false);
-		deleteUserOne.setVisible(false);
-		deleteUserOne.setDisable(true);
-		redDeleteUserOne.setVisible(false);
-		redDeleteUserOne.setDisable(true);
-		cancelDeleteOne.setVisible(false);
-		cancelDeleteOne.setDisable(true);
+		// based on the fxid, these if/else statements dictate which GUI elements are
+		// visible/disabled
+		if (deleteUserImage.equals(deleteUserOne)) {
 
-		userOne.resetUser();
+			deleteUserOne.setVisible(false);
+			deleteUserOne.setDisable(true);
+			redDeleteUserOne.setVisible(true);
+			redDeleteUserOne.setDisable(false);
+			cancelDeleteOne.setVisible(true);
+			cancelDeleteOne.setDisable(false);
 
-	}
+		} else if (deleteUserImage.equals(deleteUserTwo)) {
 
-	@FXML
-	private void onNameEnteredOne(ActionEvent event) {
+			deleteUserTwo.setVisible(false);
+			deleteUserTwo.setDisable(true);
+			redDeleteUserTwo.setVisible(true);
+			redDeleteUserTwo.setDisable(false);
+			cancelDeleteTwo.setVisible(true);
+			cancelDeleteTwo.setDisable(false);
 
-		String username = userCreateOne.getText();
-		this.userOne = new User(username, 1);
-		userCreateOne.clear();
-		userButtonOne.setDisable(false);
-		setUserOne();
+		} else if (deleteUserImage.equals(deleteUserThree)) {
+
+			deleteUserThree.setVisible(false);
+			deleteUserThree.setDisable(true);
+			redDeleteUserThree.setVisible(true);
+			redDeleteUserThree.setDisable(false);
+			cancelDeleteThree.setVisible(true);
+			cancelDeleteThree.setDisable(false);
+
+		} else {
+
+			deleteUserFour.setVisible(false);
+			deleteUserFour.setDisable(true);
+			redDeleteUserFour.setVisible(true);
+			redDeleteUserFour.setDisable(false);
+			cancelDeleteFour.setVisible(true);
+			cancelDeleteFour.setDisable(false);
+		}
 
 	}
 
 	@FXML
-	public void onDeleteUserTwo() {
-		deleteUserTwo.setVisible(false);
-		deleteUserTwo.setDisable(true);
-		redDeleteUserTwo.setVisible(true);
-		redDeleteUserTwo.setDisable(false);
-		cancelDeleteTwo.setVisible(true);
-		cancelDeleteTwo.setDisable(false);
+	public void onCancelDeletion(MouseEvent event) {
+
+		Object cancelDeleteImage = event.getSource();
+
+		if (cancelDeleteImage.equals(cancelDeleteOne)) {
+			deleteUserOne.setVisible(true);
+			deleteUserOne.setDisable(false);
+			redDeleteUserOne.setVisible(false);
+			redDeleteUserOne.setDisable(true);
+			cancelDeleteOne.setVisible(false);
+			cancelDeleteOne.setDisable(true);
+		} else if (cancelDeleteImage.equals(cancelDeleteTwo)) {
+			deleteUserTwo.setVisible(true);
+			deleteUserTwo.setDisable(false);
+			redDeleteUserTwo.setVisible(false);
+			redDeleteUserTwo.setDisable(true);
+			cancelDeleteTwo.setVisible(false);
+			cancelDeleteTwo.setDisable(true);
+		} else if (cancelDeleteImage.equals(cancelDeleteThree)) {
+			deleteUserThree.setVisible(true);
+			deleteUserThree.setDisable(false);
+			redDeleteUserThree.setVisible(false);
+			redDeleteUserThree.setDisable(true);
+			cancelDeleteThree.setVisible(false);
+			cancelDeleteThree.setDisable(true);
+		} else {
+			deleteUserFour.setVisible(true);
+			deleteUserFour.setDisable(false);
+			redDeleteUserFour.setVisible(false);
+			redDeleteUserFour.setDisable(true);
+			cancelDeleteFour.setVisible(false);
+			cancelDeleteFour.setDisable(true);
+		}
 	}
 
 	@FXML
-	public void onCancelDeletionTwo() {
-		deleteUserTwo.setVisible(true);
-		deleteUserTwo.setDisable(false);
-		redDeleteUserTwo.setVisible(false);
-		redDeleteUserTwo.setDisable(true);
-		cancelDeleteTwo.setVisible(false);
-		cancelDeleteTwo.setDisable(true);
+	public void onConfirmDeletion(MouseEvent event) {
+
+		Object confirmDeletionImage = event.getSource();
+
+		if (confirmDeletionImage.equals(redDeleteUserOne)) {
+
+			cancelDeleteOne.setVisible(false);
+			cancelDeleteOne.setDisable(true);
+			userIconOne.setVisible(false);
+			usernameOne.setVisible(false);
+			addUserOne.setVisible(true);
+			deleteUserOne.setVisible(false);
+			deleteUserOne.setDisable(true);
+			redDeleteUserOne.setVisible(false);
+			redDeleteUserOne.setDisable(true);
+
+			userOne.resetUser();
+
+		} else if (confirmDeletionImage.equals(redDeleteUserTwo)) {
+
+			cancelDeleteTwo.setVisible(false);
+			cancelDeleteTwo.setDisable(true);
+			userIconTwo.setVisible(false);
+			usernameTwo.setVisible(false);
+			addUserTwo.setVisible(true);
+			deleteUserTwo.setVisible(false);
+			deleteUserTwo.setDisable(true);
+			redDeleteUserTwo.setVisible(false);
+			redDeleteUserTwo.setDisable(true);
+
+			userTwo.resetUser();
+
+		} else if (confirmDeletionImage.equals(redDeleteUserThree)) {
+
+			cancelDeleteThree.setVisible(false);
+			cancelDeleteThree.setDisable(true);
+			userIconThree.setVisible(false);
+			usernameThree.setVisible(false);
+			addUserThree.setVisible(true);
+			deleteUserThree.setVisible(false);
+			deleteUserThree.setDisable(true);
+			redDeleteUserThree.setVisible(false);
+			redDeleteUserThree.setDisable(true);
+
+			userThree.resetUser();
+		} else {
+			cancelDeleteFour.setVisible(false);
+			cancelDeleteFour.setDisable(true);
+			userIconFour.setVisible(false);
+			usernameFour.setVisible(false);
+			addUserFour.setVisible(true);
+			deleteUserFour.setVisible(false);
+			deleteUserFour.setDisable(true);
+			redDeleteUserFour.setVisible(false);
+			redDeleteUserFour.setDisable(true);
+
+			userFour.resetUser();
+		}
+
 	}
 
 	@FXML
-	public void onConfirmDeletionTwo() {
-		cancelDeleteTwo.setVisible(false);
-		cancelDeleteTwo.setDisable(true);
-		userIconTwo.setVisible(false);
-		usernameTwo.setVisible(false);
-		addUserTwo.setVisible(true);
-		userButtonTwo.setDisable(false);
-		deleteUserTwo.setVisible(false);
-		deleteUserTwo.setDisable(true);
-		redDeleteUserTwo.setVisible(false);
-		redDeleteUserTwo.setDisable(true);
-		cancelDeleteTwo.setVisible(false);
-		cancelDeleteTwo.setDisable(true);
-	}
+	private void onNameEntered(ActionEvent event) {
 
-	@FXML
-	public void onDeleteUserThree() {
-		deleteUserThree.setVisible(false);
-		deleteUserThree.setDisable(true);
-		redDeleteUserThree.setVisible(true);
-		redDeleteUserThree.setDisable(false);
-		cancelDeleteThree.setVisible(true);
-		cancelDeleteThree.setDisable(false);
-	}
+		Object userCreateTextField = event.getSource();
 
-	@FXML
-	public void onCancelDeletionThree() {
-		deleteUserThree.setVisible(true);
-		deleteUserThree.setDisable(false);
-		redDeleteUserThree.setVisible(false);
-		redDeleteUserThree.setDisable(true);
-		cancelDeleteThree.setVisible(false);
-		cancelDeleteThree.setDisable(true);
-	}
+		if (userCreateTextField.equals(userCreateOne)) {
 
-	@FXML
-	public void onConfirmDeletionThree() {
-		cancelDeleteThree.setVisible(false);
-		cancelDeleteThree.setDisable(true);
-		userIconThree.setVisible(false);
-		usernameThree.setVisible(false);
-		addUserThree.setVisible(true);
-		userButtonThree.setDisable(false);
-		deleteUserThree.setVisible(false);
-		deleteUserThree.setDisable(true);
-		redDeleteUserThree.setVisible(false);
-		redDeleteUserThree.setDisable(true);
-		cancelDeleteThree.setVisible(false);
-		cancelDeleteThree.setDisable(true);
-	}
+			String username = userCreateOne.getText();
+			this.userOne = new User(username, 1);
+			userCreateOne.clear();
+			userButtonOne.setDisable(false);
+			setUserOne();
+		} else if (userCreateTextField.equals(userCreateTwo)) {
 
-	@FXML
-	public void onDeleteUserFour() {
-		deleteUserFour.setVisible(false);
-		deleteUserFour.setDisable(true);
-		redDeleteUserFour.setVisible(true);
-		redDeleteUserFour.setDisable(false);
-		cancelDeleteFour.setVisible(true);
-		cancelDeleteFour.setDisable(false);
-	}
+			String username = userCreateTwo.getText();
+			this.userTwo = new User(username, 2);
+			userCreateTwo.clear();
+			userButtonTwo.setDisable(false);
+			setUserTwo();
 
-	@FXML
-	public void onCancelDeletionFour() {
-		deleteUserFour.setVisible(true);
-		deleteUserFour.setDisable(false);
-		redDeleteUserFour.setVisible(false);
-		redDeleteUserFour.setDisable(true);
-		cancelDeleteFour.setVisible(false);
-		cancelDeleteFour.setDisable(true);
-	}
+		} else if (userCreateTextField.equals(userCreateThree)) {
 
-	@FXML
-	public void onConfirmDeletionFour() {
-		cancelDeleteFour.setVisible(false);
-		cancelDeleteFour.setDisable(true);
-		userIconFour.setVisible(false);
-		usernameFour.setVisible(false);
-		addUserFour.setVisible(true);
-		userButtonFour.setDisable(false);
-		deleteUserFour.setVisible(false);
-		deleteUserFour.setDisable(true);
-		redDeleteUserFour.setVisible(false);
-		redDeleteUserFour.setDisable(true);
-		cancelDeleteFour.setVisible(false);
-		cancelDeleteFour.setDisable(true);
+			String username = userCreateThree.getText();
+			this.userThree = new User(username, 3);
+			userCreateThree.clear();
+			userButtonThree.setDisable(false);
+			setUserThree();
+		} else {
+
+			String username = userCreateFour.getText();
+			this.userFour = new User(username, 4);
+			userCreateFour.clear();
+			userButtonFour.setDisable(false);
+			setUserFour();
+		}
 
 	}
 
@@ -283,7 +387,6 @@ public class UserProfileSceneController {
 		cancelDeleteOne.setDisable(true);
 		redDeleteUserOne.setVisible(false);
 		redDeleteUserOne.setDisable(true);
-		// userButtonOne.setDisable(false);
 		yourNameOne.setVisible(false);
 		userCreateOne.setVisible(false);
 		userCreateOne.setDisable(true);
@@ -313,12 +416,15 @@ public class UserProfileSceneController {
 		cancelDeleteTwo.setDisable(true);
 		redDeleteUserTwo.setVisible(false);
 		redDeleteUserTwo.setDisable(true);
-		userButtonTwo.setDisable(false);
+		yourNameTwo.setVisible(false);
+		userCreateTwo.setVisible(false);
+		userCreateTwo.setDisable(true);
 
-		if (false) {
+		if (this.userTwo.hasBeenCreated()) {
 
 			userIconTwo.setVisible(true);
 			usernameTwo.setVisible(true);
+			usernameTwo.setText(userTwo.getName());
 			addUserTwo.setVisible(false);
 			deleteUserTwo.setVisible(true);
 			deleteUserTwo.setDisable(false);
@@ -337,14 +443,17 @@ public class UserProfileSceneController {
 
 		cancelDeleteThree.setVisible(false);
 		cancelDeleteThree.setDisable(true);
-		userButtonThree.setDisable(false);
 		redDeleteUserThree.setVisible(false);
 		redDeleteUserThree.setDisable(true);
+		yourNameThree.setVisible(false);
+		userCreateThree.setVisible(false);
+		userCreateThree.setDisable(true);
 
-		if (true) {
+		if (this.userThree.hasBeenCreated()) {
 
 			userIconThree.setVisible(true);
 			usernameThree.setVisible(true);
+			usernameThree.setText(userThree.getName());
 			addUserThree.setVisible(false);
 			deleteUserThree.setVisible(true);
 			deleteUserThree.setDisable(false);
@@ -353,6 +462,7 @@ public class UserProfileSceneController {
 
 			userIconThree.setVisible(false);
 			usernameThree.setVisible(false);
+			usernameFour.setText(userFour.getName());
 			addUserThree.setVisible(true);
 			deleteUserThree.setVisible(false);
 			deleteUserThree.setDisable(true);
@@ -366,12 +476,15 @@ public class UserProfileSceneController {
 		cancelDeleteFour.setDisable(true);
 		redDeleteUserFour.setVisible(false);
 		redDeleteUserFour.setDisable(true);
-		userButtonFour.setDisable(false);
+		yourNameFour.setVisible(false);
+		userCreateFour.setVisible(false);
+		userCreateFour.setDisable(true);
 
-		if (true) {
+		if (this.userFour.hasBeenCreated()) {
 
 			userIconFour.setVisible(true);
 			usernameFour.setVisible(true);
+			usernameFour.setText(userFour.getName());
 			addUserFour.setVisible(false);
 			deleteUserFour.setVisible(true);
 			deleteUserFour.setDisable(false);
