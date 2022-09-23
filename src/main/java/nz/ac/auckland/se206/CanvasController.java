@@ -60,11 +60,15 @@ public class CanvasController {
   @FXML private Button paintButton;
   @FXML private Pane canvasPane;
 
+  public static int userId = 1;
+
   private GraphicsContext graphic;
   private DoodlePrediction model;
+  private int startingTime = 60;
   private int secondsLeft = 60;
   private int predictionWinNumber = 3;
   private boolean gameEnd = false;
+  private User user;
 
   private String randomWord;
 
@@ -74,6 +78,7 @@ public class CanvasController {
 
   @FXML
   private void onStartGame() {
+    user = User.getUser(userId);
     Timer timer = new Timer();
     TextToSpeech textToSpeech = new TextToSpeech();
     // creates task to speak the random category name
@@ -98,7 +103,9 @@ public class CanvasController {
             // if time runs out or if already won, stops the timer
             if (secondsLeft == 0 || gameEnd) {
               this.cancel();
-              endGame(false);
+              if (secondsLeft == 0) {
+                endGame(false);
+              }
               return;
             } else {
               // gives task to main thread
@@ -152,6 +159,24 @@ public class CanvasController {
       gameOverLabel.setText("YOU WIN!");
     }
     gameEnd = true;
+    // saves user stats
+    user.gameOver(hasWon, randomWord, startingTime - secondsLeft);
+    user.saveData();
+
+    File newImage =
+        new File(
+            System.getProperty("user.dir")
+                + "/src/main/resources/users/user"
+                + userId
+                + "/images/"
+                + randomWord
+                + ".bmp");
+
+    try {
+      ImageIO.write(getCurrentSnapshot(), "bmp", newImage);
+    } catch (IOException e) {
+      e.printStackTrace();
+    } // Save the image to a file
 
     // disables the canvas and clear button
     canvas.setDisable(true);
@@ -213,6 +238,7 @@ public class CanvasController {
                   if (isInTop) {
                     // if the chosen topic is in the top 3, then the game ends (user wins!)
                     endGame(true);
+                    this.cancel();
                     System.out.println("YOU WIN!");
                   }
                 });

@@ -65,7 +65,7 @@ public class User {
   private int id;
   private int gamesPlayed = 0;
   private int gamesWon = 0;
-  private int bestTime = 0;
+  private int bestTime = 60;
   private int totalTime = 0;
   private List<String> wordsSeen = new ArrayList<>();
   private boolean hasSeenAllWords = false;
