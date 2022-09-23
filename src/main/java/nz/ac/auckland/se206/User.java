@@ -18,21 +18,23 @@ import java.util.List;
  * @date 17/09/2022
  */
 public class User {
-  private String name;
-  private int id;
-  private int gamesPlayed = 0;
-  private int gamesWon = 0;
-  private int bestTime = 0;
-  private int totalTime = 0;
-  private List<String> wordsSeen = new ArrayList<>();
-  private boolean hasSeenAllWords = false;
-  private boolean hasBeenCreated = false;
 
-  public User(String name, int id) {
-    this.name = name;
-    this.id = id;
-    this.hasBeenCreated = true;
-    this.saveToJSON();
+  /**
+   * Gets the specified user (as a User object)
+   *
+   * @param userID The id of the user
+   * @return The User (as a user object) specified by the id
+   */
+  public static User getUser(int userId) {
+    try {
+      Gson gson = new Gson();
+      String jsonContent =
+          readFileAsString(User.getPath(userId)); // grabs the data from JSON file depending on ID
+      return gson.fromJson(jsonContent, User.class);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return null;
   }
 
   /**
@@ -41,10 +43,10 @@ public class User {
    * @param userID The id of the specified user
    * @return The absolute path of the user info JSON file
    */
-  private static String getPath(int userID) {
+  private static String getPath(int userId) {
     return System.getProperty("user.dir")
         + "/src/main/resources/users/user"
-        + userID
+        + userId
         + "/userInfo.json";
   }
 
@@ -59,9 +61,26 @@ public class User {
     return new String(Files.readAllBytes(Paths.get(file)));
   }
 
+  private String name;
+  private int id;
+  private int gamesPlayed = 0;
+  private int gamesWon = 0;
+  private int bestTime = 0;
+  private int totalTime = 0;
+  private List<String> wordsSeen = new ArrayList<>();
+  private boolean hasSeenAllWords = false;
+  private boolean hasBeenCreated = false;
+
+  public User(String name, int id) {
+    this.name = name;
+    this.id = id;
+    this.hasBeenCreated = true;
+    this.saveData();
+  }
+
   /** Resets all fields associated with user and saves to JSON data file */
   public void resetUser() {
-    this.gamesPlayed = 0;
+    this.gamesPlayed = 0; // resets all data
     this.gamesWon = 0;
     this.bestTime = 0;
     this.totalTime = 0;
@@ -69,7 +88,7 @@ public class User {
     this.hasSeenAllWords = false;
     this.hasBeenCreated = false;
     this.name = "";
-    this.saveToJSON();
+    this.saveData(); // saves to JSON
   }
 
   /**
@@ -83,9 +102,9 @@ public class User {
     if (hasWon) {
       gamesWon++;
     }
-    wordsSeen.add(wordSeen);
+    wordsSeen.add(wordSeen); // adds word to array
 
-    if (this.bestTime > gameTime) {
+    if (this.bestTime > gameTime) { // checks and updates best game time
       this.bestTime = gameTime;
     }
 
@@ -93,34 +112,18 @@ public class User {
   }
 
   /** Saves the fields of the current user to its JSON file */
-  public void saveToJSON() {
+  public void saveData() {
     try {
       Gson gson = new Gson();
       String json = gson.toJson(this);
-      FileWriter jsonWriter = new FileWriter(new File(User.getPath(id)));
+      FileWriter jsonWriter =
+          new FileWriter(new File(User.getPath(id))); // grabs the JSON file to write to
       jsonWriter.write(json);
       jsonWriter.close();
 
     } catch (JsonIOException | IOException e) {
       e.printStackTrace();
     }
-  }
-
-  /**
-   * Gets the specified user (as a User object)
-   *
-   * @param userID The id of the user
-   * @return The User (as a user object) specified by the id
-   */
-  public static User getUser(int userID) {
-    try {
-      Gson gson = new Gson();
-      String jsonContent = readFileAsString(User.getPath(userID));
-      return gson.fromJson(jsonContent, User.class);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    return null;
   }
 
   // INSTANCE FIELD GETTERS
