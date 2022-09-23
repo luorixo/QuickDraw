@@ -13,7 +13,6 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0" stylesheets="@../css/userHomeCSS.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.UserHomeController">
    <children>
       <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0">
@@ -43,7 +42,7 @@
                            </effect>
                         </Label>
                         <VBox prefHeight="66.0" prefWidth="14.0" />
-                        <Button id="backButton" fx:id="backButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" style="-fx-background-radius: 1000; -fx-background-insets: 15;">
+                        <Button id="backButton" fx:id="backButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBackButton" prefHeight="64.0" prefWidth="64.0" style="-fx-background-radius: 1000; -fx-background-insets: 15;">
                            <graphic>
                               <ImageView fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -77,7 +76,7 @@
                            </effect>
                         </ImageView>
                         <VBox prefHeight="57.0" prefWidth="67.0" />
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" prefWidth="115.0" style="-fx-background-radius: 1000; -fx-background-insets: 10;">
+                        <Button id="statsButton" fx:id="statsButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onStatsButton" prefHeight="45.0" prefWidth="115.0" style="-fx-background-radius: 1000; -fx-background-insets: 10;">
                            <graphic>
                               <ImageView fitHeight="45.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -96,7 +95,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="171.0" prefWidth="610.0">
                      <children>
-                        <Button id="leftButton" fx:id="leftButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" style="-fx-background-radius: 1000; -fx-background-insets: 15; -fx-background-color: no;">
+                        <Button id="leftButton" fx:id="leftButton" mnemonicParsing="false" onAction="#onLeftButton" prefHeight="35.0" prefWidth="35.0" style="-fx-background-radius: 1000; -fx-background-insets: 15; -fx-background-color: null;">
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -112,7 +111,7 @@
                            </cursor>
                         </Button>
                         <ImageView id="drawingImage" fx:id="drawingImage" fitHeight="173.0" fitWidth="300.0" pickOnBounds="true" />
-                        <Button id="rightButton" fx:id="rightButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" style="-fx-background-radius: 1000; -fx-background-insets: 15; -fx-background-color: no;">
+                        <Button id="rightButton" fx:id="rightButton" mnemonicParsing="false" onAction="#onRightButton" prefHeight="35.0" prefWidth="35.0" style="-fx-background-radius: 1000; -fx-background-insets: 15; -fx-background-color: null;">
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -176,7 +175,7 @@
                   </HBox>
                   <HBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="610.0">
                      <children>
-                        <Button id="easyButton" fx:id="easyButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="131.0" style="-fx-background-radius: 100; -fx-background-insets: 15;">
+                        <Button id="easyButton" fx:id="easyButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onEasyButton" prefHeight="50.0" prefWidth="131.0" style="-fx-background-radius: 100; -fx-background-insets: 15;">
                            <graphic>
                               <ImageView fitHeight="50.0" fitWidth="131.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
