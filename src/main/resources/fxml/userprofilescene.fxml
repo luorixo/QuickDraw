@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -24,9 +23,9 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </ImageView>
-      <HBox alignment="CENTER" layoutX="191.0" layoutY="115.0" prefHeight="106.0" prefWidth="239.0">
+      <HBox alignment="CENTER" layoutX="172.0" layoutY="95.0" prefHeight="106.0" prefWidth="239.0">
          <children>
-            <ImageView fx:id="quickDrawLogo" fitHeight="150.0" fitWidth="228.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="quickDrawLogo" fitHeight="134.0" fitWidth="265.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/QUICK_DRAW.png" />
                </image>
@@ -38,14 +37,17 @@
       </HBox>
       <Pane fx:id="userProfileOne" layoutX="14.0" layoutY="291.0" prefHeight="145.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
          <children>
-            <ImageView fx:id="userIconOne" fitHeight="38.0" fitWidth="38.0" layoutX="41.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="userIconOne" fitHeight="68.0" fitWidth="74.0" layoutX="27.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/Group_26.png" />
                </image>
             </ImageView>
-            <HBox alignment="CENTER" layoutY="57.0" prefHeight="31.0" prefWidth="120.0" style="-fx-alignment: center;">
+            <HBox alignment="CENTER" layoutY="88.0" prefHeight="31.0" prefWidth="120.0" style="-fx-alignment: center;">
                <children>
-                  <Label fx:id="usernameOne" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="119.0" style="-fx-text-alignment: center;" text="Username" />
+                  <Label fx:id="usernameOne" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="119.0" style="-fx-text-alignment: center;" text="Username">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font></Label>
                </children>
             </HBox>
             <ImageView fx:id="addUserOne" fitHeight="31.0" fitWidth="38.0" layoutX="45.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
@@ -71,13 +73,16 @@
          </children></Pane>
       <Pane fx:id="userProfileTwo" layoutX="171.0" layoutY="291.0" prefHeight="145.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
          <children>
-            <ImageView fx:id="userIconTwo" fitHeight="38.0" fitWidth="38.0" layoutX="41.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="userIconTwo" fitHeight="68.0" fitWidth="74.0" layoutX="27.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/Group_84.png" />
                </image></ImageView>
-            <HBox alignment="CENTER" layoutY="57.0" prefHeight="31.0" prefWidth="120.0" style="-fx-alignment: center;">
+            <HBox alignment="CENTER" layoutY="88.0" prefHeight="31.0" prefWidth="120.0" style="-fx-alignment: center;">
                <children>
-                  <Label fx:id="usernameTwo" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="119.0" style="-fx-text-alignment: center;" text="Username" />
+                  <Label fx:id="usernameTwo" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="119.0" style="-fx-text-alignment: center;" text="Username">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font></Label>
                </children>
             </HBox>
             <ImageView fx:id="addUserTwo" fitHeight="31.0" fitWidth="38.0" layoutX="45.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
@@ -99,22 +104,22 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-               <effect>
-                  <Shadow />
-               </effect>
             </Button>
          </children>
       </Pane>
       <Pane fx:id="userProfileThree" layoutX="324.0" layoutY="291.0" prefHeight="145.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
          <children>
-            <ImageView fx:id="userIconThree" fitHeight="38.0" fitWidth="38.0" layoutX="41.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="userIconThree" fitHeight="68.0" fitWidth="74.0" layoutX="26.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/Group_85.png" />
                </image>
             </ImageView>
-            <HBox alignment="CENTER" layoutY="57.0" prefHeight="31.0" prefWidth="120.0" style="-fx-alignment: center;">
+            <HBox alignment="CENTER" layoutY="86.0" prefHeight="31.0" prefWidth="120.0" style="-fx-alignment: center;">
                <children>
-                  <Label fx:id="usernameThree" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="119.0" style="-fx-text-alignment: center;" text="Username" />
+                  <Label fx:id="usernameThree" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="119.0" style="-fx-text-alignment: center;" text="Username">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font></Label>
                </children>
             </HBox>
             <ImageView fx:id="addUserThree" fitHeight="31.0" fitWidth="38.0" layoutX="44.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
@@ -141,14 +146,17 @@
       </Pane>
       <Pane fx:id="userProfileFour" layoutX="476.0" layoutY="291.0" prefHeight="145.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
          <children>
-            <ImageView fx:id="userIconFour" fitHeight="38.0" fitWidth="38.0" layoutX="41.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="userIconFour" fitHeight="68.0" fitWidth="74.0" layoutX="28.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/Group_85_1.png" />
                </image>
             </ImageView>
-            <HBox alignment="CENTER" layoutY="56.0" prefHeight="31.0" prefWidth="120.0" style="-fx-alignment: center;">
+            <HBox alignment="CENTER" layoutY="87.0" prefHeight="31.0" prefWidth="120.0" style="-fx-alignment: center;">
                <children>
-                  <Label fx:id="usernameFour" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="119.0" style="-fx-text-alignment: center;" text="Username" />
+                  <Label fx:id="usernameFour" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="119.0" style="-fx-text-alignment: center;" text="Username">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font></Label>
                </children>
             </HBox>
             <ImageView fx:id="addUserFour" fitHeight="31.0" fitWidth="38.0" layoutX="47.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
