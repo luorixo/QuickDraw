@@ -102,7 +102,7 @@ public class User {
     if (hasWon) {
       gamesWon++;
     }
-    wordsSeen.add(wordSeen); // adds word to array
+    wordsSeen.add(wordSeen.replaceAll("\\s", "-")); // adds word to array
 
     if (this.bestTime > gameTime) { // checks and updates best game time
       this.bestTime = gameTime;

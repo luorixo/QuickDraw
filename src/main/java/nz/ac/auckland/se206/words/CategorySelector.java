@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.CanvasController;
+import nz.ac.auckland.se206.User;
 
 /**
  * Class that provides drawing category selection functionality
@@ -55,9 +57,25 @@ public class CategorySelector {
    * @return A random category
    */
   public String getRandomCategory(Difficulty difficulty) {
-    return difficultyToCategories
-        .get(difficulty)
-        .get(new Random().nextInt(difficultyToCategories.get(difficulty).size()));
+    // get random category
+    String randomCategory =
+        difficultyToCategories
+            .get(difficulty)
+            .get(new Random().nextInt(difficultyToCategories.get(difficulty).size()));
+
+    User user = User.getUser(CanvasController.userId); // gets current user
+    if (user.getWordsSeen().size() == difficultyToCategories.get(difficulty).size()) {
+      user.setHasSeenAllWords(true); // set user flag to indicate has seen all words
+    }
+    while (true) {
+      if (user.getWordsSeen().contains(randomCategory.replaceAll("\\s", "-"))
+          && !user.hasSeenAllWords()) { // loops until new word is chosen
+        continue;
+      } else {
+        break;
+      }
+    }
+    return randomCategory;
   }
 
   /**
