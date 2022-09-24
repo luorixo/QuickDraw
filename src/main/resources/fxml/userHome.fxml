@@ -33,7 +33,7 @@
                               <Image url="@../images/quick_draw_img.png" />
                            </image>
                         </ImageView>
-                        <Label id="nameLabel" fx:id="nameLabel" alignment="CENTER" prefHeight="75.0" prefWidth="366.0" style="-fx-text-fill: white;" textAlignment="CENTER">
+                        <Label id="nameLabel" fx:id="nameLabel" alignment="CENTER" prefHeight="64.0" prefWidth="380.0" style="-fx-text-fill: white;" textAlignment="CENTER">
                            <font>
                               <Font name="Times New Roman Bold" size="34.0" />
                            </font>
@@ -130,7 +130,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="45.0" prefWidth="610.0">
                      <children>
-                        <Label id="drawingLabel" fx:id="drawingLabel" alignment="CENTER" prefHeight="34.0" prefWidth="206.0" style="-fx-text-fill: white;">
+                        <Label id="drawingLabel" fx:id="drawingLabel" alignment="CENTER" prefHeight="34.0" prefWidth="565.0" style="-fx-text-fill: white;">
                            <font>
                               <Font name="Times New Roman Bold" size="20.0" />
                            </font>

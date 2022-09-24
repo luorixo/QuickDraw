@@ -30,7 +30,7 @@ public class UserHomeController {
   @FXML private Button masterButton;
   private User user;
   private List<String> wordsSeen;
-  private int currentWordIndex = 1;
+  private int currentWordIndex = 0;
 
   /**
    * After userHome fxml and controller have been constructed this will set the current user and get
@@ -41,7 +41,6 @@ public class UserHomeController {
     user = User.getUser(id);
     nameLabel.setText("Hi, " + user.getName() + "!"); // set the greeting label
     wordsSeen = user.getWordsSeen();
-    System.out.println(wordsSeen.size());
 
     // load in users drawing as an image
     this.updateImage();
@@ -78,17 +77,38 @@ public class UserHomeController {
     File file;
     if (wordsSeen.size() == 0) { // set waiting image if user has not drawn anything yet
       file = new File("src/main/resources/images/waiting-img.png");
-    } else { // else set image to current index in list
+    } else { // else set image to current index in list from appropriate user folder
       file =
           new File(
               "src/main/resources/users/user"
                   + id
-                  + "/"
+                  + "/images/"
                   + wordsSeen.get(currentWordIndex)
-                  + ".bmp");
+                  + ".png");
     }
+    // set image to image viewer
     Image image = new Image(file.toURI().toString());
     drawingImage.setImage(image);
+    // update the image label
+    this.updateImageName();
+  }
+
+  private void updateImageName() {
+
+    String currentWord;
+
+    if (wordsSeen.size() == 0) { // if no past games then set waiting message
+      currentWord = "Play a game to see your old doodles!";
+    } else { // else set image label to formatted drawing name
+      currentWord = wordsSeen.get(currentWordIndex);
+      currentWord = currentWord.replace("-", " ");
+      currentWord =
+          currentWord.substring(0, 1).toUpperCase()
+              + currentWord
+                  .substring(1)
+                  .toLowerCase(); // formats so the first letter is captialised
+    }
+    drawingLabel.setText(currentWord); // set text to the label
   }
 
   /**
