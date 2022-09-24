@@ -65,7 +65,7 @@ public class CanvasController {
   private GraphicsContext graphic;
   private DoodlePrediction model;
   private int startingTime = 60;
-  private int secondsLeft = 5;
+  private int secondsLeft = 60;
   private int predictionWinNumber = 3;
   private boolean gameEnd = false;
   private User user;
