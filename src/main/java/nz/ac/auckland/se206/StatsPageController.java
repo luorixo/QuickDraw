@@ -11,7 +11,7 @@ import javafx.scene.image.ImageView;
 public class StatsPageController {
 
   public static int id;
-  @FXML private ImageView labelLogo;
+  @FXML private ImageView ImageLogo;
   @FXML private Button buttonBack;
   @FXML private Label labelGamesWon;
   @FXML private Label labelGamesPlayed;

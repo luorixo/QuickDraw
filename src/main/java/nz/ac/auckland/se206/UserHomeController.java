@@ -123,7 +123,7 @@ public class UserHomeController {
 
     try {
       // change scene from user home page back to user select
-      currentScene.setRoot(App.loadFxml(""));
+      currentScene.setRoot(App.loadFxml("userprofilescene"));
     } catch (IOException e) {
       e.printStackTrace();
     }
