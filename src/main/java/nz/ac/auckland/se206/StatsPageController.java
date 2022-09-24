@@ -46,7 +46,7 @@ public class StatsPageController {
 
     try {
       // change scene from stats page back to user home
-      currentScene.setRoot(App.loadFxml(""));
+      currentScene.setRoot(App.loadFxml("userHome"));
     } catch (IOException e) {
       e.printStackTrace();
     }

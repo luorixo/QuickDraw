@@ -1,7 +1,9 @@
 package nz.ac.auckland.se206;
 
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -113,7 +115,14 @@ public class UserProfileSceneController {
         userCreateOne.setDisable(false);
         disableAllButtons();
       } else {
-        System.out.println("Take me to user 1 home page");
+        Scene currentScene = userButtonOne.getScene();
+        try {
+          // change scene from user switch scene to user home page
+          UserHomeController.id = 1;
+          currentScene.setRoot(App.loadFxml("userHome"));
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
       }
 
       // this if statement checks if the action is relevant to user two
@@ -135,7 +144,14 @@ public class UserProfileSceneController {
         userCreateTwo.setDisable(false);
         disableAllButtons();
       } else {
-        System.out.println("Take me to user 2 home page");
+        Scene currentScene = userButtonTwo.getScene();
+        try {
+          // change scene from user switch scene to user home page
+          UserHomeController.id = 2;
+          currentScene.setRoot(App.loadFxml("userHome"));
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
       }
 
       // this if statement checks if the action is relevant to user three
@@ -157,7 +173,14 @@ public class UserProfileSceneController {
         userCreateThree.setDisable(false);
         disableAllButtons();
       } else {
-        System.out.println("Take me to user 3 home page");
+        Scene currentScene = userButtonThree.getScene();
+        try {
+          // change scene from user switch scene to user home page
+          UserHomeController.id = 3;
+          currentScene.setRoot(App.loadFxml("userHome"));
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
       }
 
       // this if statement checks if the action is relevant to user four
@@ -179,7 +202,14 @@ public class UserProfileSceneController {
         userCreateFour.setDisable(false);
         disableAllButtons();
       } else {
-        System.out.println("Take me to user 4 home page");
+        Scene currentScene = userButtonFour.getScene();
+        try {
+          // change scene from user switch scene to user home page
+          UserHomeController.id = 4;
+          currentScene.setRoot(App.loadFxml("userHome"));
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
       }
     }
   }
