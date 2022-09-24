@@ -232,10 +232,9 @@ public class CanvasController {
                 () -> {
                   // puts the top 10 predictions in the list
                   predictionsList.setItems(predictions);
-                  if (isInTop) {
+                  if (isInTop && secondsLeft != startingTime) {
                     // if the chosen topic is in the top 3, then the game ends (user wins!)
                     endGame(true);
-
                     System.out.println("YOU WIN!");
                   } else if (secondsLeft == 0) {
                     System.out.println("game end");
