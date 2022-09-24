@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.StatsPageController">
+   <children>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0" stylesheets="@../css/statsPageCSS.css">
+         <children>
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="582.0" fitWidth="610.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/teal_background.png" />
+                     </image>
+                  </ImageView>
+                  <VBox prefHeight="440.0" prefWidth="407.0">
+                     <children>
+                        <HBox prefHeight="27.0" prefWidth="420.0" />
+                        <HBox prefHeight="66.0" prefWidth="610.0">
+                           <children>
+                              <VBox prefHeight="53.0" prefWidth="30.0" />
+                              <ImageView id="ImageLogo" fx:id="ImageLogo" fitHeight="51.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/quick_draw_img.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox prefHeight="53.0" prefWidth="80.0" />
+                              <ImageView fitHeight="84.0" fitWidth="229.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/stats_text/statistics-word.png" />
+                                 </image>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </ImageView>
+                              <VBox prefHeight="57.0" prefWidth="84.0" />
+                              <Button id="buttonBack" fx:id="buttonBack" alignment="CENTER" mnemonicParsing="false" onAction="#onBackButton" prefHeight="49.0" prefWidth="49.0" style="-fx-shape: circle;">
+                                 <graphic>
+                                    <ImageView fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/back-button.png" />
+                                       </image>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="34.0" prefWidth="610.0" />
+                        <HBox prefHeight="100.0" prefWidth="420.0">
+                           <children>
+                              <VBox prefHeight="100.0" prefWidth="61.0" />
+                              <VBox alignment="TOP_CENTER" prefHeight="85.0" prefWidth="205.0">
+                                 <children>
+                                    <ImageView fitHeight="60.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/stats_text/games-won.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label id="labelGamesWon" fx:id="labelGamesWon" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman Bold" size="43.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="100.0" prefWidth="89.0" />
+                              <VBox alignment="TOP_CENTER" prefHeight="85.0" prefWidth="213.0">
+                                 <children>
+                                    <ImageView fitHeight="65.0" fitWidth="205.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/stats_text/games-played.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label id="labelGamesPlayed" fx:id="labelGamesPlayed" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman Bold" size="43.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="115.0" prefWidth="19.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="47.0" prefWidth="610.0" />
+                        <HBox prefHeight="93.0" prefWidth="420.0">
+                           <children>
+                              <VBox prefHeight="93.0" prefWidth="63.0" />
+                              <VBox alignment="TOP_CENTER" prefHeight="85.0" prefWidth="205.0">
+                                 <children>
+                                    <ImageView fitHeight="47.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/stats_text/games-lost.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label id="labelGamesLost" fx:id="labelGamesLost" prefHeight="36.0" prefWidth="43.0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman Bold" size="43.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="93.0" prefWidth="87.0" />
+                              <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="213.0">
+                                 <children>
+                                    <ImageView fitHeight="51.0" fitWidth="206.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/stats_text/best-time.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label id="labelBestTime" fx:id="labelBestTime" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman Bold" size="43.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="115.0" prefWidth="19.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="47.0" prefWidth="610.0" />
+                        <HBox alignment="CENTER" prefHeight="108.0" prefWidth="420.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="213.0">
+                                 <children>
+                                    <ImageView fitHeight="48.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/stats_text/average-time.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label id="labelAverageTime" fx:id="labelAverageTime" textFill="WHITE">
+                                       <font>
+                                          <Font name="Times New Roman Bold" size="43.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </StackPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
