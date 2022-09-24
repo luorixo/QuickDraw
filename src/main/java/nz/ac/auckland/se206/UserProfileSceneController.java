@@ -72,6 +72,8 @@ public class UserProfileSceneController {
    * four possible users
    */
   public void initialize() {
+
+    // all four functions cal the set up functions for the specific users
     setUserOne();
     setUserTwo();
     setUserThree();
@@ -91,6 +93,8 @@ public class UserProfileSceneController {
     Object userCreateButton = event.getSource();
 
     // based on the fxid, GUI elements for specific users are disabled/visible
+
+    // this if statement checks if the action is relevant to user one
     if (userCreateButton.equals(userButtonOne)) {
 
       if (!userOne.hasBeenCreated()) {
@@ -107,10 +111,12 @@ public class UserProfileSceneController {
         yourNameOne.setVisible(true);
         userCreateOne.setVisible(true);
         userCreateOne.setDisable(false);
+        disableAllButtons();
       } else {
         System.out.println("Take me to user 1 home page");
       }
 
+      // this if statement checks if the action is relevant to user two
     } else if (userCreateButton.equals(userButtonTwo)) {
 
       if (!userTwo.hasBeenCreated()) {
@@ -127,10 +133,12 @@ public class UserProfileSceneController {
         yourNameTwo.setVisible(true);
         userCreateTwo.setVisible(true);
         userCreateTwo.setDisable(false);
+        disableAllButtons();
       } else {
         System.out.println("Take me to user 2 home page");
       }
 
+      // this if statement checks if the action is relevant to user three
     } else if (userCreateButton.equals(userButtonThree)) {
 
       if (!userThree.hasBeenCreated()) {
@@ -147,9 +155,12 @@ public class UserProfileSceneController {
         yourNameThree.setVisible(true);
         userCreateThree.setVisible(true);
         userCreateThree.setDisable(false);
+        disableAllButtons();
       } else {
         System.out.println("Take me to user 3 home page");
       }
+
+      // this if statement checks if the action is relevant to user four
     } else {
 
       if (!userFour.hasBeenCreated()) {
@@ -166,6 +177,7 @@ public class UserProfileSceneController {
         yourNameFour.setVisible(true);
         userCreateFour.setVisible(true);
         userCreateFour.setDisable(false);
+        disableAllButtons();
       } else {
         System.out.println("Take me to user 4 home page");
       }
@@ -182,8 +194,13 @@ public class UserProfileSceneController {
     // Checks to see which fxid the event is associated to
     Object deleteUserImage = event.getSource();
 
+    // disables all other buttons
+    disableAllButtons();
+
     // based on the fxid, these if/else statements dictate which GUI elements are
     // visible/disabled
+
+    //// this if statement checks if the action is relevant to user one
     if (deleteUserImage.equals(deleteUserOne)) {
 
       deleteUserOne.setVisible(false);
@@ -194,6 +211,7 @@ public class UserProfileSceneController {
       cancelDeleteOne.setDisable(false);
       userButtonOne.setDisable(true);
 
+      // this if statement checks if the action is relevant to user two
     } else if (deleteUserImage.equals(deleteUserTwo)) {
 
       deleteUserTwo.setVisible(false);
@@ -204,6 +222,7 @@ public class UserProfileSceneController {
       cancelDeleteTwo.setDisable(false);
       userButtonTwo.setDisable(true);
 
+      // this if statement checks if the action is relevant to user three
     } else if (deleteUserImage.equals(deleteUserThree)) {
 
       deleteUserThree.setVisible(false);
@@ -214,6 +233,7 @@ public class UserProfileSceneController {
       cancelDeleteThree.setDisable(false);
       userButtonThree.setDisable(true);
 
+      // this if statement checks if the action is relevant to user four
     } else {
 
       deleteUserFour.setVisible(false);
@@ -236,6 +256,10 @@ public class UserProfileSceneController {
 
     Object cancelDeleteImage = event.getSource();
 
+    // enabling all other buttons
+    enableAllButtons();
+
+    // this if statement checks if the action is relevant to user one
     if (cancelDeleteImage.equals(cancelDeleteOne)) {
       deleteUserOne.setVisible(true);
       deleteUserOne.setDisable(false);
@@ -244,6 +268,8 @@ public class UserProfileSceneController {
       cancelDeleteOne.setVisible(false);
       cancelDeleteOne.setDisable(true);
       userButtonOne.setDisable(false);
+
+      // this if statement checks if the action is relevant to user two
     } else if (cancelDeleteImage.equals(cancelDeleteTwo)) {
       deleteUserTwo.setVisible(true);
       deleteUserTwo.setDisable(false);
@@ -252,6 +278,8 @@ public class UserProfileSceneController {
       cancelDeleteTwo.setVisible(false);
       cancelDeleteTwo.setDisable(true);
       userButtonTwo.setDisable(false);
+
+      // this if statement checks if the action is relevant to user three
     } else if (cancelDeleteImage.equals(cancelDeleteThree)) {
       deleteUserThree.setVisible(true);
       deleteUserThree.setDisable(false);
@@ -260,6 +288,8 @@ public class UserProfileSceneController {
       cancelDeleteThree.setVisible(false);
       cancelDeleteThree.setDisable(true);
       userButtonThree.setDisable(false);
+
+      // this if statement checks if the action is relevant to user four
     } else {
       deleteUserFour.setVisible(true);
       deleteUserFour.setDisable(false);
@@ -280,6 +310,10 @@ public class UserProfileSceneController {
 
     Object confirmDeletionImage = event.getSource();
 
+    // enabling all other buttons
+    enableAllButtons();
+
+    // this if statement checks if the action is relevant to user one
     if (confirmDeletionImage.equals(redDeleteUserOne)) {
 
       cancelDeleteOne.setVisible(false);
@@ -295,6 +329,7 @@ public class UserProfileSceneController {
 
       userOne.resetUser();
 
+      // this if statement checks if the action is relevant to user two
     } else if (confirmDeletionImage.equals(redDeleteUserTwo)) {
 
       cancelDeleteTwo.setVisible(false);
@@ -310,6 +345,7 @@ public class UserProfileSceneController {
 
       userTwo.resetUser();
 
+      // this if statement checks if the action is relevant to user three
     } else if (confirmDeletionImage.equals(redDeleteUserThree)) {
 
       cancelDeleteThree.setVisible(false);
@@ -324,6 +360,8 @@ public class UserProfileSceneController {
       userButtonThree.setDisable(false);
 
       userThree.resetUser();
+
+      // this if statement checks if the action is relevant to user four
     } else {
       cancelDeleteFour.setVisible(false);
       cancelDeleteFour.setDisable(true);
@@ -350,34 +388,40 @@ public class UserProfileSceneController {
 
     Object userCreateTextField = event.getSource();
 
+    // this if statement checks if the action is relevant to user one
     if (userCreateTextField.equals(userCreateOne)) {
 
       String username = userCreateOne.getText();
       this.userOne = new User(username, 1);
       userCreateOne.clear();
-      userButtonOne.setDisable(false);
+      enableAllButtons();
       setUserOne();
+
+      // this if statement checks if the action is relevant to user two
     } else if (userCreateTextField.equals(userCreateTwo)) {
 
       String username = userCreateTwo.getText();
       this.userTwo = new User(username, 2);
       userCreateTwo.clear();
-      userButtonTwo.setDisable(false);
+      enableAllButtons();
       setUserTwo();
 
+      // this if statement checks if the action is relevant to user three
     } else if (userCreateTextField.equals(userCreateThree)) {
 
       String username = userCreateThree.getText();
       this.userThree = new User(username, 3);
       userCreateThree.clear();
-      userButtonThree.setDisable(false);
+      enableAllButtons();
       setUserThree();
+
+      // this if statement checks if the action is relevant to user four
     } else {
 
       String username = userCreateFour.getText();
       this.userFour = new User(username, 4);
       userCreateFour.clear();
-      userButtonFour.setDisable(false);
+      enableAllButtons();
       setUserFour();
     }
   }
@@ -388,6 +432,8 @@ public class UserProfileSceneController {
    */
   public void setUserOne() {
 
+    // these GUI elements should be set to these values no matter if the user has
+    // been or has not been created
     cancelDeleteOne.setVisible(false);
     cancelDeleteOne.setDisable(true);
     redDeleteUserOne.setVisible(false);
@@ -396,6 +442,8 @@ public class UserProfileSceneController {
     userCreateOne.setVisible(false);
     userCreateOne.setDisable(true);
 
+    // if a user has been created, we should make sure the Icon image, the username
+    // label and the delete user images are visible.
     if (this.userOne.hasBeenCreated()) {
 
       userIconOne.setVisible(true);
@@ -405,6 +453,9 @@ public class UserProfileSceneController {
       deleteUserOne.setVisible(true);
       deleteUserOne.setDisable(false);
 
+      // if a user has not been created, we should make sure the Icon image, the
+      // username
+      // label and the delete user images are not visible.
     } else {
 
       userIconOne.setVisible(false);
@@ -421,6 +472,8 @@ public class UserProfileSceneController {
    */
   public void setUserTwo() {
 
+    // these GUI elements should be set to these values no matter if the user has
+    // been or has not been created
     cancelDeleteTwo.setVisible(false);
     cancelDeleteTwo.setDisable(true);
     redDeleteUserTwo.setVisible(false);
@@ -429,6 +482,8 @@ public class UserProfileSceneController {
     userCreateTwo.setVisible(false);
     userCreateTwo.setDisable(true);
 
+    // if a user has been created, we should make sure the Icon image, the username
+    // label and the delete user images are visible.
     if (this.userTwo.hasBeenCreated()) {
 
       userIconTwo.setVisible(true);
@@ -438,6 +493,9 @@ public class UserProfileSceneController {
       deleteUserTwo.setVisible(true);
       deleteUserTwo.setDisable(false);
 
+      // if a user has not been created, we should make sure the Icon image, the
+      // username
+      // label and the delete user images are not visible.
     } else {
 
       userIconTwo.setVisible(false);
@@ -454,6 +512,9 @@ public class UserProfileSceneController {
    */
   public void setUserThree() {
 
+    // these GUI elements should be set to these values no matter if the user has
+    // been or has not been created
+
     cancelDeleteThree.setVisible(false);
     cancelDeleteThree.setDisable(true);
     redDeleteUserThree.setVisible(false);
@@ -462,6 +523,8 @@ public class UserProfileSceneController {
     userCreateThree.setVisible(false);
     userCreateThree.setDisable(true);
 
+    // if a user has been created, we should make sure the Icon image, the username
+    // label and the delete user images are visible.
     if (this.userThree.hasBeenCreated()) {
 
       userIconThree.setVisible(true);
@@ -471,6 +534,9 @@ public class UserProfileSceneController {
       deleteUserThree.setVisible(true);
       deleteUserThree.setDisable(false);
 
+      // if a user has not been created, we should make sure the Icon image, the
+      // username
+      // label and the delete user images are not visible.
     } else {
 
       userIconThree.setVisible(false);
@@ -488,6 +554,9 @@ public class UserProfileSceneController {
    */
   public void setUserFour() {
 
+    // these GUI elements should be set to these values no matter if the user has
+    // been or has not been created
+
     cancelDeleteFour.setVisible(false);
     cancelDeleteFour.setDisable(true);
     redDeleteUserFour.setVisible(false);
@@ -496,6 +565,8 @@ public class UserProfileSceneController {
     userCreateFour.setVisible(false);
     userCreateFour.setDisable(true);
 
+    // if a user has been created, we should make sure the Icon image, the username
+    // label and the delete user images are visible.
     if (this.userFour.hasBeenCreated()) {
 
       userIconFour.setVisible(true);
@@ -505,6 +576,9 @@ public class UserProfileSceneController {
       deleteUserFour.setVisible(true);
       deleteUserFour.setDisable(false);
 
+      // if a user has not been created, we should make sure the Icon image, the
+      // username
+      // label and the delete user images are not visible.
     } else {
 
       userIconFour.setVisible(false);
@@ -513,5 +587,34 @@ public class UserProfileSceneController {
       deleteUserFour.setVisible(false);
       deleteUserFour.setDisable(true);
     }
+  }
+
+  /**
+   * This function disables all relevant buttons when a user is in the process of creating a new
+   * user
+   */
+  public void disableAllButtons() {
+    userButtonOne.setDisable(true);
+    userButtonTwo.setDisable(true);
+    userButtonThree.setDisable(true);
+    userButtonFour.setDisable(true);
+    deleteUserOne.setDisable(true);
+    deleteUserTwo.setDisable(true);
+    deleteUserThree.setDisable(true);
+    deleteUserFour.setDisable(true);
+  }
+
+  /**
+   * This function enables all relevant buttons when a user has just finished creating a new account
+   */
+  public void enableAllButtons() {
+    userButtonOne.setDisable(false);
+    userButtonTwo.setDisable(false);
+    userButtonThree.setDisable(false);
+    userButtonFour.setDisable(false);
+    deleteUserOne.setDisable(false);
+    deleteUserTwo.setDisable(false);
+    deleteUserThree.setDisable(false);
+    deleteUserFour.setDisable(false);
   }
 }
