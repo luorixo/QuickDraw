@@ -1,0 +1,21 @@
+
+
+.button:hover {
+	-fx-border-color: #FF9736;
+}
+
+.pane{
+    -fx-background-radius: 20px;
+  }
+  
+.pane:hover {
+	-fx-border-color: #FF9736;
+	-fx-border-radius: 100px;
+}
+
+
+
+#quickDrawLogo:hover {
+	-fx-scale-x: 120%;
+	-fx-scale-y: 120%;
+}

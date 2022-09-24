@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206;
 
+import ai.djl.ModelException;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,7 +28,7 @@ public class LandingPageController {
 
     try {
       // change scene from landing page to the canvas
-      currentScene.setRoot(App.loadFxml("canvas"));
+      currentScene.setRoot(App.loadFxml("userprofilescene"));
     } catch (IOException e) {
       e.printStackTrace();
     }
