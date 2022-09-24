@@ -93,22 +93,17 @@ public class CanvasController {
 
     // assigns speaking task to thread
     Thread newThreadTwo = new Thread(sayCategoryTask);
+    newThreadTwo.setDaemon(true);
     newThreadTwo.start();
 
     // create a new timer task for updating top 10 predictions list
     TimerTask timedTask =
         new TimerTask() {
           public void run() {
-            secondsLeft--;
-            // if time runs out or if already won, stops the timer
-            if (secondsLeft == 0 || gameEnd) {
+            if (gameEnd) {
               this.cancel();
-              if (secondsLeft == 0) {
-                endGame(false);
-              }
-              return;
             } else {
-              // gives task to main thread
+              secondsLeft--;
               Platform.runLater(
                   () -> {
                     timeLabel.setText(String.valueOf(secondsLeft));
@@ -130,6 +125,7 @@ public class CanvasController {
 
     // creates new thread and assigns tasks
     Thread newThread = new Thread(updateTimerTask);
+    newThread.setDaemon(true);
     newThread.start();
 
     readyButton.setVisible(false);
@@ -155,6 +151,7 @@ public class CanvasController {
             }
           };
       Thread newThread = new Thread(sayYouWinTask);
+      newThread.setDaemon(true);
       newThread.start();
       gameOverLabel.setText("YOU WIN!");
     }
@@ -170,10 +167,10 @@ public class CanvasController {
                 + userId
                 + "/images/"
                 + randomWord
-                + ".bmp");
+                + ".png");
 
     try {
-      ImageIO.write(getCurrentSnapshot(), "bmp", newImage);
+      ImageIO.write(getCurrentSnapshot(), "png", newImage);
     } catch (IOException e) {
       e.printStackTrace();
     } // Save the image to a file
@@ -238,8 +235,11 @@ public class CanvasController {
                   if (isInTop) {
                     // if the chosen topic is in the top 3, then the game ends (user wins!)
                     endGame(true);
-                    this.cancel();
+
                     System.out.println("YOU WIN!");
+                  } else if (secondsLeft == 0) {
+                    System.out.println("game end");
+                    endGame(false);
                   }
                 });
             return null;
@@ -248,6 +248,7 @@ public class CanvasController {
 
     // assigns the task
     Thread newThread = new Thread(predictTask);
+    newThread.setDaemon(true);
     newThread.start();
   }
 
