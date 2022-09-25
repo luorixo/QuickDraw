@@ -118,7 +118,8 @@
                               <VBox prefHeight="93.0" prefWidth="87.0" />
                               <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="213.0">
                                  <children>
-                                    <ImageView fitHeight="51.0" fitWidth="206.0" pickOnBounds="true" preserveRatio="true">
+                                    <VBox prefHeight="4.0" prefWidth="219.0" />
+                                    <ImageView fitHeight="37.0" fitWidth="219.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/stats_text/best-time.png" />
                                        </image>
