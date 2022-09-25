@@ -27,6 +27,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javax.imageio.ImageIO;
 import nz.ac.auckland.se206.ml.DoodlePrediction;
 import nz.ac.auckland.se206.speech.TextToSpeech;
@@ -55,13 +56,13 @@ public class CanvasController {
   @FXML private VBox gameOverComponents;
   @FXML private Label gameOverLabel;
   @FXML private Button restartButton;
+  @FXML private Button backButton;
   @FXML private Button readyButton;
   @FXML private Button eraseButton;
   @FXML private Button paintButton;
   @FXML private Pane canvasPane;
 
-  public static int userId = 1;
-
+  private int userId = UserHomeController.id;
   private GraphicsContext graphic;
   private DoodlePrediction model;
   private int startingTime = 60;
@@ -78,6 +79,7 @@ public class CanvasController {
 
   @FXML
   private void onStartGame() {
+    backButton.setDisable(true); // disable back
     user = User.getUser(userId);
     Timer timer = new Timer();
     TextToSpeech textToSpeech = new TextToSpeech();
@@ -87,6 +89,7 @@ public class CanvasController {
           @Override
           protected Void call() throws Exception {
             textToSpeech.speak(randomWord);
+            this.cancel();
             return null;
           }
         };
@@ -119,6 +122,9 @@ public class CanvasController {
           @Override
           protected Void call() throws Exception {
             timer.scheduleAtFixedRate(timedTask, 1000, 1000);
+            if (gameEnd) {
+              this.cancel();
+            }
             return null;
           }
         };
@@ -147,6 +153,7 @@ public class CanvasController {
             @Override
             protected Void call() throws Exception {
               textToSpeech.speak("YOU WIN!");
+              this.cancel();
               return null;
             }
           };
@@ -181,7 +188,7 @@ public class CanvasController {
     gameOverComponents.setVisible(true); // shows the game over components
   }
 
-  private void setBrushType(Color brushType) {
+  private void setBrushType(Color brushType, boolean isErase) {
     canvas.setOnMousePressed(
         e -> {
           currentX = e.getX();
@@ -191,13 +198,16 @@ public class CanvasController {
     canvas.setOnMouseDragged(
         e -> {
           // Brush size (you can change this, it should not be too small or too large).
-          final double size = 6;
+          double size = 6;
+          if (isErase) {
+            size = 20;
+          }
 
           final double x = e.getX() - size / 2;
           final double y = e.getY() - size / 2;
 
           // This is the colour of the brush.
-          graphic.setFill(brushType);
+          graphic.setStroke(brushType);
           graphic.setLineWidth(size);
 
           // Create a line that goes from the point (currentX, currentY) and (x,y)
@@ -235,10 +245,10 @@ public class CanvasController {
                   if (isInTop && secondsLeft != startingTime) {
                     // if the chosen topic is in the top 3, then the game ends (user wins!)
                     endGame(true);
-                    System.out.println("YOU WIN!");
+                    this.cancel();
                   } else if (secondsLeft == 0) {
-                    System.out.println("game end");
                     endGame(false);
+                    this.cancel();
                   }
                 });
             return null;
@@ -262,7 +272,7 @@ public class CanvasController {
     graphic = canvas.getGraphicsContext2D();
 
     // makes the brush black by default
-    setBrushType(Color.BLACK);
+    setBrushType(Color.BLACK, false);
 
     model = new DoodlePrediction();
     displayPrediction(); // puts top 10 guesses on the listview
@@ -272,7 +282,7 @@ public class CanvasController {
 
     gameOverComponents.setVisible(false);
     canvas.setDisable(true);
-    canvasPane.setVisible(false);
+    canvasPane.setVisible(true);
     categoryLabel.setText(randomWord);
   }
 
@@ -285,13 +295,13 @@ public class CanvasController {
   @FXML
   private void onPaint() {
     System.out.println("paint");
-    setBrushType(Color.BLACK);
+    setBrushType(Color.BLACK, false);
   }
 
   @FXML
   private void onErase() {
     System.out.println("erase");
-    setBrushType(Color.WHITE);
+    setBrushType(Color.WHITE, true);
   }
 
   /**
@@ -305,15 +315,16 @@ public class CanvasController {
   private void onPredict() throws TranslateException {}
 
   @FXML
-  private void onRestartGame(ActionEvent event) {
-    System.out.println("RESTART PRESSED");
+  private void onBackHome(ActionEvent event) {
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
     try {
+      Window window = currentScene.getWindow();
+      window.setWidth(610);
+      // restarts game back to the home page
+      currentScene.setRoot(App.loadFxml("userHome"));
 
-      // restarts game back to the landing page
-      currentScene.setRoot(App.loadFxml("landingpage"));
     } catch (IOException e) {
       e.printStackTrace();
     }
