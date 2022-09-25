@@ -6,6 +6,8 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Platform;
@@ -167,6 +169,17 @@ public class CanvasController {
     user.gameOver(hasWon, randomWord, startingTime - secondsLeft);
     user.saveData();
 
+    try {
+      // creates image directory if it doesn't exist
+      Files.createDirectories(
+          Paths.get(
+              System.getProperty("user.dir")
+                  + "/src/main/resources/users/user"
+                  + userId
+                  + "/images"));
+    } catch (IOException e1) {
+      e1.printStackTrace();
+    }
     File newImage =
         new File(
             System.getProperty("user.dir")
