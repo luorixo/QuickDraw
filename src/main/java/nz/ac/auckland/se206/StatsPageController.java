@@ -30,7 +30,11 @@ public class StatsPageController {
     labelGamesWon.setText(String.valueOf(user.getGamesWon()));
     labelGamesPlayed.setText(String.valueOf(user.getGamesPlayed()));
     labelGamesLost.setText(String.valueOf(user.getGamesLost()));
-    labelBestTime.setText(String.valueOf(user.getBestTime()));
+    if (user.getGamesPlayed() == 0) {
+      labelBestTime.setText("-");
+    } else {
+      labelBestTime.setText(String.valueOf(user.getBestTime()));
+    }
     labelAverageTime.setText(String.valueOf(user.getAverageTime()));
   }
 
