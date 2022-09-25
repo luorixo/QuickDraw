@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.commons.io.FileUtils;
 
 /**
  * Class that provides JSON saving/retrieving functionality for specific users. Allows the getting
@@ -82,13 +83,26 @@ public class User {
   public void resetUser() {
     this.gamesPlayed = 0; // resets all data
     this.gamesWon = 0;
-    this.bestTime = 0;
+    this.bestTime = 60;
     this.totalTime = 0;
     this.wordsSeen = new ArrayList<>();
     this.hasSeenAllWords = false;
     this.hasBeenCreated = false;
     this.name = "";
     this.saveData(); // saves to JSON
+
+    // delete images in image folder
+    File imagesFolder =
+        new File(
+            System.getProperty("user.dir")
+                + "/src/main/resources/users/user"
+                + this.id
+                + "/images");
+    try {
+      FileUtils.cleanDirectory(imagesFolder); // delete all images
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   /**
