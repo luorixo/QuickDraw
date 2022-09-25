@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.StatsPageController">
    <children>
       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0" stylesheets="@../css/statsPageCSS.css">
@@ -45,7 +44,7 @@
                                  </effect>
                               </ImageView>
                               <VBox prefHeight="57.0" prefWidth="84.0" />
-                              <Button id="buttonBack" fx:id="buttonBack" alignment="CENTER" mnemonicParsing="false" onAction="#onBackButton" prefHeight="49.0" prefWidth="49.0" style="-fx-shape: circle;">
+                              <Button id="buttonBack" fx:id="buttonBack" alignment="CENTER" mnemonicParsing="false" onAction="#onBackButton" prefHeight="49.0" prefWidth="49.0" style="-fx-background-radius: 1000; -fx-background-insets: 15;">
                                  <graphic>
                                     <ImageView fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

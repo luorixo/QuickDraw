@@ -11,7 +11,7 @@ import javafx.scene.image.ImageView;
 public class StatsPageController {
 
   public static int id;
-  @FXML private ImageView labelLogo;
+  @FXML private ImageView ImageLogo;
   @FXML private Button buttonBack;
   @FXML private Label labelGamesWon;
   @FXML private Label labelGamesPlayed;
@@ -30,7 +30,11 @@ public class StatsPageController {
     labelGamesWon.setText(String.valueOf(user.getGamesWon()));
     labelGamesPlayed.setText(String.valueOf(user.getGamesPlayed()));
     labelGamesLost.setText(String.valueOf(user.getGamesLost()));
-    labelBestTime.setText(String.valueOf(user.getBestTime()));
+    if (user.getGamesPlayed() == 0) {
+      labelBestTime.setText("-");
+    } else {
+      labelBestTime.setText(String.valueOf(user.getBestTime()));
+    }
     labelAverageTime.setText(String.valueOf(user.getAverageTime()));
   }
 

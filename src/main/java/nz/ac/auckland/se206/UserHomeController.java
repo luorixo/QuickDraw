@@ -42,7 +42,9 @@ public class UserHomeController {
     user = User.getUser(id);
     nameLabel.setText("Hi, " + user.getName() + "!"); // set the greeting label
     wordsSeen = user.getWordsSeen();
-
+    if (wordsSeen.size() > 0) {
+      currentWordIndex = wordsSeen.size() - 1;
+    }
     // load in users drawing as an image
     this.updateImage();
   }
@@ -124,7 +126,7 @@ public class UserHomeController {
 
     try {
       // change scene from user home page back to user select
-      currentScene.setRoot(App.loadFxml(""));
+      currentScene.setRoot(App.loadFxml("userprofilescene"));
     } catch (IOException e) {
       e.printStackTrace();
     }
