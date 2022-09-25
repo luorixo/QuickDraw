@@ -163,7 +163,7 @@ public class UserHomeController {
       // change scene from user home page to easy game
       currentScene.setRoot(App.loadFxml("canvas"));
       Window window = currentScene.getWindow();
-      window.setWidth(810);
+      window.setWidth(810); // set window width to 810
     } catch (IOException e) {
       e.printStackTrace();
     }
