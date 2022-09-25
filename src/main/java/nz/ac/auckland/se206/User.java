@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.commons.io.FileUtils;
 
 /**
  * Class that provides JSON saving/retrieving functionality for specific users. Allows the getting
@@ -65,7 +66,7 @@ public class User {
   private int id;
   private int gamesPlayed = 0;
   private int gamesWon = 0;
-  private int bestTime = 0;
+  private int bestTime = 60;
   private int totalTime = 0;
   private List<String> wordsSeen = new ArrayList<>();
   private boolean hasSeenAllWords = false;
@@ -82,13 +83,26 @@ public class User {
   public void resetUser() {
     this.gamesPlayed = 0; // resets all data
     this.gamesWon = 0;
-    this.bestTime = 0;
+    this.bestTime = 60;
     this.totalTime = 0;
     this.wordsSeen = new ArrayList<>();
     this.hasSeenAllWords = false;
     this.hasBeenCreated = false;
     this.name = "";
     this.saveData(); // saves to JSON
+
+    // delete images in image folder
+    File imagesFolder =
+        new File(
+            System.getProperty("user.dir")
+                + "/src/main/resources/users/user"
+                + this.id
+                + "/images");
+    try {
+      FileUtils.cleanDirectory(imagesFolder); // delete all images
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   /**
@@ -102,7 +116,7 @@ public class User {
     if (hasWon) {
       gamesWon++;
     }
-    wordsSeen.add(wordSeen); // adds word to array
+    wordsSeen.add(wordSeen.replaceAll("\\s", "-")); // adds word to array
 
     if (this.bestTime > gameTime) { // checks and updates best game time
       this.bestTime = gameTime;

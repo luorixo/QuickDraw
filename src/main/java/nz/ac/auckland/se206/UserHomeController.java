@@ -10,10 +10,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Window;
 
 public class UserHomeController {
 
-  public static int id = 1;
+  public static int id;
   @FXML private Label nameLabel;
   @FXML private Button backButton;
   @FXML private ImageView logoImage;
@@ -163,6 +164,8 @@ public class UserHomeController {
     try {
       // change scene from user home page to easy game
       currentScene.setRoot(App.loadFxml("canvas"));
+      Window window = currentScene.getWindow();
+      window.setWidth(810); // set window width to 810
     } catch (IOException e) {
       e.printStackTrace();
     }

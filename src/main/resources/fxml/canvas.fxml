@@ -6,119 +6,189 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="420.0" prefWidth="440.0" spacing="20.0" style="-fx-background-color: #005267;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.CanvasController">
+<VBox alignment="CENTER" prefHeight="420.0" prefWidth="600.0" style="-fx-background-color: #005267;" stylesheets="@../css/canvasPageCSS.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.CanvasController">
   <children>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="232.0">
+      <HBox prefHeight="582.0" prefWidth="600.0" style="-fx-background-color: #223043;">
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0">
                <children>
-                  <ListView fx:id="predictionsList" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="145.0" style="-fx-background-color: #005267; -fx-border-radius: 5px;" />
-               </children>
-            </Pane>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label fx:id="timeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="91.0" text="60" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="Source Sans 3 Bold" size="39.0" />
-                     </font>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </Label>
-               </children>
-            </HBox>
-            <Label fx:id="categoryLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="148.0" text="TOPIC" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="Source Sans 3 Black" size="20.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Label>
-         </children>
-      </VBox>
-      <StackPane prefHeight="150.0" prefWidth="200.0">
-         <children>
-            <StackPane prefHeight="150.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="readyButton" mnemonicParsing="false" onAction="#onStartGame" prefHeight="64.0" prefWidth="195.0" text="I'M READY!" textFill="#0e0f00">
-                     <font>
-                        <Font name="Source Sans Pro Black" size="31.0" />
-                     </font>
-                  </Button>
+                  <ImageView fitHeight="582.0" fitWidth="610.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/blue_background.png" />
+                     </image>
+                  </ImageView>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="CENTER" layoutX="144.0" layoutY="43.0" prefHeight="162.0" prefWidth="333.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label fx:id="timeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="91.0" text="60" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="Source Sans 3 Bold" size="70.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                       <HBox.margin>
+                                          <Insets top="-25.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <ImageView fitHeight="60.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/canvas_images/yourtopic.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="-5.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <Label fx:id="categoryLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="326.0" text="TOPIC" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Source Sans 3 Black" size="25.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <VBox.margin>
+                                    <Insets top="-7.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="387.0" mnemonicParsing="false" onAction="#onClear" style="-fx-background-color: #FF3636; -fx-background-radius: 15;" text="🗑️" textFill="WHITE">
+                           <font>
+                              <Font name="Source Sans Pro Black" size="25.0" />
+                           </font>
+                           <effect>
+                              <DropShadow offsetY="2.0" />
+                           </effect>
+                        </Button>
+                        <Button fx:id="eraseButton" layoutX="528.0" layoutY="281.0" mnemonicParsing="false" onAction="#onErase" style="-fx-background-color: #FF9736; -fx-background-radius: 15;" text="⌫" textFill="WHITE">
+                           <font>
+                              <Font name="Source Sans Pro Black" size="25.0" />
+                           </font>
+                           <effect>
+                              <DropShadow offsetY="2.0" />
+                           </effect>
+                        </Button>
+                    <Button fx:id="paintButton" alignment="CENTER" layoutX="528.0" layoutY="216.0" mnemonicParsing="false" onAction="#onPaint" style="-fx-background-color: #FF9736; -fx-background-radius: 15;" text="🖌" textFill="WHITE">
+                           <font>
+                              <Font name="Source Sans Pro Black" size="25.0" />
+                           </font>
+                           <effect>
+                              <DropShadow offsetY="2.0" />
+                           </effect>
+                        </Button>
+                        <Pane layoutX="140.0" layoutY="235.0" prefHeight="200.0" prefWidth="341.0" />
+                        <Button fx:id="readyButton" layoutX="179.0" layoutY="479.0" mnemonicParsing="false" onAction="#onStartGame" prefHeight="67.0" prefWidth="266.0" style="-fx-background-color: #FF9736; -fx-background-radius: 15;" text="START" textFill="WHITE">
+                           <font>
+                              <Font name="Source Sans Pro Black" size="31.0" />
+                           </font>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Button>
+                        <StackPane layoutX="108.0" layoutY="220.0" prefHeight="240.0" prefWidth="407.0">
+                           <children>
+                              <Pane fx:id="canvasPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="400.0" style="-fx-background-color: #ffffff;">
+                                 <children>
+                                  <Canvas fx:id="canvas" height="230.0" layoutY="-1.0" width="400.0">
+                                    <cursor>
+                                      <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                  </Canvas>
+                                 </children>
+                                 <effect>
+                                    <DropShadow offsetY="2.0" />
+                                 </effect>
+                              </Pane>
+                              <VBox fx:id="gameOverComponents" alignment="TOP_CENTER" prefHeight="138.0" prefWidth="333.0">
+                                 <children>
+                                    <Label fx:id="gameOverLabel" alignment="CENTER" contentDisplay="TOP" prefHeight="58.0" prefWidth="318.0" text="TIME'S UP!" textAlignment="CENTER" textFill="#e88026">
+                                       <font>
+                                          <Font name="Source Sans 3 Black" size="50.0" />
+                                       </font>
+                                       <effect>
+                                          <Bloom />
+                                       </effect>
+                                    </Label>
+                                    <Button fx:id="restartButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onBackHome" prefHeight="70.0" prefWidth="206.0" style="-fx-background-radius: 100; -fx-background-color: #FF9736;" text="RETURN HOME" textFill="WHITE">
+                                       <font>
+                                          <Font name="Source Sans 3 Black" size="20.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow offsetY="2.0" />
+                                       </effect>
+                                    </Button>
+                                    <Button fx:id="saveButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onSaveImage" prefHeight="22.0" prefWidth="81.0" style="-fx-background-color: #333; -fx-background-radius: 15;" text="SAVE IMAGE" textFill="WHITE">
+                                       <font>
+                                          <Font name="Source Sans 3 Black" size="10.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="8.0" />
+                                       </VBox.margin>
+                                       <effect>
+                                          <DropShadow offsetY="2.0" />
+                                       </effect>
+                                    </Button>
+                                 </children>
+                                 <StackPane.margin>
+                                    <Insets top="40.0" />
+                                 </StackPane.margin>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets top="-20.0" />
+                           </padding>
+                        </StackPane>
+                        <ImageView id="logoImage" fx:id="logoImage" fitHeight="51.0" fitWidth="96.0" layoutX="41.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/quick_draw_img.png" />
+                           </image>
+                        </ImageView>
+                        <Button id="buttonBack" fx:id="backButton" alignment="CENTER" layoutX="523.0" layoutY="42.0" mnemonicParsing="false" onAction="#onBackHome" prefHeight="49.0" prefWidth="49.0" style="-fx-shape: circle;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fx:id="buttonBack" fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/back-button.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </Pane>
                </children>
             </StackPane>
-            <Pane fx:id="canvasPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="400.0" style="-fx-background-color: #ffffff;">
+            <Pane minWidth="200.0" prefHeight="200.0" prefWidth="112.0">
                <children>
-                <Canvas fx:id="canvas" height="230.0" width="400.0">
-                  <cursor>
-                    <Cursor fx:constant="HAND" />
-                  </cursor>
-                </Canvas>
+                  <ListView fx:id="predictionsList" layoutX="17.0" layoutY="207.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="167.0" style="-fx-background-color: #223043; -fx-border-radius: 5px; -fx-opaque-insets: 20;" />
+                  <ImageView fitHeight="60.0" fitWidth="171.0" layoutX="15.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/canvas_images/toppredictions.png" />
+                     </image>
+                  </ImageView>
                </children>
-               <effect>
-                  <DropShadow />
-               </effect>
             </Pane>
-            <VBox fx:id="gameOverComponents" alignment="TOP_CENTER" prefHeight="134.0" prefWidth="400.0">
-               <children>
-                  <Label fx:id="gameOverLabel" alignment="CENTER" contentDisplay="TOP" prefHeight="58.0" prefWidth="318.0" text="TIME'S UP!" textAlignment="CENTER" textFill="#ff9736">
-                     <font>
-                        <Font name="Source Sans 3 Black" size="50.0" />
-                     </font>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </Label>
-                  <Button fx:id="restartButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onRestartGame" text="RESTART">
-                     <font>
-                        <Font name="Source Sans 3 Black" size="20.0" />
-                     </font>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </Button>
-                  <Button fx:id="saveButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onSaveImage" style="-fx-background-color: #FF9736;" text="SAVE IMAGE" textFill="WHITE">
-                     <font>
-                        <Font name="Source Sans 3 Black" size="10.0" />
-                     </font>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </Button>
-               </children>
-            </VBox>
-         </children>
-      </StackPane>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-         <children>
-        <Button fx:id="paintButton" alignment="CENTER" mnemonicParsing="false" onAction="#onPaint" prefHeight="32.0" prefWidth="118.0" text="PAINT">
-               <font>
-                  <Font name="Source Sans Pro Black" size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="eraseButton" mnemonicParsing="false" onAction="#onErase" text="ERASE">
-               <font>
-                  <Font name="Source Sans Pro Black" size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClear" text="CLEAR">
-               <font>
-                  <Font name="Source Sans Pro Black" size="15.0" />
-               </font>
-            </Button>
          </children>
       </HBox>
 
   </children>
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-  </padding>
 </VBox>
