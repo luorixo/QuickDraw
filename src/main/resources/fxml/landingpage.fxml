@@ -13,20 +13,20 @@
    <children>
       <StackPane prefHeight="150.0" prefWidth="200.0">
          <children>
-            <ImageView fitHeight="582.0" fitWidth="610.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="582.0" fitWidth="610.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/landing_background.png" />
                </image>
             </ImageView>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="583.0" prefWidth="610.0">
                <children>
-                  <VBox prefHeight="457.0" prefWidth="610.0" />
+                  <VBox prefHeight="312.0" prefWidth="610.0" />
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <HBox prefHeight="100.0" prefWidth="273.0" />
-                        <Button id="startButton" fx:id="startButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onStartGame" prefHeight="88.0" prefWidth="88.0" style="-fx-background-radius: 1000; -fx-background-insets: 10;">
+                        <Button id="startButton" fx:id="startButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onStartGame" prefHeight="268.0" prefWidth="88.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
                            <graphic>
-                              <ImageView fitHeight="88.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="272.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/start-button.png" />
                                  </image>
