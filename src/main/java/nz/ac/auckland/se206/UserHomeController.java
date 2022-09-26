@@ -120,7 +120,7 @@ public class UserHomeController {
    * @param event
    */
   @FXML
-  public void onBackButton(ActionEvent event) {
+  private void onBackButton(ActionEvent event) {
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
@@ -138,7 +138,7 @@ public class UserHomeController {
    * @param event
    */
   @FXML
-  public void onStatsButton(ActionEvent event) {
+  private void onStatsButton(ActionEvent event) {
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
@@ -157,7 +157,7 @@ public class UserHomeController {
    * @param event
    */
   @FXML
-  public void onEasyButton(ActionEvent event) {
+  private void onEasyButton(ActionEvent event) {
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 

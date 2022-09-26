@@ -158,7 +158,7 @@
                               <Image url="@../images/quick_draw_img.png" />
                            </image>
                         </ImageView>
-                        <Button id="buttonBack" fx:id="backButton" alignment="CENTER" layoutX="523.0" layoutY="42.0" mnemonicParsing="false" onAction="#onBackHome" prefHeight="49.0" prefWidth="49.0" style="-fx-shape: circle;">
+                        <Button id="buttonBack" fx:id="backButton" alignment="CENTER" layoutX="523.0" layoutY="42.0" mnemonicParsing="false" onAction="#onBackHome" prefHeight="49.0" prefWidth="49.0" style="-fx-background-radius: 1000; -fx-background-insets: 10;">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
