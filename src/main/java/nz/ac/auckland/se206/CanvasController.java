@@ -305,13 +305,11 @@ public class CanvasController {
 
   @FXML
   private void onPaint() {
-    System.out.println("paint");
     setBrushType(Color.BLACK, false);
   }
 
   @FXML
   private void onErase() {
-    System.out.println("erase");
     setBrushType(Color.WHITE, true);
   }
 

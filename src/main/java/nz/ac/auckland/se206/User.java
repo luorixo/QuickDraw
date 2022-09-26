@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -91,17 +92,26 @@ public class User {
     this.name = "";
     this.saveData(); // saves to JSON
 
-    // delete images in image folder
-    File imagesFolder =
-        new File(
+    Path path =
+        Paths.get(
             System.getProperty("user.dir")
                 + "/src/main/resources/users/user"
                 + this.id
                 + "/images");
-    try {
-      FileUtils.cleanDirectory(imagesFolder); // delete all images
-    } catch (IOException e) {
-      e.printStackTrace();
+
+    if (Files.exists(path)) {
+      File imagesFolder =
+          new File(
+              System.getProperty("user.dir")
+                  + "/src/main/resources/users/user"
+                  + this.id
+                  + "/images");
+
+      try {
+        FileUtils.cleanDirectory(imagesFolder); // delete all images
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
     }
   }
 
