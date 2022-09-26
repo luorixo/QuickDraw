@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0" stylesheets="@../css/userprofilescene.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.UserProfileSceneController">
    <children>
-      <ImageView fitHeight="582.0" fitWidth="610.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="714.0" fitWidth="610.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/UserProfileSceneImages/BackgroundImage.png" />
          </image>
