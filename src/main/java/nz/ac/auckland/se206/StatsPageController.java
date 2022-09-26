@@ -11,7 +11,7 @@ import javafx.scene.image.ImageView;
 public class StatsPageController {
 
   public static int id;
-  @FXML private ImageView ImageLogo;
+  @FXML private ImageView imageLogo;
   @FXML private Button buttonBack;
   @FXML private Label labelGamesWon;
   @FXML private Label labelGamesPlayed;
@@ -27,9 +27,12 @@ public class StatsPageController {
    */
   public void initialize() {
     user = User.getUser(id); // get the user then set all labels
+    // all labels are set from the user json stored values
     labelGamesWon.setText(String.valueOf(user.getGamesWon()));
     labelGamesPlayed.setText(String.valueOf(user.getGamesPlayed()));
     labelGamesLost.setText(String.valueOf(user.getGamesLost()));
+    // if games played are 0 then we want to just show a dash on the statistics scene for the timing
+    // numbers
     if (user.getGamesPlayed() == 0) {
       labelBestTime.setText("-");
     } else {
