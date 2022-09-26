@@ -67,7 +67,7 @@
                               </Label>
                            </children>
                         </VBox>
-                        <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="387.0" mnemonicParsing="false" onAction="#onClear" style="-fx-background-color: #FF3636; -fx-background-radius: 15;" text="🗑️" textFill="WHITE">
+                        <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="387.0" mnemonicParsing="false" onAction="#onClear" prefHeight="54.0" prefWidth="60.0" style="-fx-background-color: #FF3636; -fx-background-radius: 15;" text="🗑️" textFill="WHITE">
                            <font>
                               <Font name="Source Sans Pro Black" size="25.0" />
                            </font>
@@ -75,7 +75,7 @@
                               <DropShadow offsetY="2.0" />
                            </effect>
                         </Button>
-                        <Button fx:id="eraseButton" layoutX="528.0" layoutY="281.0" mnemonicParsing="false" onAction="#onErase" style="-fx-background-color: #FF9736; -fx-background-radius: 15;" text="⌫" textFill="WHITE">
+                        <Button fx:id="eraseButton" layoutX="528.0" layoutY="281.0" mnemonicParsing="false" onAction="#onErase" prefHeight="54.0" prefWidth="60.0" style="-fx-background-color: #FF9736; -fx-background-radius: 15;" text="⌫" textFill="WHITE">
                            <font>
                               <Font name="Source Sans Pro Black" size="25.0" />
                            </font>
@@ -83,7 +83,7 @@
                               <DropShadow offsetY="2.0" />
                            </effect>
                         </Button>
-                    <Button fx:id="paintButton" alignment="CENTER" layoutX="528.0" layoutY="216.0" mnemonicParsing="false" onAction="#onPaint" style="-fx-background-color: #FF9736; -fx-background-radius: 15;" text="🖌" textFill="WHITE">
+                    <Button fx:id="paintButton" alignment="CENTER" layoutX="528.0" layoutY="216.0" mnemonicParsing="false" onAction="#onPaint" prefHeight="54.0" prefWidth="60.0" style="-fx-background-color: #FF9736; -fx-background-radius: 15;" text="🖌" textFill="WHITE">
                            <font>
                               <Font name="Source Sans Pro Black" size="25.0" />
                            </font>
@@ -179,12 +179,36 @@
             </StackPane>
             <Pane minWidth="200.0" prefHeight="200.0" prefWidth="112.0">
                <children>
-                  <ListView fx:id="predictionsList" layoutX="17.0" layoutY="207.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="167.0" style="-fx-background-color: #223043; -fx-border-radius: 5px; -fx-opaque-insets: 20;" />
+                  <ListView fx:id="predictionsList" layoutX="17.0" layoutY="207.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="167.0" style="-fx-background-color: #22304f; -fx-border-radius: 5px; -fx-opaque-insets: 20;" />
                   <ImageView fitHeight="60.0" fitWidth="171.0" layoutX="15.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/canvas_images/toppredictions.png" />
                      </image>
                   </ImageView>
+                  <Label fx:id="categoryLabel1" alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="206.0" prefHeight="0.0" prefWidth="17.0" text="1" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Source Sans 3 Black" size="19.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Label>
+                  <Label fx:id="categoryLabel11" alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="230.0" prefHeight="0.0" prefWidth="17.0" text="2" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Source Sans 3 Black" size="19.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Label>
+                  <Label fx:id="categoryLabel12" alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="255.0" prefHeight="0.0" prefWidth="17.0" text="3" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Source Sans 3 Black" size="19.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Label>
                </children>
             </Pane>
          </children>
