@@ -106,13 +106,14 @@ public class CanvasController {
         new TimerTask() {
           public void run() {
             if (gameEnd) {
-              this.cancel();
+              this.cancel(); // cancels timer task
+              timer.cancel();
             } else {
               secondsLeft--;
               Platform.runLater(
                   () -> {
-                    timeLabel.setText(String.valueOf(secondsLeft));
-                    displayPrediction();
+                    timeLabel.setText(String.valueOf(secondsLeft)); // sets timer
+                    displayPrediction(); // places top 10 predictions into list
                   });
             }
           }
@@ -124,9 +125,6 @@ public class CanvasController {
           @Override
           protected Void call() throws Exception {
             timer.scheduleAtFixedRate(timedTask, 1000, 1000);
-            if (gameEnd) {
-              this.cancel();
-            }
             return null;
           }
         };
