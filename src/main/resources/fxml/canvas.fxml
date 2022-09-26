@@ -67,7 +67,7 @@
                               </Label>
                            </children>
                         </VBox>
-                        <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="387.0" mnemonicParsing="false" onAction="#onClear" prefHeight="54.0" prefWidth="65.0" style="-fx-background-color: #FF3636; -fx-background-radius: 15;" text="🗑️" textFill="WHITE">
+                        <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="387.0" mnemonicParsing="false" onAction="#onClear" prefHeight="54.0" prefWidth="71.0" style="-fx-background-color: #FF3636; -fx-background-radius: 15;" text="🗑️" textFill="WHITE">
                            <font>
                               <Font name="Source Sans Pro Black" size="25.0" />
                            </font>
@@ -75,7 +75,7 @@
                               <DropShadow offsetY="2.0" />
                            </effect>
                         </Button>
-                        <Button fx:id="eraseButton" layoutX="528.0" layoutY="281.0" mnemonicParsing="false" onAction="#onErase" prefHeight="54.0" prefWidth="65.0" style="-fx-background-color: #FF9736; -fx-background-radius: 15;" text="⌫" textFill="WHITE">
+                        <Button fx:id="eraseButton" layoutX="528.0" layoutY="281.0" mnemonicParsing="false" onAction="#onErase" prefHeight="54.0" prefWidth="71.0" style="-fx-background-color: #FF9736; -fx-background-radius: 15;" text="⌫" textFill="WHITE">
                            <font>
                               <Font name="Source Sans Pro Black" size="25.0" />
                            </font>
@@ -83,7 +83,7 @@
                               <DropShadow offsetY="2.0" />
                            </effect>
                         </Button>
-                    <Button fx:id="paintButton" alignment="CENTER" layoutX="528.0" layoutY="216.0" mnemonicParsing="false" onAction="#onPaint" prefHeight="54.0" prefWidth="65.0" style="-fx-background-color: #FF9736; -fx-background-radius: 15;" text="🖌" textFill="WHITE">
+                    <Button fx:id="paintButton" alignment="CENTER" layoutX="528.0" layoutY="216.0" mnemonicParsing="false" onAction="#onPaint" prefHeight="54.0" prefWidth="71.0" style="-fx-background-color: #FF9736; -fx-background-radius: 15;" text="🖌" textFill="WHITE">
                            <font>
                               <Font name="Source Sans Pro Black" size="25.0" />
                            </font>
