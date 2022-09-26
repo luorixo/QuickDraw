@@ -89,7 +89,7 @@ public class UserProfileSceneController {
    *     created, the button will lead them their user home page
    */
   @FXML
-  public void onUserCreationOrHomePage(ActionEvent event) {
+  private void onUserCreationOrHomePage(ActionEvent event) {
 
     // checks to see which fxid the event is from
     Object userCreateButton = event.getSource();
@@ -99,7 +99,10 @@ public class UserProfileSceneController {
     // this if statement checks if the action is relevant to user one
     if (userCreateButton.equals(userButtonOne)) {
 
+      // checks to see if user one has been created
       if (!userOne.hasBeenCreated()) {
+
+        // sets the relevant GUIS as the user needs to create their user
         userIconOne.setVisible(false);
         usernameOne.setVisible(false);
         addUserOne.setVisible(false);
@@ -113,11 +116,18 @@ public class UserProfileSceneController {
         yourNameOne.setVisible(true);
         userCreateOne.setVisible(true);
         userCreateOne.setDisable(false);
+
+        // disables all buttons so that the user cannot click out
         disableAllButtons();
+
+        // if user has been created, send them to their designated scene
       } else {
         Scene currentScene = userButtonOne.getScene();
         try {
           // change scene from user switch scene to user home page
+
+          // this sets their user id to 1, so they next scene knows that user one is
+          // accessing the scene
           UserHomeController.id = 1;
           currentScene.setRoot(App.loadFxml("userHome"));
         } catch (IOException e) {
@@ -128,7 +138,10 @@ public class UserProfileSceneController {
       // this if statement checks if the action is relevant to user two
     } else if (userCreateButton.equals(userButtonTwo)) {
 
+      // checks to see if user two has been created
       if (!userTwo.hasBeenCreated()) {
+
+        // sets the relevant GUIS as the user needs to create their user
         userIconTwo.setVisible(false);
         usernameTwo.setVisible(false);
         addUserTwo.setVisible(false);
@@ -142,11 +155,17 @@ public class UserProfileSceneController {
         yourNameTwo.setVisible(true);
         userCreateTwo.setVisible(true);
         userCreateTwo.setDisable(false);
+
+        // disables all buttons so that the user cannot click out
         disableAllButtons();
+
+        // if user has been created, send them to their designated scene
       } else {
         Scene currentScene = userButtonTwo.getScene();
         try {
           // change scene from user switch scene to user home page
+          // this sets their user id to 2, so they next scene knows that user two is
+          // accessing the scene
           UserHomeController.id = 2;
           currentScene.setRoot(App.loadFxml("userHome"));
         } catch (IOException e) {
@@ -157,7 +176,10 @@ public class UserProfileSceneController {
       // this if statement checks if the action is relevant to user three
     } else if (userCreateButton.equals(userButtonThree)) {
 
+      // checks to see if user three has been created
       if (!userThree.hasBeenCreated()) {
+
+        // sets the relevant GUIS as the user needs to create their user
         userIconThree.setVisible(false);
         usernameThree.setVisible(false);
         addUserThree.setVisible(false);
@@ -171,11 +193,17 @@ public class UserProfileSceneController {
         yourNameThree.setVisible(true);
         userCreateThree.setVisible(true);
         userCreateThree.setDisable(false);
+
+        // disables all buttons so that the user cannot click out
         disableAllButtons();
+
+        // if user has been created, send them to their designated scene
       } else {
         Scene currentScene = userButtonThree.getScene();
         try {
           // change scene from user switch scene to user home page
+          // this sets their user id to 3, so they next scene knows that user three is
+          // accessing the scene
           UserHomeController.id = 3;
           currentScene.setRoot(App.loadFxml("userHome"));
         } catch (IOException e) {
@@ -186,7 +214,10 @@ public class UserProfileSceneController {
       // this if statement checks if the action is relevant to user four
     } else {
 
+      // checks to see if user four has been created
       if (!userFour.hasBeenCreated()) {
+
+        // sets the relevant GUIS as the user needs to create their user
         userIconFour.setVisible(false);
         usernameFour.setVisible(false);
         addUserFour.setVisible(false);
@@ -200,11 +231,17 @@ public class UserProfileSceneController {
         yourNameFour.setVisible(true);
         userCreateFour.setVisible(true);
         userCreateFour.setDisable(false);
+
+        // disables all buttons so that the user cannot click out
         disableAllButtons();
+
+        // if user has been created, send them to their designated scene
       } else {
         Scene currentScene = userButtonFour.getScene();
         try {
           // change scene from user switch scene to user home page
+          // this sets their user id to 4, so they next scene knows that user four is
+          // accessing the scene
           UserHomeController.id = 4;
           currentScene.setRoot(App.loadFxml("userHome"));
         } catch (IOException e) {
@@ -219,7 +256,7 @@ public class UserProfileSceneController {
    *     <p>This function allows the user the option of deleting their profiles
    */
   @FXML
-  public void onDeleteUser(MouseEvent event) {
+  private void onDeleteUser(MouseEvent event) {
 
     // Checks to see which fxid the event is associated to
     Object deleteUserImage = event.getSource();
@@ -282,7 +319,7 @@ public class UserProfileSceneController {
    *     pressed the deletion button
    */
   @FXML
-  public void onCancelDeletion(MouseEvent event) {
+  private void onCancelDeletion(MouseEvent event) {
 
     Object cancelDeleteImage = event.getSource();
 
@@ -336,7 +373,7 @@ public class UserProfileSceneController {
    *     <p>This function allows the user to confirm the deletion process
    */
   @FXML
-  public void onConfirmDeletion(MouseEvent event) {
+  private void onConfirmDeletion(MouseEvent event) {
 
     Object confirmDeletionImage = event.getSource();
 
@@ -346,6 +383,7 @@ public class UserProfileSceneController {
     // this if statement checks if the action is relevant to user one
     if (confirmDeletionImage.equals(redDeleteUserOne)) {
 
+      // shows the relevant GUIS as the user wants to delete their account
       cancelDeleteOne.setVisible(false);
       cancelDeleteOne.setDisable(true);
       userIconOne.setVisible(false);
@@ -357,11 +395,13 @@ public class UserProfileSceneController {
       redDeleteUserOne.setDisable(true);
       userButtonOne.setDisable(false);
 
+      // we now need to reset the user as the user has opted to delete their user
       userOne.resetUser();
 
       // this if statement checks if the action is relevant to user two
     } else if (confirmDeletionImage.equals(redDeleteUserTwo)) {
 
+      // shows the relevant GUIS as the user wants to delete their account
       cancelDeleteTwo.setVisible(false);
       cancelDeleteTwo.setDisable(true);
       userIconTwo.setVisible(false);
@@ -373,11 +413,13 @@ public class UserProfileSceneController {
       redDeleteUserTwo.setDisable(true);
       userButtonTwo.setDisable(false);
 
+      // we now need to reset the user as the user has opted to delete their user
       userTwo.resetUser();
 
       // this if statement checks if the action is relevant to user three
     } else if (confirmDeletionImage.equals(redDeleteUserThree)) {
 
+      // shows the relevant GUIS as the user wants to delete their account
       cancelDeleteThree.setVisible(false);
       cancelDeleteThree.setDisable(true);
       userIconThree.setVisible(false);
@@ -389,10 +431,13 @@ public class UserProfileSceneController {
       redDeleteUserThree.setDisable(true);
       userButtonThree.setDisable(false);
 
+      // we now need to reset the user as the user has opted to delete their user
       userThree.resetUser();
 
       // this if statement checks if the action is relevant to user four
     } else {
+
+      // shows the relevant GUIS as the user wants to delete their account
       cancelDeleteFour.setVisible(false);
       cancelDeleteFour.setDisable(true);
       userIconFour.setVisible(false);
@@ -404,6 +449,7 @@ public class UserProfileSceneController {
       redDeleteUserFour.setDisable(true);
       userButtonFour.setDisable(false);
 
+      // we now need to reset the user as the user has opted to delete their user
       userFour.resetUser();
     }
   }
@@ -460,7 +506,7 @@ public class UserProfileSceneController {
    * This function sets user One. It enables the correct GUI elements depending on whether user one
    * has been created.
    */
-  public void setUserOne() {
+  private void setUserOne() {
 
     // these GUI elements should be set to these values no matter if the user has
     // been or has not been created
@@ -500,7 +546,7 @@ public class UserProfileSceneController {
    * This function sets user Two. It enables the correct GUI elements depending on whether user two
    * has been created.
    */
-  public void setUserTwo() {
+  private void setUserTwo() {
 
     // these GUI elements should be set to these values no matter if the user has
     // been or has not been created
@@ -540,7 +586,7 @@ public class UserProfileSceneController {
    * This function sets user Three. It enables the correct GUI elements depending on whether user
    * three has been created.
    */
-  public void setUserThree() {
+  private void setUserThree() {
 
     // these GUI elements should be set to these values no matter if the user has
     // been or has not been created
@@ -582,7 +628,7 @@ public class UserProfileSceneController {
    * This function sets user Four. It enables the correct GUI elements depending on whether user
    * four has been created.
    */
-  public void setUserFour() {
+  private void setUserFour() {
 
     // these GUI elements should be set to these values no matter if the user has
     // been or has not been created
@@ -623,7 +669,9 @@ public class UserProfileSceneController {
    * This function disables all relevant buttons when a user is in the process of creating a new
    * user
    */
-  public void disableAllButtons() {
+  private void disableAllButtons() {
+    // This function disables all relevant buttons when a user is in the process of
+    // creating a new user
     userButtonOne.setDisable(true);
     userButtonTwo.setDisable(true);
     userButtonThree.setDisable(true);
@@ -637,7 +685,10 @@ public class UserProfileSceneController {
   /**
    * This function enables all relevant buttons when a user has just finished creating a new account
    */
-  public void enableAllButtons() {
+  private void enableAllButtons() {
+
+    // setting all these buttons to false, as the user has finished making their
+    // account, so they are free to click buttons
     userButtonOne.setDisable(false);
     userButtonTwo.setDisable(false);
     userButtonThree.setDisable(false);
