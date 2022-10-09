@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.apache.commons.io.FileUtils;
 
@@ -21,6 +22,12 @@ import org.apache.commons.io.FileUtils;
  */
 public class User {
 
+  enum Difficulty {
+    EASY,
+    MEDIUM,
+    HARD,
+    MASTER
+  }
   /**
    * Gets the specified user (as a User object)
    *
@@ -64,32 +71,56 @@ public class User {
   }
 
   private String name;
+  private String currentBackground = "purple_background";
+  private boolean[] backgrounds = new boolean[6];
+  private boolean[] badges = new boolean[20];
+  private Difficulty wordDifficulty = Difficulty.EASY;
+  private Difficulty accuracyDifficulty = Difficulty.EASY;
+  private Difficulty confidenceDifficulty = Difficulty.EASY;
+  private Difficulty timeDifficulty = Difficulty.EASY;
   private int id;
+  private int coins = 0;
   private int gamesPlayed = 0;
   private int gamesWon = 0;
-  private int bestTime = 60;
+  private int winStreak = 0;
   private int totalTime = 0;
+  private int bestTime = 60;
+  private String bestWord = "";
   private List<String> wordsSeen = new ArrayList<>();
   private boolean hasSeenAllWords = false;
   private boolean hasBeenCreated = false;
+  private boolean soundEffectsOn = true;
+  private boolean textToSpeechOn = true;
+  private boolean musicOn = true;
 
   public User(String name, int id) {
     this.name = name;
     this.id = id;
     this.hasBeenCreated = true;
+    Arrays.fill(this.backgrounds, false);
+    this.backgrounds[0] = true;
+
+    Arrays.fill(this.badges, false);
     this.saveData();
   }
 
   /** Resets all fields associated with user and saves to JSON data file */
   public void resetUser() {
-    this.gamesPlayed = 0; // resets all data
-    this.gamesWon = 0;
+    // resets all data
+    this.gamesPlayed = this.gamesWon = this.totalTime = this.coins = this.winStreak = 0;
     this.bestTime = 60;
-    this.totalTime = 0;
+    this.bestWord = this.name = "";
     this.wordsSeen = new ArrayList<>();
-    this.hasSeenAllWords = false;
-    this.hasBeenCreated = false;
-    this.name = "";
+    this.hasSeenAllWords = this.hasBeenCreated = false;
+    this.soundEffectsOn = this.textToSpeechOn = this.musicOn = true;
+    this.wordDifficulty =
+        this.accuracyDifficulty = this.confidenceDifficulty = this.timeDifficulty = Difficulty.EASY;
+    this.currentBackground = "purple_background";
+    // resets backgrounds array
+    Arrays.fill(this.backgrounds, false);
+    this.backgrounds[0] = true;
+    Arrays.fill(this.badges, false);
+
     this.saveData(); // saves to JSON
 
     Path path =
@@ -124,12 +155,17 @@ public class User {
   public void gameOver(boolean hasWon, String wordSeen, int gameTime) {
     gamesPlayed++;
     if (hasWon) {
-      gamesWon++;
+      this.gamesWon++;
+      this.winStreak++;
+    } else {
+      this.winStreak = 0;
     }
-    wordsSeen.add(wordSeen.replaceAll("\\s", "-")); // adds word to array
+    wordSeen = wordSeen.replaceAll("\\s", "-"); // remove dashes (-)
+    wordsSeen.add(wordSeen); // adds word to array
 
     if (this.bestTime > gameTime) { // checks and updates best game time
       this.bestTime = gameTime;
+      this.bestWord = wordSeen;
     }
 
     this.totalTime = this.totalTime + gameTime;
@@ -194,6 +230,50 @@ public class User {
     return this.hasBeenCreated;
   }
 
+  public Difficulty getWordDifficulty() {
+    return this.wordDifficulty;
+  }
+
+  public Difficulty getAccuracyDifficulty() {
+    return this.accuracyDifficulty;
+  }
+
+  public Difficulty getConfidenceDifficulty() {
+    return this.confidenceDifficulty;
+  }
+
+  public Difficulty getTimeDifficulty() {
+    return this.timeDifficulty;
+  }
+
+  public boolean getMusicState() {
+    return this.musicOn;
+  }
+
+  public boolean getTextToSpeechState() {
+    return this.textToSpeechOn;
+  }
+
+  public boolean getSoundEffectState() {
+    return this.soundEffectsOn;
+  }
+
+  public boolean[] getOwnedBackgrounds() {
+    return this.backgrounds;
+  }
+
+  public boolean[] getBadges() {
+    return this.badges;
+  }
+
+  public String getCurrentBackground() {
+    return this.currentBackground;
+  }
+
+  public int getCoins() {
+    return this.coins;
+  }
+
   // INSTANCE FIELD SETTERS
   public void setName(String name) {
     this.name = name;
@@ -201,5 +281,49 @@ public class User {
 
   public void setHasSeenAllWords(boolean hasSeenAllWords) {
     this.hasSeenAllWords = hasSeenAllWords;
+  }
+
+  public void setWordDifficulty(Difficulty difficulty) {
+    this.wordDifficulty = difficulty;
+  }
+
+  public void setAccuracyDifficulty(Difficulty difficulty) {
+    this.accuracyDifficulty = difficulty;
+  }
+
+  public void setConfidenceDifficulty(Difficulty difficulty) {
+    this.confidenceDifficulty = difficulty;
+  }
+
+  public void setTimeDifficulty(Difficulty difficulty) {
+    this.timeDifficulty = difficulty;
+  }
+
+  public void setMusic(boolean isOn) {
+    this.musicOn = isOn;
+  }
+
+  public void setTextToSpeech(boolean isOn) {
+    this.textToSpeechOn = isOn;
+  }
+
+  public void setSoundEffects(boolean isOn) {
+    this.soundEffectsOn = isOn;
+  }
+
+  public void setOwnedBackgrounds(int background) {
+    this.backgrounds[background] = true;
+  }
+
+  public void setCurrentBackground(String currentBackground) {
+    this.currentBackground = currentBackground;
+  }
+
+  public void setBadges(boolean[] badges) {
+    this.badges = badges;
+  }
+
+  public void addCoins(int coins) {
+    this.coins += coins;
   }
 }
