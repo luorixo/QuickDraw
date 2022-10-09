@@ -283,7 +283,7 @@
                   <HBox prefHeight="75.0" prefWidth="610.0">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0" />
-                        <Button id="speechButton" fx:id="speechButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
+                        <Button id="speechButton" fx:id="speechButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onChangeSpeech" prefHeight="70.0" prefWidth="70.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
                            <graphic>
                               <ImageView id="speechImage" fx:id="speechImage" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -299,7 +299,7 @@
                            </cursor>
                         </Button>
                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="103.0" />
-                        <Button id="musicButton" fx:id="musicButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
+                        <Button id="musicButton" fx:id="musicButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onChangeMusic" prefHeight="70.0" prefWidth="70.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
                            <graphic>
                               <ImageView id="musicImage" fx:id="musicImage" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -315,7 +315,7 @@
                            </cursor>
                         </Button>
                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="103.0" />
-                        <Button id="soundButton" fx:id="soundButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
+                        <Button id="soundButton" fx:id="soundButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onChangeSound" prefHeight="70.0" prefWidth="70.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
                            <graphic>
                               <ImageView id="soundImage" fx:id="soundImage" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

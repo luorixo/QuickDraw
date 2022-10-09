@@ -1,11 +1,13 @@
 package nz.ac.auckland.se206;
 
+import java.io.File;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javax.swing.ToolTipManager;
 
@@ -41,12 +43,17 @@ public class SettingsController {
     ToolTipManager.sharedInstance().setReshowDelay(0);
 
     user = User.getUser(id);
+
     // get current chosen difficulty and display for each label
     // get current option for music, sound and speech and display appropriate image
   }
 
-  /*
-   * This function will allow the left button to change the difficulty of the game, both the appropriate display and the user json will be updated. This function will allow cycling between EASY MEDIUM HARD and MASTER.
+  /**
+   * This function will allow the left button to change the difficulty of the game, both the
+   * appropriate display and the user json will be updated. This function will allow cycling between
+   * EASY MEDIUM HARD and MASTER.
+   *
+   * @param event left button which has been clicked to trigger function
    */
   @FXML
   private void onLeftButtonFourDifficulty(ActionEvent event) {
@@ -89,8 +96,12 @@ public class SettingsController {
     }
   }
 
-  /*
-   * This function will allow the right button to change the difficulty of the game, both the appropriate display and the user json will be updated. This function will allow cycling between EASY MEDIUM HARD and MASTER.
+  /**
+   * This function will allow the right button to change the difficulty of the game, both the
+   * appropriate display and the user json will be updated. This function will allow cycling between
+   * EASY MEDIUM HARD and MASTER.
+   *
+   * @param event right button which has been clicked to trigger function
    */
   @FXML
   private void onRightButtonFourDifficulty(ActionEvent event) {
@@ -133,8 +144,12 @@ public class SettingsController {
     }
   }
 
-  /*
-   * This function will allow the left button to change the difficulty of the game, both the appropriate display and the user json will be updated. This function will allow cycling between EASY MEDIUM and HARD.
+  /**
+   * This function will allow the left button to change the difficulty of the game, both the
+   * appropriate display and the user json will be updated. This function will allow cycling between
+   * EASY MEDIUM and HARD.
+   *
+   * @param event left button which has been clicked to trigger function
    */
   @FXML
   private void onLeftButtonThreeDifficulty(ActionEvent event) {
@@ -162,8 +177,12 @@ public class SettingsController {
     }
   }
 
-  /*
-   * This function will allow the right button to change the difficulty of the game, both the appropriate display and the user json will be updated. This function will allow cycling between EASY MEDIUM and HARD.
+  /**
+   * This function will allow the right button to change the difficulty of the game, both the
+   * appropriate display and the user json will be updated. This function will allow cycling between
+   * EASY MEDIUM and HARD.
+   *
+   * @param event right button which has been clicked to trigger function
    */
   @FXML
   private void onRightButtonThreeDifficulty(ActionEvent event) {
@@ -207,5 +226,68 @@ public class SettingsController {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  /**
+   * Function will switch settings for text to speech. Will update image on button and will update
+   * users json for preference.
+   */
+  @FXML
+  private void onChangeSpeech() {
+    Boolean speechOn = true; // get user current speech to text settings
+    File file;
+
+    if (speechOn) { // if on then turn off and change image
+      // set user setting to false
+      file = new File("src/main/resources/images/settings_text/no-speech.png");
+    } else { // else off then turn on and change image
+      // set user setting to true
+      file = new File("src/main/resources/images/settings_text/speech.png");
+    }
+    // set new image
+    Image image = new Image(file.toURI().toString());
+    speechImage.setImage(image);
+  }
+
+  /**
+   * Function will switch settings for music. Will update image on button and will update users json
+   * for preference.
+   */
+  @FXML
+  private void onChangeMusic() {
+    Boolean musicOn = true; // get user current music settings
+    File file;
+
+    if (musicOn) { // if on then turn off and change image
+      // set user setting to false
+      file = new File("src/main/resources/images/settings_text/no-music.png");
+    } else { // else off then turn on and change image
+      // set user setting to true
+      file = new File("src/main/resources/images/settings_text/music.png");
+    }
+    // set new image
+    Image image = new Image(file.toURI().toString());
+    musicImage.setImage(image);
+  }
+
+  /**
+   * Function will switch settings for sound effects. Will update image on button and will update
+   * users json for preference.
+   */
+  @FXML
+  private void onChangeSound() {
+    Boolean soundOn = true; // get user current sound effects settings
+    File file;
+
+    if (soundOn) { // if on then turn off and change image
+      // set user setting to false
+      file = new File("src/main/resources/images/settings_text/no-sound-effects.png");
+    } else { // else off then turn on and change image
+      // set user setting to true
+      file = new File("src/main/resources/images/settings_text/sound-effects.png");
+    }
+    // set new image
+    Image image = new Image(file.toURI().toString());
+    soundImage.setImage(image);
   }
 }
