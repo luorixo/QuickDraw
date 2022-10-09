@@ -70,15 +70,24 @@ public class ZenModeController {
 	@FXML
 	private Button blackPaintButton;
 	@FXML
-	private Button bluePaintButton;
+	private Button redPaintButton;
+	@FXML
+	private Button orangePaintButton;
+	@FXML
+	private Button yellowPaintButton;
+	@FXML
+	private Button lightGreenPaintButton;
 	@FXML
 	private Button greenPaintButton;
 	@FXML
+	private Button bluePaintButton;
+	@FXML
+	private Button lightBluePaintButton;
+	@FXML
+	private Button purplePaintButton;
+	@FXML
 	private Button pinkPaintButton;
-	@FXML
-	private Button redPaintButton;
-	@FXML
-	private Button yellowPaintButton;
+
 	@FXML
 	private Pane canvasPane;
 	@FXML
@@ -315,27 +324,44 @@ public class ZenModeController {
 
 		Object penButton = event.getTarget();
 
-		if (penButton.equals(bluePaintButton)) {
+		if (penButton.equals(blackPaintButton)) {
 
-			setBrushType(Color.BLUE, false);
-
-		} else if (penButton.equals(greenPaintButton)) {
-
-			setBrushType(Color.GREEN, false);
-
-		} else if (penButton.equals(pinkPaintButton)) {
-
-			setBrushType(Color.PINK, false);
+			setBrushType(Color.BLACK, false);
 
 		} else if (penButton.equals(redPaintButton)) {
 
 			setBrushType(Color.RED, false);
 
+		} else if (penButton.equals(orangePaintButton)) {
+
+			setBrushType(Color.ORANGE, false);
+
 		} else if (penButton.equals(yellowPaintButton)) {
 
 			setBrushType(Color.YELLOW, false);
+
+		} else if (penButton.equals(greenPaintButton)) {
+
+			setBrushType(Color.GREEN, false);
+
+		} else if (penButton.equals(lightGreenPaintButton)) {
+
+			setBrushType(Color.LIGHTGREEN, false);
+
+		} else if (penButton.equals(bluePaintButton)) {
+
+			setBrushType(Color.BLUE, false);
+
+		} else if (penButton.equals(lightBluePaintButton)) {
+
+			setBrushType(Color.LIGHTBLUE, false);
+
+		} else if (penButton.equals(purplePaintButton)) {
+
+			setBrushType(Color.PURPLE, false);
+
 		} else {
-			setBrushType(Color.BLACK, false);
+			setBrushType(Color.PINK, false);
 
 		}
 	}
@@ -431,10 +457,23 @@ public class ZenModeController {
 
 	private void allPaintButtonsVisible(boolean visible) {
 		blackPaintButton.setVisible(visible);
-		bluePaintButton.setVisible(visible);
-		greenPaintButton.setVisible(visible);
-		pinkPaintButton.setVisible(visible);
+
 		redPaintButton.setVisible(visible);
+
+		orangePaintButton.setVisible(visible);
+
 		yellowPaintButton.setVisible(visible);
+
+		lightGreenPaintButton.setVisible(visible);
+
+		greenPaintButton.setVisible(visible);
+
+		bluePaintButton.setVisible(visible);
+
+		lightBluePaintButton.setVisible(visible);
+
+		purplePaintButton.setVisible(visible);
+
+		pinkPaintButton.setVisible(visible);
 	}
 }
