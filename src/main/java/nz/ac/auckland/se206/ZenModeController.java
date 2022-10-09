@@ -103,6 +103,8 @@ public class ZenModeController {
 	private void onStartGame() {
 		allPaintButtonsVisible(true);
 		readyButton.setVisible(false);
+		eraseButton.setVisible(true);
+		clearButton.setVisible(true);
 		user = User.getUser(userId);
 		Timer timer = new Timer();
 		TextToSpeech textToSpeech = new TextToSpeech();
@@ -282,6 +284,9 @@ public class ZenModeController {
 	public void initialize() throws ModelException, IOException {
 		graphic = canvas.getGraphicsContext2D();
 
+		eraseButton.setVisible(false);
+		clearButton.setVisible(false);
+
 		// makes the brush black by default
 		setBrushType(Color.BLACK, false);
 
@@ -331,8 +336,6 @@ public class ZenModeController {
 			setBrushType(Color.YELLOW, false);
 		} else {
 			setBrushType(Color.BLACK, false);
-			blackPaintButton.setScaleX(2.5);
-			blackPaintButton.setScaleX(1.8);
 
 		}
 	}

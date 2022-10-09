@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="420.0" prefWidth="600.0" style="-fx-background-color: #005267;" stylesheets="@../css/canvasPageCSS.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.ZenModeController">
+<VBox alignment="CENTER" prefHeight="420.0" prefWidth="600.0" style="-fx-background-color: #005267;" stylesheets="@../css/zenMode.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.ZenModeController">
   <children>
       <HBox prefHeight="582.0" prefWidth="600.0" style="-fx-background-color: #223043;">
          <children>
@@ -51,27 +51,11 @@
                               </Label>
                            </children>
                         </VBox>
-                        <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" layoutX="539.0" layoutY="486.0" mnemonicParsing="false" onAction="#onClear" prefHeight="54.0" prefWidth="71.0" style="-fx-background-color: #FF3636; -fx-background-radius: 15;" text="🗑️" textFill="WHITE">
-                           <font>
-                              <Font name="Source Sans Pro Black" size="25.0" />
-                           </font>
-                           <effect>
-                              <DropShadow offsetY="2.0" />
-                           </effect>
-                        </Button>
-                        <Button fx:id="eraseButton" layoutX="459.0" layoutY="486.0" mnemonicParsing="false" onAction="#onErase" prefHeight="54.0" prefWidth="71.0" style="-fx-background-color: #FF9736; -fx-background-radius: 15;" text="⌫" textFill="WHITE">
-                           <font>
-                              <Font name="Source Sans Pro Black" size="25.0" />
-                           </font>
-                           <effect>
-                              <DropShadow offsetY="2.0" />
-                           </effect>
-                        </Button>
-                        <StackPane layoutX="59.0" layoutY="176.0" prefHeight="240.0" prefWidth="407.0">
+                        <StackPane layoutX="59.0" layoutY="123.0" prefHeight="315.0" prefWidth="503.0">
                            <children>
-                              <Pane fx:id="canvasPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="271.0" prefWidth="503.0" style="-fx-background-color: #ffffff;">
+                              <Pane fx:id="canvasPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="503.0" style="-fx-background-color: #ffffff;">
                                  <children>
-                                  <Canvas fx:id="canvas" height="281.0" layoutY="-5.0" width="503.0">
+                                  <Canvas fx:id="canvas" height="281.0" width="503.0">
                                     <cursor>
                                       <Cursor fx:constant="HAND" />
                                     </cursor>
@@ -91,14 +75,6 @@
                               <Image url="@../images/quick_draw_img.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="saveButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onSaveImage" prefHeight="22.0" prefWidth="81.0" style="-fx-background-color: #333; -fx-background-radius: 15;" text="SAVE IMAGE" textFill="WHITE">
-                           <font>
-                              <Font name="Source Sans 3 Black" size="10.0" />
-                           </font>
-                           <effect>
-                              <DropShadow offsetY="2.0" />
-                           </effect>
-                        </Button>
                         <Button id="buttonBack" fx:id="backButton" alignment="CENTER" layoutX="523.0" layoutY="42.0" mnemonicParsing="false" onAction="#onBackHome" prefHeight="49.0" prefWidth="49.0" style="-fx-background-radius: 1000; -fx-background-insets: 10;">
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -153,15 +129,6 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button fx:id="redPaintButton" mnemonicParsing="false" onAction="#onPaint" prefHeight="100.0" prefWidth="63.0" style="-fx-background-color: null;">
-                                 <graphic>
-                                    <ImageView fitHeight="98.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/zenmode/redPencil.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
                               <Button fx:id="yellowPaintButton" mnemonicParsing="false" onAction="#onPaint" prefHeight="100.0" prefWidth="63.0" style="-fx-background-color: null;">
                                  <graphic>
                                     <ImageView fitHeight="98.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
@@ -171,11 +138,30 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button fx:id="yellowPaintButton1" mnemonicParsing="false" onAction="#onPaint" prefHeight="100.0" prefWidth="63.0" style="-fx-background-color: null;">
+                              <Button fx:id="redPaintButton" mnemonicParsing="false" onAction="#onPaint" prefHeight="100.0" prefWidth="63.0" style="-fx-background-color: null;">
                                  <graphic>
                                     <ImageView fitHeight="98.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../images/zenmode/yellowPencil.png" />
+                                          <Image url="@../images/zenmode/redPencil.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <VBox prefHeight="106.0" prefWidth="50.0" />
+                              <Button fx:id="clearButton" mnemonicParsing="false" onAction="#onClear" prefHeight="106.0" prefWidth="55.0" style="-fx-background-color: null;">
+                                 <graphic>
+                                    <ImageView fitHeight="96.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/zenmode/Trash.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="eraseButton" mnemonicParsing="false" onAction="#onErase" prefHeight="106.0" prefWidth="54.0" style="-fx-background-color: null;">
+                                 <graphic>
+                                    <ImageView fitHeight="100.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/zenmode/Erasor.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -189,6 +175,21 @@
                            <effect>
                               <DropShadow />
                            </effect>
+                        </Button>
+                        <Button id="buttonBack" fx:id="saveButton" alignment="CENTER" layoutX="458.0" layoutY="42.0" mnemonicParsing="false" onAction="#onSaveImage" prefHeight="49.0" prefWidth="49.0" style="-fx-background-radius: 1000; -fx-background-insets: 10;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/zenmode/save.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
                         </Button>
                      </children>
                   </Pane>
