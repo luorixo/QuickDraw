@@ -11,32 +11,36 @@ import javax.swing.ToolTipManager;
 
 public class SettingsController {
 
-  @FXML ImageView logoImage;
-  @FXML Button backButton;
-  @FXML Button wordsLeft;
-  @FXML Button wordsRight;
-  @FXML Label wordsLabel;
-  @FXML Button accuracyLeft;
-  @FXML Button accuracyRight;
-  @FXML Label accuracyLabel;
-  @FXML Button confidenceLeft;
-  @FXML Button confidenceRight;
-  @FXML Label confidenceLabel;
-  @FXML Button timeLeft;
-  @FXML Button timeRight;
-  @FXML Label timeLabel;
-  @FXML Button speechButton;
-  @FXML ImageView speechImage;
-  @FXML Button musicButton;
-  @FXML ImageView musicImage;
-  @FXML Button soundButton;
-  @FXML ImageView soundImage;
+  public static int id;
+  @FXML private ImageView logoImage;
+  @FXML private Button backButton;
+  @FXML private Button wordsLeft;
+  @FXML private Button wordsRight;
+  @FXML private Label wordsLabel;
+  @FXML private Button accuracyLeft;
+  @FXML private Button accuracyRight;
+  @FXML private Label accuracyLabel;
+  @FXML private Button confidenceLeft;
+  @FXML private Button confidenceRight;
+  @FXML private Label confidenceLabel;
+  @FXML private Button timeLeft;
+  @FXML private Button timeRight;
+  @FXML private Label timeLabel;
+  @FXML private Button speechButton;
+  @FXML private ImageView speechImage;
+  @FXML private Button musicButton;
+  @FXML private ImageView musicImage;
+  @FXML private Button soundButton;
+  @FXML private ImageView soundImage;
+  private User user;
 
   public void intialize() {
+
     // shorted tooltip delay
     ToolTipManager.sharedInstance().setInitialDelay(0);
     ToolTipManager.sharedInstance().setReshowDelay(0);
 
+    user = User.getUser(id);
     // get current chosen difficulty and display for each label
     // get current option for music, sound and speech and display appropriate image
   }
