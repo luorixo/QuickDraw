@@ -103,7 +103,7 @@
                   <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="578.0">
                      <children>
                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="59.0" />
-                        <Button id="wordsLeft" fx:id="wordsLeft" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
+                        <Button id="wordsLeft" fx:id="wordsLeft" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setLeftButtonFourDifficulty" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -122,7 +122,7 @@
                            </font>
                         </Label>
                         <VBox prefHeight="48.0" prefWidth="8.0" />
-                        <Button id="wordsRight" fx:id="wordsRight" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
+                        <Button id="wordsRight" fx:id="wordsRight" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setRightButtonFourDifficulty" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -135,7 +135,7 @@
                            </cursor>
                         </Button>
                         <VBox prefHeight="48.0" prefWidth="112.0" />
-                        <Button id="accuracyLeft" fx:id="accuracyLeft" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
+                        <Button id="accuracyLeft" fx:id="accuracyLeft" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setLeftButtonThreeDifficulty" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -154,7 +154,7 @@
                            </font>
                         </Label>
                         <VBox prefHeight="48.0" prefWidth="8.0" />
-                        <Button id="accuracyRight" fx:id="accuracyRight" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
+                        <Button id="accuracyRight" fx:id="accuracyRight" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setRightButtonThreeDifficulty" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -214,7 +214,7 @@
                   <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="578.0">
                      <children>
                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="59.0" />
-                        <Button id="confidenceLeft" fx:id="confidenceLeft" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
+                        <Button id="confidenceLeft" fx:id="confidenceLeft" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setLeftButtonFourDifficulty" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -233,7 +233,7 @@
                            </font>
                         </Label>
                         <VBox prefHeight="48.0" prefWidth="8.0" />
-                        <Button id="confidenceRight" fx:id="confidenceRight" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
+                        <Button id="confidenceRight" fx:id="confidenceRight" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setRightButtonFourDifficulty" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -246,7 +246,7 @@
                            </cursor>
                         </Button>
                         <VBox prefHeight="48.0" prefWidth="112.0" />
-                        <Button id="timeLeft" fx:id="timeLeft" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
+                        <Button id="timeLeft" fx:id="timeLeft" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setLeftButtonFourDifficulty" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -265,7 +265,7 @@
                            </font>
                         </Label>
                         <VBox prefHeight="48.0" prefWidth="8.0" />
-                        <Button id="timeRight" fx:id="timeRight" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
+                        <Button id="timeRight" fx:id="timeRight" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setRightButtonFourDifficulty" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
