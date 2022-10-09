@@ -40,7 +40,7 @@
                            </image>
                         </ImageView>
                         <VBox prefHeight="64.0" prefWidth="149.0" />
-                        <Button id="backButton" fx:id="backButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="49.0" prefWidth="49.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
+                        <Button id="backButton" fx:id="backButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBackButton" prefHeight="49.0" prefWidth="49.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
                            <graphic>
                               <ImageView fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
