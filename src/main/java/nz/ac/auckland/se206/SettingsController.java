@@ -43,7 +43,7 @@ public class SettingsController {
    * This function will allow the left button to change the difficulty of the game, both the appropriate display and the user json will be updated. This function will allow cycling between EASY MEDIUM HARD and MASTER.
    */
   @FXML
-  private void setLeftButtonFourDifficulty(ActionEvent event) {
+  private void onLeftButtonFourDifficulty(ActionEvent event) {
     Button leftButton = (Button) event.getSource();
     String buttonName = leftButton.getId();
     String difficulty = "";
@@ -87,7 +87,7 @@ public class SettingsController {
    * This function will allow the right button to change the difficulty of the game, both the appropriate display and the user json will be updated. This function will allow cycling between EASY MEDIUM HARD and MASTER.
    */
   @FXML
-  private void setRightButtonFourDifficulty(ActionEvent event) {
+  private void onRightButtonFourDifficulty(ActionEvent event) {
     Button rightButton = (Button) event.getSource();
     String buttonName = rightButton.getId();
     String difficulty = "";
@@ -131,7 +131,7 @@ public class SettingsController {
    * This function will allow the left button to change the difficulty of the game, both the appropriate display and the user json will be updated. This function will allow cycling between EASY MEDIUM and HARD.
    */
   @FXML
-  private void setLeftButtonThreeDifficulty(ActionEvent event) {
+  private void onLeftButtonThreeDifficulty(ActionEvent event) {
     Button leftButton = (Button) event.getSource();
     String buttonName = leftButton.getId();
     String difficulty = "";
@@ -160,7 +160,7 @@ public class SettingsController {
    * This function will allow the right button to change the difficulty of the game, both the appropriate display and the user json will be updated. This function will allow cycling between EASY MEDIUM and HARD.
    */
   @FXML
-  private void setRightButtonThreeDifficulty(ActionEvent event) {
+  private void onRightButtonThreeDifficulty(ActionEvent event) {
     Button rightButton = (Button) event.getSource();
     String buttonName = rightButton.getId();
     String difficulty = "";
