@@ -28,9 +28,11 @@ public class LandingPageController {
   }
 
   @FXML
-  private void onStartGame(ActionEvent event) {
+  private void onStartGame(ActionEvent event) throws URISyntaxException {
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
+
+    MusicPlayer.playButtonSoundEffect();
 
     try {
       // change scene from landing page to the canvas
