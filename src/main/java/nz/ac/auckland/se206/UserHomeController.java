@@ -63,7 +63,7 @@ public class UserHomeController {
   }
 
   /*
-   *Updates image viewer image to the next image from the words seen list.
+   * Updates image viewer image to the next image from the words seen list.
    */
   @FXML
   private void onRightButton() {
@@ -107,9 +107,13 @@ public class UserHomeController {
       currentWord = currentWord.replace("-", " ");
       currentWord =
           currentWord.substring(0, 1).toUpperCase()
-              + currentWord
-                  .substring(1)
-                  .toLowerCase(); // formats so the first letter is captialised
+              + currentWord.substring(1).toLowerCase(); // formats
+      // so
+      // the
+      // first
+      // letter
+      // is
+      // captialised
     }
     drawingLabel.setText(currentWord); // set text to the label
   }
