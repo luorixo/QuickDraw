@@ -13,7 +13,6 @@ import javax.swing.ToolTipManager;
 
 public class SettingsController {
 
-  public static int id;
   @FXML private ImageView logoImage;
   @FXML private Button backButton;
   @FXML private Button wordsLeft;
@@ -34,18 +33,58 @@ public class SettingsController {
   @FXML private ImageView musicImage;
   @FXML private Button soundButton;
   @FXML private ImageView soundImage;
-  private User user;
+  private User user = User.getUser(UserHomeController.id);
 
-  public void intialize() {
+  public void initialize() {
 
     // shorted tooltip delay
     ToolTipManager.sharedInstance().setInitialDelay(0);
     ToolTipManager.sharedInstance().setReshowDelay(0);
 
-    user = User.getUser(id);
-
     // get current chosen difficulty and display for each label
-    // get current option for music, sound and speech and display appropriate image
+    wordsLabel.setText(convertDifficultyToString(user.getWordDifficulty()));
+    accuracyLabel.setText(convertDifficultyToString(user.getAccuracyDifficulty()));
+    confidenceLabel.setText(convertDifficultyToString(user.getConfidenceDifficulty()));
+    timeLabel.setText(convertDifficultyToString(user.getTimeDifficulty()));
+
+    // if user current audio states are off then switch from default (default is on)
+    if (!user.getMusicState()) {
+      user.setMusic(true);
+      user.saveData();
+      onChangeMusic();
+    }
+
+    if (!user.getSoundEffectState()) {
+      user.setSoundEffects(true);
+      user.saveData();
+      onChangeSound();
+    }
+    if (!user.getTextToSpeechState()) {
+      user.setTextToSpeech(true);
+      user.saveData();
+      onChangeSpeech();
+    }
+  }
+
+  /**
+   * Converts and returns the string version of the difficulty enum. will return all caps e.g. EASY
+   * MEDIUM HARD MASTER
+   *
+   * @param difficulty User.Difficutly enum input to be converted
+   */
+  private String convertDifficultyToString(User.Difficulty difficulty) {
+    switch (difficulty) {
+      case EASY:
+        return "EASY";
+      case MEDIUM:
+        return "MEDIUM";
+      case HARD:
+        return "HARD";
+      case MASTER:
+        return "MASTER";
+      default:
+        return "";
+    }
   }
 
   /**
@@ -59,41 +98,58 @@ public class SettingsController {
   private void onLeftButtonFourDifficulty(ActionEvent event) {
     Button leftButton = (Button) event.getSource();
     String buttonName = leftButton.getId();
-    String difficulty = "";
+    User.Difficulty difficulty = null;
+    String difficultyText = "";
 
     // get current difficulty of relevant metric
     switch (buttonName) {
       case "wordsLeft":
-        // get words difficulty
+        difficulty = user.getWordDifficulty();
+        break;
       case "confidenceLeft":
-        // get confidence difficulty
+        difficulty = user.getConfidenceDifficulty();
+        break;
       case "timeLeft":
-        // get time difficulty
+        difficulty = user.getTimeDifficulty();
+        break;
     }
     // left cycle for button
     switch (difficulty) {
-      case "EASY":
-        difficulty = "MASTER";
-      case "MEDIUM":
-        difficulty = "EASY";
-      case "HARD":
-        difficulty = "MEDIUM";
-      case "MASTER":
-        difficulty = "HARD";
+      case EASY:
+        difficulty = User.Difficulty.MASTER;
+        difficultyText = "MASTER";
+        break;
+      case MEDIUM:
+        difficulty = User.Difficulty.EASY;
+        difficultyText = "EASY";
+        break;
+      case HARD:
+        difficulty = User.Difficulty.MEDIUM;
+        difficultyText = "MEDIUM";
+        break;
+      case MASTER:
+        difficulty = User.Difficulty.HARD;
+        difficultyText = "HARD";
+        break;
     }
 
     // set user profile preference and display label the new difficulty
     switch (buttonName) {
       case "wordsLeft":
-        // set words difficulty
-        wordsLabel.setText(difficulty);
+        user.setWordDifficulty(difficulty);
+        wordsLabel.setText(difficultyText);
+        break;
       case "confidenceLeft":
-        // set confidence difficulty
-        confidenceLabel.setText(difficulty);
+        user.setConfidenceDifficulty(difficulty);
+        confidenceLabel.setText(difficultyText);
+        break;
       case "timeLeft":
-        // set time difficulty
-        timeLabel.setText(difficulty);
+        user.setTimeDifficulty(difficulty);
+        timeLabel.setText(difficultyText);
+        break;
     }
+
+    user.saveData();
   }
 
   /**
@@ -107,41 +163,58 @@ public class SettingsController {
   private void onRightButtonFourDifficulty(ActionEvent event) {
     Button rightButton = (Button) event.getSource();
     String buttonName = rightButton.getId();
-    String difficulty = "";
+    User.Difficulty difficulty = null;
+    String difficultyText = "";
 
     // get current difficulty of relevant metric
     switch (buttonName) {
       case "wordsRight":
-        // get words difficulty
+        difficulty = user.getWordDifficulty();
+        break;
       case "confidenceRight":
-        // get confidence difficulty
+        difficulty = user.getConfidenceDifficulty();
+        break;
       case "timeRight":
-        // get time difficulty
+        difficulty = user.getTimeDifficulty();
+        break;
     }
     // right cycle for button
     switch (difficulty) {
-      case "EASY":
-        difficulty = "MEDIUM";
-      case "MEDIUM":
-        difficulty = "HARD";
-      case "HARD":
-        difficulty = "MASTER";
-      case "MASTER":
-        difficulty = "EASY";
+      case EASY:
+        difficulty = User.Difficulty.MEDIUM;
+        difficultyText = "MEDIUM";
+        break;
+      case MEDIUM:
+        difficulty = User.Difficulty.HARD;
+        difficultyText = "HARD";
+        break;
+      case HARD:
+        difficulty = User.Difficulty.MASTER;
+        difficultyText = "MASTER";
+        break;
+      case MASTER:
+        difficulty = User.Difficulty.EASY;
+        difficultyText = "EASY";
+        break;
     }
 
     // set user profile preference and display label the new difficulty
     switch (buttonName) {
       case "wordsRight":
-        // set words difficulty
-        wordsLabel.setText(difficulty);
+        user.setWordDifficulty(difficulty);
+        wordsLabel.setText(difficultyText);
+        break;
       case "confidenceRight":
-        // set confidence difficulty
-        confidenceLabel.setText(difficulty);
+        user.setConfidenceDifficulty(difficulty);
+        confidenceLabel.setText(difficultyText);
+        break;
       case "timeRight":
-        // set time difficulty
-        timeLabel.setText(difficulty);
+        user.setTimeDifficulty(difficulty);
+        timeLabel.setText(difficultyText);
+        break;
     }
+
+    user.saveData();
   }
 
   /**
@@ -155,26 +228,37 @@ public class SettingsController {
   private void onLeftButtonThreeDifficulty(ActionEvent event) {
     Button leftButton = (Button) event.getSource();
     String buttonName = leftButton.getId();
-    String difficulty = "";
+    User.Difficulty difficulty = null;
+    String difficultyText = "";
 
     if (buttonName.equals("accuracyLeft")) {
-      // get difficulty of accuracy
+      difficulty = user.getAccuracyDifficulty();
     }
     // left cycle for button
     switch (difficulty) {
-      case "EASY":
-        difficulty = "HARD";
-      case "MEDIUM":
-        difficulty = "EASY";
-      case "HARD":
-        difficulty = "MEDIUM";
+      case EASY:
+        difficulty = User.Difficulty.HARD;
+        difficultyText = "HARD";
+        break;
+      case MEDIUM:
+        difficulty = User.Difficulty.EASY;
+        difficultyText = "EASY";
+        break;
+      case HARD:
+        difficulty = User.Difficulty.MEDIUM;
+        difficultyText = "MEDIUM";
+        break;
+      case MASTER:
+        break;
     }
 
     // set user profile preference and display label the new difficulty
     if (buttonName.equals("accuracyLeft")) {
-      // set difficulty of accuracy
-      accuracyLabel.setText(difficulty);
+      user.setAccuracyDifficulty(difficulty);
+      accuracyLabel.setText(difficultyText);
     }
+
+    user.saveData();
   }
 
   /**
@@ -188,26 +272,37 @@ public class SettingsController {
   private void onRightButtonThreeDifficulty(ActionEvent event) {
     Button rightButton = (Button) event.getSource();
     String buttonName = rightButton.getId();
-    String difficulty = "";
+    User.Difficulty difficulty = null;
+    String difficultyText = "";
 
     if (buttonName.equals("accuracyRight")) {
-      // get difficulty of accuracy
+      difficulty = user.getAccuracyDifficulty();
     }
     // left cycle for button
     switch (difficulty) {
-      case "EASY":
-        difficulty = "MEDIUM";
-      case "MEDIUM":
-        difficulty = "HARD";
-      case "HARD":
-        difficulty = "EASY";
+      case EASY:
+        difficulty = User.Difficulty.MEDIUM;
+        difficultyText = "MEDIUM";
+        break;
+      case MEDIUM:
+        difficulty = User.Difficulty.HARD;
+        difficultyText = "HARD";
+        break;
+      case HARD:
+        difficulty = User.Difficulty.EASY;
+        difficultyText = "EASY";
+        break;
+      case MASTER:
+        break;
     }
 
     // set user profile preference and display label the new difficulty
     if (buttonName.equals("accuracyRight")) {
-      // set difficulty of accuracy
-      accuracyLabel.setText(difficulty);
+      user.setAccuracyDifficulty(difficulty);
+      accuracyLabel.setText(difficultyText);
     }
+
+    user.saveData();
   }
 
   /**
@@ -234,19 +329,21 @@ public class SettingsController {
    */
   @FXML
   private void onChangeSpeech() {
-    Boolean speechOn = true; // get user current speech to text settings
+    Boolean speechOn = user.getTextToSpeechState(); // get user current speech to text settings
     File file;
 
     if (speechOn) { // if on then turn off and change image
-      // set user setting to false
+      user.setTextToSpeech(false);
       file = new File("src/main/resources/images/settings_text/no-speech.png");
     } else { // else off then turn on and change image
-      // set user setting to true
+      user.setTextToSpeech(true);
       file = new File("src/main/resources/images/settings_text/speech.png");
     }
     // set new image
     Image image = new Image(file.toURI().toString());
     speechImage.setImage(image);
+
+    user.saveData();
   }
 
   /**
@@ -255,19 +352,21 @@ public class SettingsController {
    */
   @FXML
   private void onChangeMusic() {
-    Boolean musicOn = true; // get user current music settings
+    Boolean musicOn = user.getMusicState(); // get user current music settings
     File file;
 
     if (musicOn) { // if on then turn off and change image
-      // set user setting to false
+      user.setMusic(false);
       file = new File("src/main/resources/images/settings_text/no-music.png");
     } else { // else off then turn on and change image
-      // set user setting to true
+      user.setMusic(true);
       file = new File("src/main/resources/images/settings_text/music.png");
     }
     // set new image
     Image image = new Image(file.toURI().toString());
     musicImage.setImage(image);
+
+    user.saveData();
   }
 
   /**
@@ -276,18 +375,20 @@ public class SettingsController {
    */
   @FXML
   private void onChangeSound() {
-    Boolean soundOn = true; // get user current sound effects settings
+    Boolean soundOn = user.getSoundEffectState(); // get user current sound effects settings
     File file;
 
     if (soundOn) { // if on then turn off and change image
-      // set user setting to false
+      user.setSoundEffects(false);
       file = new File("src/main/resources/images/settings_text/no-sound-effects.png");
     } else { // else off then turn on and change image
-      // set user setting to true
+      user.setSoundEffects(true);
       file = new File("src/main/resources/images/settings_text/sound-effects.png");
     }
     // set new image
     Image image = new Image(file.toURI().toString());
     soundImage.setImage(image);
+
+    user.saveData();
   }
 }
