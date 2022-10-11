@@ -147,6 +147,38 @@ public class User {
   }
 
   /**
+   * Convert difficulty value to an appropriate integer
+   *
+   * @param difficulty the difficulty of the category
+   * @return the difficulty as an integer
+   */
+  private int difficultyToValue(Difficulty difficulty) {
+    int value = 4; // assigns 4 by default (master)
+    if (difficulty == Difficulty.EASY) {
+      value = 1;
+    } else if (difficulty == Difficulty.MEDIUM) {
+      value = 2;
+    } else if (difficulty == Difficulty.HARD) {
+      value = 3;
+    }
+    return value;
+  }
+
+  /**
+   * Calculates difficulty modifier and grants coins to player accordingly
+   *
+   * @param gameTime The time taken to finish the game
+   */
+  private void grantCoins(int gameTime) {
+    int difficultyModifier =
+        difficultyToValue(this.accuracyDifficulty)
+            + difficultyToValue(this.confidenceDifficulty)
+            + difficultyToValue(this.timeDifficulty)
+            + difficultyToValue(this.wordDifficulty);
+    this.coins += gameTime * difficultyModifier;
+  }
+
+  /**
    * Called when the game ends.
    *
    * @param hasWon
@@ -169,6 +201,7 @@ public class User {
     }
 
     this.totalTime = this.totalTime + gameTime;
+    grantCoins(gameTime);
   }
 
   /** Saves the fields of the current user to its JSON file */
