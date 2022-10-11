@@ -20,7 +20,7 @@ public class MusicPlayer {
     playButtonSoundEffect = new MediaPlayer(buttonSoundEffect);
   }
 
-  public static void playBackgroundSong(User user) throws URISyntaxException {
+  public static void playBackgroundSong() throws URISyntaxException {
 
     playBackgroundSong.seek(playBackgroundSong.getStartTime());
     playBackgroundSong.play();
