@@ -144,7 +144,6 @@ public class UserHomeController {
 
     try {
       // change scene from user home page to user stats (memories page)
-      StatsPageController.id = id;
       currentScene.setRoot(App.loadFxml("memories"));
     } catch (IOException e) {
       e.printStackTrace();
