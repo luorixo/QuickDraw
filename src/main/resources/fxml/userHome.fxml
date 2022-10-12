@@ -8,6 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
@@ -42,21 +43,6 @@
                            </effect>
                         </Label>
                         <VBox prefHeight="66.0" prefWidth="14.0" />
-                        <Button id="backButton" fx:id="backButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBackButton" prefHeight="64.0" prefWidth="64.0" style="-fx-background-radius: 1000; -fx-background-insets: 15;">
-                           <graphic>
-                              <ImageView fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/back-button.png" />
-                                 </image>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
                      </children>
                   </HBox>
                   <HBox prefHeight="3.0" prefWidth="610.0" />
@@ -76,21 +62,6 @@
                            </effect>
                         </ImageView>
                         <VBox prefHeight="57.0" prefWidth="67.0" />
-                        <Button id="statsButton" fx:id="statsButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onStatsButton" prefHeight="45.0" prefWidth="115.0" style="-fx-background-radius: 1000; -fx-background-insets: 10;">
-                           <graphic>
-                              <ImageView fitHeight="45.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/user_home_text/more-stats.png" />
-                                 </image>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="171.0" prefWidth="610.0">
@@ -128,21 +99,36 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="610.0">
+                  <HBox alignment="CENTER" prefHeight="87.0" prefWidth="615.0">
                      <children>
-                        <Label id="drawingLabel" fx:id="drawingLabel" alignment="CENTER" prefHeight="34.0" prefWidth="565.0" style="-fx-text-fill: white;">
+                        <Label id="drawingLabel" fx:id="drawingLabel" alignment="CENTER" prefHeight="38.0" prefWidth="565.0" style="-fx-text-fill: white;">
                            <font>
                               <Font name="Times New Roman Bold" size="20.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
-                  <HBox prefHeight="91.0" prefWidth="610.0">
+                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="63.0" prefWidth="610.0">
                      <children>
-                        <VBox prefHeight="95.0" prefWidth="201.0" />
-                        <Button id="zenButton" fx:id="zenButton" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="88.0" style="-fx-background-radius: 1000; -fx-background-insets: 100;">
+                        <Button id="gameButton" fx:id="gameButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onGameButton" prefHeight="117.0" prefWidth="102.0" style="-fx-background-radius: 1000; -fx-background-insets: 8; -fx-background-color: null;">
                            <graphic>
-                              <ImageView fitHeight="77.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="117.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/user_home_text/play-button.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="69.0" prefWidth="615.0">
+                     <children>
+                        <Button id="zenButton" fx:id="zenButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onZenButton" prefHeight="91.0" prefWidth="115.0" style="-fx-background-radius: 1000; -fx-background-insets: 100;">
+                           <graphic>
+                              <ImageView fitHeight="82.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/user_home_text/zen-mode.png" />
                                  </image>
@@ -155,8 +141,8 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <VBox prefHeight="95.0" prefWidth="23.0" />
-                        <Button id="definitionButton" fx:id="definitionButton" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="91.0" prefWidth="115.0" style="-fx-background-radius: 1000; -fx-background-insets: 100;">
+                        <VBox prefHeight="91.0" prefWidth="183.0" />
+                        <Button id="definitionButton" fx:id="definitionButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onDefinitionButton" prefHeight="91.0" prefWidth="115.0" style="-fx-background-radius: 1000; -fx-background-insets: 100;">
                            <graphic>
                               <ImageView fitHeight="92.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -173,78 +159,134 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="610.0">
-                     <children>
-                        <Button id="easyButton" fx:id="easyButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onEasyButton" prefHeight="50.0" prefWidth="131.0" style="-fx-background-radius: 100; -fx-background-insets: 15;">
-                           <graphic>
-                              <ImageView fitHeight="50.0" fitWidth="131.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/user_home_text/easy.png" />
-                                 </image>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <HBox prefHeight="60.0" prefWidth="55.0" />
-                        <Button id="mediumButton" fx:id="mediumButton" alignment="CENTER" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="131.0" style="-fx-background-radius: 100; -fx-background-insets: 15;">
-                           <graphic>
-                              <ImageView fitHeight="50.0" fitWidth="131.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/user_home_text/medium.png" />
-                                 </image>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <HBox prefHeight="60.0" prefWidth="55.0" />
-                        <Button id="hardButton" fx:id="hardButton" alignment="CENTER" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="131.0" style="-fx-background-radius: 100; -fx-background-insets: 15;">
-                           <graphic>
-                              <ImageView fitHeight="50.0" fitWidth="131.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/user_home_text/hard.png" />
-                                 </image>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <HBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="610.0">
-                     <children>
-                        <Button id="masterButton" fx:id="masterButton" alignment="CENTER" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="131.0" style="-fx-background-radius: 100; -fx-background-insets: 15;">
-                           <graphic>
-                              <ImageView fitHeight="50.0" fitWidth="131.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/user_home_text/master.png" />
-                                 </image>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                     </children>
-                  </HBox>
                </children>
             </VBox>
+         </children>
+      </StackPane>
+      <StackPane layoutX="500.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="110.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Pane prefHeight="85.0" prefWidth="110.0">
+                     <children>
+                        <Button id="backButton" fx:id="backButton1" layoutX="23.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBackButton" prefHeight="64.0" prefWidth="64.0" style="-fx-background-radius: 1000; -fx-background-insets: 15;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/back-button.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="63.0" prefWidth="110.0">
+                     <children>
+                        <Button id="settingsButton" fx:id="settingsButton" layoutX="23.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onSettingsButton" prefHeight="64.0" prefWidth="64.0" style="-fx-background-radius: 1000; -fx-background-insets: 15; -fx-background-color: null;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/user_home_text/settings-cog.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="58.0" prefWidth="110.0">
+                     <children>
+                        <Button id="memoriesButton" fx:id="memoriesButton" layoutX="23.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onMemoriesButton" prefHeight="64.0" prefWidth="64.0" style="-fx-background-radius: 1000; -fx-background-insets: 15; -fx-background-color: null;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/user_home_text/memories.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="73.0" prefWidth="110.0">
+                     <children>
+                        <Button id="badgesButton" fx:id="badgesButton" layoutX="23.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBadgesButton" prefHeight="64.0" prefWidth="64.0" style="-fx-background-radius: 1000; -fx-background-insets: 15; -fx-background-color: null;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/user_home_text/badges.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="83.0" prefWidth="110.0">
+                     <children>
+                        <Button id="storeButton" fx:id="storeButton" layoutX="23.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onShopButton" prefHeight="64.0" prefWidth="64.0" style="-fx-background-radius: 1000; -fx-background-insets: 15;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/user_home_text/coins.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+      <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="110.0">
+         <children>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="344.0" prefWidth="78.0">
+               <children>
+                  <ImageView id="streakImage" fx:id="streakImage" fitHeight="85.0" fitWidth="64.0" layoutX="7.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/user_home_text/red-fire.png" />
+                     </image>
+                  </ImageView>
+                  <Label id="streakLabel" fx:id="streakLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="21.0" prefHeight="64.0" prefWidth="51.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman Bold" size="34.0" />
+                     </font>
+                  </Label>
+                  <Label layoutY="85.0" prefHeight="43.0" prefWidth="75.0" text="WIN STREAK" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Times New Roman Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
          </children>
       </StackPane>
    </children>
