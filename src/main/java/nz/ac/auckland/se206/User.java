@@ -22,7 +22,7 @@ import org.apache.commons.io.FileUtils;
  */
 public class User {
 
-  enum Difficulty {
+  public enum Difficulty {
     EASY,
     MEDIUM,
     HARD,

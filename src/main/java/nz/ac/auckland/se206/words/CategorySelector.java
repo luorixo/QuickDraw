@@ -56,27 +56,32 @@ public class CategorySelector {
    * @param difficulty The selected game difficulty
    * @return A random category
    */
-  public String getRandomCategory(Difficulty difficulty) {
+  public String getRandomCategory(User.Difficulty difficulty) {
+
+    List<String> wordsToChooseFrom = difficultyToCategories.get(Difficulty.E);
+    if (difficulty == User.Difficulty.MEDIUM || difficulty == User.Difficulty.HARD) {
+      wordsToChooseFrom.addAll(difficultyToCategories.get(Difficulty.M));
+      if (difficulty == User.Difficulty.HARD) {
+        wordsToChooseFrom.addAll(difficultyToCategories.get(Difficulty.H));
+      }
+    } else if (difficulty == User.Difficulty.MASTER) {
+      wordsToChooseFrom = difficultyToCategories.get(Difficulty.H);
+    }
+
     // get random category
-    String randomCategory =
-        difficultyToCategories
-            .get(difficulty)
-            .get(new Random().nextInt(difficultyToCategories.get(difficulty).size()));
+    String randomCategory = wordsToChooseFrom.get(new Random().nextInt(wordsToChooseFrom.size()));
 
     User user = User.getUser(UserHomeController.id); // gets current user
-    if (user.getWordsSeen().size() == difficultyToCategories.get(difficulty).size()) {
+    if (user.getWordsSeen() == wordsToChooseFrom) {
       user.setHasSeenAllWords(true); // set user flag to indicate has seen all words
     }
+
     while (true) {
       if (user.getWordsSeen().contains(randomCategory.replaceAll("\\s", "-"))
           && !user.hasSeenAllWords()) { // loops until new word is chosen
         randomCategory =
-            difficultyToCategories
-                .get(difficulty)
-                .get(
-                    new Random()
-                        .nextInt(
-                            difficultyToCategories.get(difficulty).size())); // selects new topic
+            wordsToChooseFrom.get(
+                new Random().nextInt(wordsToChooseFrom.size())); // selects new topic
         continue;
       } else {
         break;
