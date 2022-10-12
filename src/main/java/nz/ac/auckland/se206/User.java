@@ -83,6 +83,7 @@ public class User {
   private int gamesPlayed = 0;
   private int gamesWon = 0;
   private int winStreak = 0;
+  private int bestWinStreak = 0;
   private int totalTime = 0;
   private int bestTime = 60;
   private String bestWord = "";
@@ -189,6 +190,9 @@ public class User {
     if (hasWon) {
       this.gamesWon++;
       this.winStreak++;
+      if (this.winStreak > this.bestWinStreak) {
+        this.bestWinStreak = this.winStreak;
+      }
     } else {
       this.winStreak = 0;
     }
@@ -305,6 +309,18 @@ public class User {
 
   public int getCoins() {
     return this.coins;
+  }
+
+  public int getWinStreak() {
+    return this.winStreak;
+  }
+
+  public int getBestWinStreak() {
+    return this.bestWinStreak;
+  }
+
+  public String getBestWord() {
+    return this.bestWord;
   }
 
   // INSTANCE FIELD SETTERS
