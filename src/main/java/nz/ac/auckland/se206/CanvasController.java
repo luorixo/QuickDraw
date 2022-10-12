@@ -34,7 +34,6 @@ import javax.imageio.ImageIO;
 import nz.ac.auckland.se206.ml.DoodlePrediction;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 import nz.ac.auckland.se206.words.CategorySelector;
-import nz.ac.auckland.se206.words.CategorySelector.Difficulty;
 
 /**
  * This is the controller of the canvas. You are free to modify this class and the corresponding
@@ -65,14 +64,13 @@ public class CanvasController {
   @FXML private Pane canvasPane;
 
   private int userId = UserHomeController.id;
+  private User user = User.getUser(userId);
   private GraphicsContext graphic;
   private DoodlePrediction model;
   private int startingTime = 60;
-  private int secondsLeft = 60;
+  private int secondsLeft;
   private int predictionWinNumber = 3;
   private boolean gameEnd = false;
-  private User user;
-
   private String randomWord;
 
   // mouse coordinates
@@ -82,7 +80,6 @@ public class CanvasController {
   @FXML
   private void onStartGame() {
     backButton.setDisable(true); // disable back
-    user = User.getUser(userId);
     Timer timer = new Timer();
     TextToSpeech textToSpeech = new TextToSpeech();
     // creates task to speak the random category name
@@ -280,6 +277,22 @@ public class CanvasController {
    * @throws IOException If the model cannot be found on the file system.
    */
   public void initialize() throws ModelException, IOException {
+
+    if (this.user.getAccuracyDifficulty() == User.Difficulty.MEDIUM) {
+      this.predictionWinNumber = 2;
+    } else if (this.user.getAccuracyDifficulty() == User.Difficulty.HARD) {
+      this.predictionWinNumber = 1;
+    }
+
+    if (this.user.getTimeDifficulty() == User.Difficulty.MEDIUM) {
+      this.startingTime = 45;
+    } else if (this.user.getTimeDifficulty() == User.Difficulty.HARD) {
+      this.startingTime = 30;
+    } else if (this.user.getTimeDifficulty() == User.Difficulty.MASTER) {
+      this.startingTime = 15;
+    }
+    this.secondsLeft = this.startingTime;
+
     graphic = canvas.getGraphicsContext2D();
 
     // makes the brush black by default
@@ -289,7 +302,7 @@ public class CanvasController {
     displayPrediction(); // puts top 10 guesses on the listview
 
     CategorySelector categorySelector = new CategorySelector();
-    randomWord = categorySelector.getRandomCategory(Difficulty.E); // sets to easy mode
+    randomWord = categorySelector.getRandomCategory(user.getWordDifficulty()); // sets to easy mode
 
     gameOverComponents.setVisible(false);
     canvas.setDisable(true);
