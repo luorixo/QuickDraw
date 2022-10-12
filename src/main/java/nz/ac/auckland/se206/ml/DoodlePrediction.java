@@ -20,6 +20,8 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javax.imageio.ImageIO;
+import nz.ac.auckland.se206.User;
+import nz.ac.auckland.se206.UserHomeController;
 import org.imgscalr.Scalr;
 
 /**
@@ -75,9 +77,22 @@ public class DoodlePrediction {
   public static List<String> getPredictionsList(
       final List<Classifications.Classification> predictions) {
     ObservableList<String> predictionsList = FXCollections.observableArrayList();
+    int userId = UserHomeController.id;
+    User user = User.getUser(userId);
+
+    int confidenceMin = 1;
+    if (user.getConfidenceDifficulty() == User.Difficulty.MEDIUM) {
+      confidenceMin = 10;
+    } else if (user.getConfidenceDifficulty() == User.Difficulty.HARD) {
+      confidenceMin = 25;
+    } else if (user.getConfidenceDifficulty() == User.Difficulty.MASTER) {
+      confidenceMin = 50;
+    }
 
     for (final Classifications.Classification classification : predictions) {
-      predictionsList.add(classification.getClassName().replaceAll("_", " "));
+      if (classification.getProbability() * 100 >= confidenceMin) {
+        predictionsList.add(classification.getClassName().replaceAll("_", " "));
+      }
     }
 
     return predictionsList;
