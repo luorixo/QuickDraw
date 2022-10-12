@@ -21,6 +21,7 @@ public class MemoriesController {
   @FXML private ImageView littleBulbImage;
   @FXML private ImageView partyBulbImage;
   @FXML private ImageView jumpingBulbImage;
+  @FXML private Button nextButton;
   private int statCycleNum;
   private User user = User.getUser(UserHomeController.id);
 
@@ -28,6 +29,35 @@ public class MemoriesController {
     statCycleNum = 1;
     // set to default statistic display
     displayGamesPlayed();
+  }
+
+  /** Handles the switching of statistics displays when the next button is clicked. */
+  @FXML
+  private void onNextButton() {
+    switch (statCycleNum) {
+      case 1:
+        displayGamesWon();
+        break;
+      case 2:
+        displayGamesLost();
+        break;
+      case 3:
+        displayBestTime();
+        break;
+      case 4:
+        displayAverageTime();
+        break;
+      case 5:
+        displayBestStreak();
+        break;
+      default:
+        displayGamesPlayed();
+    }
+    // update cycle number for loop
+    statCycleNum += 1;
+    if (statCycleNum >= 7) {
+      statCycleNum = 1;
+    }
   }
 
   /**
@@ -109,6 +139,9 @@ public class MemoriesController {
     } else {
       thoughtLabel.setText("Thats ok! Drawing is hard!");
     }
+    if (user.getGamesPlayed() == 0) {
+      thoughtLabel.setText("You haven't played any games though...");
+    }
   }
 
   /**
@@ -133,7 +166,7 @@ public class MemoriesController {
       statValueLabel.setText("...");
       thoughtLabel.setText("Oh I Cant Remember!");
     } else {
-      thoughtLabel.setText(", I remember!");
+      thoughtLabel.setText(user.getBestWord() + ", I remember!");
     }
   }
 
@@ -180,16 +213,19 @@ public class MemoriesController {
     jumpingBulbImage.setVisible(true);
 
     statTitleLabel.setText("Best Streak");
-    statValueLabel.setText(String.valueOf(user.getAverageTime()));
+    statValueLabel.setText(String.valueOf(user.getBestWinStreak()));
 
-    // set thoughts text and update value text if no average time
-    if (user.getGamesPlayed() == 0) {
-      statValueLabel.setText("...");
-      thoughtLabel.setText("Go play a few games!");
-    } else if (user.getAverageTime() < 30) {
-      thoughtLabel.setText("Such good consistency!");
+    // set thoughts text
+    if (user.getBestWinStreak() == 0) {
+      thoughtLabel.setText("Thats ok! You'll win soon!");
+    } else if (user.getBestWinStreak() >= 20) {
+      thoughtLabel.setText("Wow! You are the next Picasso!");
     } else {
-      thoughtLabel.setText("It's so hard to draw fast");
+      thoughtLabel.setText("Good Job! Can you get higher?");
+    }
+
+    if (user.getGamesPlayed() == 0) {
+      thoughtLabel.setText("Go play some games!");
     }
   }
 

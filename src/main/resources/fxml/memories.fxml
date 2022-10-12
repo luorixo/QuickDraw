@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0" stylesheets="@../css/memoriesCSS.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.MemoriesController">
    <children>
       <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0">
@@ -88,14 +87,20 @@
                         <Font name="Times New Roman Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Button layoutX="112.0" layoutY="357.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" style="-fx-background-radius: 100000; -fx-background-color: null;">
+                  <Button id="nextButton" fx:id="nextButton" layoutX="112.0" layoutY="357.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onNextButton" prefHeight="150.0" prefWidth="150.0" style="-fx-background-radius: 100000; -fx-background-color: null;">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/memoriesImages/nextArrow.png" />
                            </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <ImageView id="bowBulbImage" fx:id="bowBulbImage" fitHeight="219.0" fitWidth="185.0" layoutX="438.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
                      <image>
