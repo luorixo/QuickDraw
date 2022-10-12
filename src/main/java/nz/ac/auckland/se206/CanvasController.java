@@ -248,7 +248,10 @@ public class CanvasController {
             boolean isInTop =
                 DoodlePrediction.getPredictionsList(
                         model.getPredictions(thisImage, predictionWinNumber))
-                    .contains(randomWord); // get top predictions based
+                    .contains(randomWord); // get
+            // top
+            // predictions
+            // based
             Platform.runLater(
                 () -> {
                   // puts the top 10 predictions in the list

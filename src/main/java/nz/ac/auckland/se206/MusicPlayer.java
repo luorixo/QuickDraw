@@ -12,16 +12,30 @@ public class MusicPlayer {
   public static MediaPlayer playButtonSoundEffect;
 
   public static void intilalise() throws URISyntaxException {
+
+    intialiseBackgroundSong();
+    intialiseSoundEffects();
+    intialiseTextToSpeech();
+  }
+
+  private static void intialiseBackgroundSong() throws URISyntaxException {
     backgroundSound =
         new Media(App.class.getResource("/sounds/backgroundSong.mp3").toURI().toString());
     playBackgroundSong = new MediaPlayer(backgroundSound);
+  }
+
+  private static void intialiseSoundEffects() throws URISyntaxException {
+
     buttonSoundEffect =
         new Media(App.class.getResource("/sounds/buttonClick.mp3").toURI().toString());
     playButtonSoundEffect = new MediaPlayer(buttonSoundEffect);
   }
 
+  private static void intialiseTextToSpeech() throws URISyntaxException {}
+
   public static void playBackgroundSong() throws URISyntaxException {
 
+    playBackgroundSong.setMute(false);
     playBackgroundSong.seek(playBackgroundSong.getStartTime());
     playBackgroundSong.play();
   }
@@ -29,6 +43,16 @@ public class MusicPlayer {
   public static void stopBackgroundSong() throws URISyntaxException {
 
     playBackgroundSong.stop();
+  }
+
+  public static void muteBackgroundSong() throws URISyntaxException {
+
+    playBackgroundSong.setMute(true);
+  }
+
+  public static void unMuteBackgroundSong() throws URISyntaxException {
+
+    playBackgroundSong.setMute(true);
   }
 
   public static void playButtonSoundEffect() throws URISyntaxException {
