@@ -33,6 +33,7 @@ public class UserHomeController {
   @FXML private Button badgesButton;
   @FXML private Button memoriesButton;
   @FXML private Button settingsButton;
+  @FXML private ImageView backgroundImage;
   private User user;
   private List<String> wordsSeen;
   private int currentWordIndex = 0;
@@ -61,6 +62,11 @@ public class UserHomeController {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
+
+    // set background image
+    File file = new File("src/main/resources/images/shopImages/" + user.getCurrentBackground());
+    Image image = new Image(file.toURI().toString());
+    backgroundImage.setImage(image);
   }
 
   /**
@@ -381,7 +387,7 @@ public class UserHomeController {
 
     try {
       // change scene to shop //currently set to memories
-      currentScene.setRoot(App.loadFxml("memories"));
+      currentScene.setRoot(App.loadFxml("shoppage"));
     } catch (IOException e) {
       e.printStackTrace();
     }

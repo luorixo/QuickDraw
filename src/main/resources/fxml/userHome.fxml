@@ -19,7 +19,7 @@
    <children>
       <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0">
          <children>
-            <ImageView fitHeight="582.0" fitWidth="610.0" pickOnBounds="true">
+            <ImageView id="backgroundImage" fx:id="backgroundImage" fitHeight="582.0" fitWidth="610.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/purple_background.png" />
                </image>
