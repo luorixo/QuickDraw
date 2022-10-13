@@ -254,11 +254,9 @@ public class UserHomeController {
     Scene currentScene = button.getScene();
 
     try {
-
       // change scene from user home page to zen game //currently set to normal game
       // as filler
-
-      currentScene.setRoot(App.loadFxml("canvas"));
+      currentScene.setRoot(App.loadFxml("zenMode"));
       Window window = currentScene.getWindow();
       window.setWidth(810); // set window width to 810
     } catch (IOException e) {
@@ -360,7 +358,7 @@ public class UserHomeController {
 
     try {
       // change scene to badges //currently set to memories
-      currentScene.setRoot(App.loadFxml("memories"));
+      currentScene.setRoot(App.loadFxml("badges"));
     } catch (IOException e) {
       e.printStackTrace();
     }
