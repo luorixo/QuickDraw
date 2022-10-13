@@ -66,6 +66,7 @@ public class DefinitionsController {
   @FXML private Button paintButton;
   @FXML private Pane canvasPane;
   @FXML private ImageView questionMark;
+  @FXML private ImageView lightbulb;
 
   private int userId = UserHomeController.id;
   private User user = User.getUser(userId);
@@ -145,6 +146,7 @@ public class DefinitionsController {
     backButton.setDisable(true); // disable back
     hintLabel.setVisible(true);
     hintLabel.setDisable(false);
+    questionMark.setVisible(false);
   }
 
   /**
@@ -265,30 +267,82 @@ public class DefinitionsController {
           protected Void call() throws Exception {
             ObservableList predictions =
                 (ObservableList)
-                    DoodlePrediction.getPredictionsList(
+                    DoodlePrediction.getBasePredictionsList(
                         model.getPredictions(thisImage, 10)); // get top 10 predictions
 
             boolean isInTop =
                 DoodlePrediction.getPredictionsList(
                         model.getPredictions(thisImage, predictionWinNumber))
                     .contains(randomWord); // get top predictions based
+
             Platform.runLater(
                 () -> {
                   updateHint();
+
+                  try {
+                    if (DoodlePrediction.getPredictionsList(
+                            model.getPredictions(thisImage, predictionWinNumber))
+                        .contains(randomWord)) {}
+
+                  } catch (TranslateException e) {
+                    e.printStackTrace();
+                  }
+
                   // puts the top 10 predictions in the list
                   predictionsList.setItems(predictions);
-                  if (predictions.size() == 0) {
-                    questionMark.setVisible(true);
-                  } else {
-                    questionMark.setVisible(false);
-                  }
                   if (isInTop && secondsLeft != startingTime) {
                     // if the chosen topic is in the top 3, then the game ends (user wins!)
+                    File file =
+                        new File(
+                            System.getProperty("user.dir")
+                                + "/src/main/resources/images/canvas_images/excitedBulb.png");
+                    Image image = new Image(file.toURI().toString());
+                    lightbulb.setImage(image);
                     endGame(true);
                     this.cancel();
                   } else if (secondsLeft == 0) {
                     endGame(false);
                     this.cancel();
+                  } else {
+                    try {
+                      if (DoodlePrediction.getBasePredictionsList(
+                              model.getPredictions(thisImage, 10))
+                          .contains(randomWord)) {
+                        File file =
+                            new File(
+                                System.getProperty("user.dir")
+                                    + "/src/main/resources/images/canvas_images/clueBulb.png");
+                        Image image = new Image(file.toURI().toString());
+                        lightbulb.setImage(image);
+                      } else if (DoodlePrediction.getBasePredictionsList(
+                              model.getPredictions(thisImage, 20))
+                          .contains(randomWord)) {
+                        File file =
+                            new File(
+                                System.getProperty("user.dir")
+                                    + "/src/main/resources/images/canvas_images/confusedBulb.png");
+                        Image image = new Image(file.toURI().toString());
+                        lightbulb.setImage(image);
+                      } else if (DoodlePrediction.getBasePredictionsList(
+                              model.getPredictions(thisImage, 30))
+                          .contains(randomWord)) {
+                        File file =
+                            new File(
+                                System.getProperty("user.dir")
+                                    + "/src/main/resources/images/canvas_images/sadBulb.png");
+                        Image image = new Image(file.toURI().toString());
+                        lightbulb.setImage(image);
+                      } else {
+                        File file =
+                            new File(
+                                System.getProperty("user.dir")
+                                    + "/src/main/resources/images/canvas_images/angryBulb.png");
+                        Image image = new Image(file.toURI().toString());
+                        lightbulb.setImage(image);
+                      }
+                    } catch (TranslateException e) {
+                      e.printStackTrace();
+                    }
                   }
                 });
             return null;
@@ -367,8 +421,6 @@ public class DefinitionsController {
     System.out.println(hintTimer);
     System.out.println(randomDefinition);
     timeLabel.setText(String.valueOf(secondsLeft));
-
-    questionMark.setVisible(false);
   }
 
   /** This method is called when the "Clear" button is pressed. */

@@ -24,8 +24,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -54,7 +54,7 @@ public class CanvasController {
   @FXML private Label timeLabel;
   @FXML private ListView<?> predictionsList;
   @FXML private Button clearButton;
-  @FXML private VBox gameOverComponents;
+  @FXML private Pane gameOverComponents;
   @FXML private Label gameOverLabel;
   @FXML private Button restartButton;
   @FXML private Button backButton;
@@ -62,6 +62,8 @@ public class CanvasController {
   @FXML private Button eraseButton;
   @FXML private Button paintButton;
   @FXML private Pane canvasPane;
+  @FXML private ImageView questionMark;
+  @FXML private ImageView lightbulb;
 
   private int userId = UserHomeController.id;
   private User user = User.getUser(userId);
@@ -139,6 +141,7 @@ public class CanvasController {
     readyButton.setVisible(false);
     canvas.setDisable(false);
     canvasPane.setVisible(true);
+    questionMark.setVisible(false);
   }
 
   /**
@@ -250,7 +253,7 @@ public class CanvasController {
           protected Void call() throws Exception {
             ObservableList predictions =
                 (ObservableList)
-                    DoodlePrediction.getPredictionsList(
+                    DoodlePrediction.getBasePredictionsList(
                         model.getPredictions(thisImage, 10)); // get top 10 predictions
 
             boolean isInTop =
@@ -265,12 +268,58 @@ public class CanvasController {
                   // puts the top 10 predictions in the list
                   predictionsList.setItems(predictions);
                   if (isInTop && secondsLeft != startingTime) {
+                    File file =
+                        new File(
+                            System.getProperty("user.dir")
+                                + "/src/main/resources/images/canvas_images/excitedBulb.png");
+                    Image image = new Image(file.toURI().toString());
+                    lightbulb.setImage(image);
                     // if the chosen topic is in the top 3, then the game ends (user wins!)
                     endGame(true);
                     this.cancel();
                   } else if (secondsLeft == 0) {
                     endGame(false);
                     this.cancel();
+                  } else {
+                    try {
+                      if (DoodlePrediction.getBasePredictionsList(
+                              model.getPredictions(thisImage, 10))
+                          .contains(randomWord)) {
+                        File file =
+                            new File(
+                                System.getProperty("user.dir")
+                                    + "/src/main/resources/images/canvas_images/clueBulb.png");
+                        Image image = new Image(file.toURI().toString());
+                        lightbulb.setImage(image);
+                      } else if (DoodlePrediction.getBasePredictionsList(
+                              model.getPredictions(thisImage, 20))
+                          .contains(randomWord)) {
+                        File file =
+                            new File(
+                                System.getProperty("user.dir")
+                                    + "/src/main/resources/images/canvas_images/confusedBulb.png");
+                        Image image = new Image(file.toURI().toString());
+                        lightbulb.setImage(image);
+                      } else if (DoodlePrediction.getBasePredictionsList(
+                              model.getPredictions(thisImage, 30))
+                          .contains(randomWord)) {
+                        File file =
+                            new File(
+                                System.getProperty("user.dir")
+                                    + "/src/main/resources/images/canvas_images/sadBulb.png");
+                        Image image = new Image(file.toURI().toString());
+                        lightbulb.setImage(image);
+                      } else {
+                        File file =
+                            new File(
+                                System.getProperty("user.dir")
+                                    + "/src/main/resources/images/canvas_images/angryBulb.png");
+                        Image image = new Image(file.toURI().toString());
+                        lightbulb.setImage(image);
+                      }
+                    } catch (TranslateException e) {
+                      e.printStackTrace();
+                    }
                   }
                 });
             return null;
@@ -313,7 +362,6 @@ public class CanvasController {
     setBrushType(Color.BLACK, false);
 
     model = new DoodlePrediction();
-    displayPrediction(); // puts top 10 guesses on the listview
 
     CategorySelector categorySelector = new CategorySelector();
     randomWord = categorySelector.getRandomCategory(user.getWordDifficulty()); // sets to easy mode
