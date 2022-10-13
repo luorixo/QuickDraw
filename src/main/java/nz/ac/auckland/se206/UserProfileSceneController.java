@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -87,9 +88,12 @@ public class UserProfileSceneController {
    *     <p>This function controls the button for each of the user profiles. If a user has not been
    *     created, it will help the user create their own account. If the user has already been
    *     created, the button will lead them their user home page
+   * @throws URISyntaxException
    */
   @FXML
-  private void onUserCreationOrHomePage(ActionEvent event) {
+  private void onUserCreationOrHomePage(ActionEvent event) throws URISyntaxException {
+
+    MusicPlayer.playButtonSoundEffect();
 
     // checks to see which fxid the event is from
     Object userCreateButton = event.getSource();
@@ -254,9 +258,12 @@ public class UserProfileSceneController {
   /**
    * @param event tells us the fxid of the element that initiated the action
    *     <p>This function allows the user the option of deleting their profiles
+   * @throws URISyntaxException
    */
   @FXML
-  private void onDeleteUser(MouseEvent event) {
+  private void onDeleteUser(MouseEvent event) throws URISyntaxException {
+
+    MusicPlayer.playButtonSoundEffect();
 
     // Checks to see which fxid the event is associated to
     Object deleteUserImage = event.getSource();
@@ -317,9 +324,12 @@ public class UserProfileSceneController {
    * @param event tells us the fxid of the element that initiated the action
    *     <p>This function allows the user to cancel the deletion process if they accidentally
    *     pressed the deletion button
+   * @throws URISyntaxException
    */
   @FXML
-  private void onCancelDeletion(MouseEvent event) {
+  private void onCancelDeletion(MouseEvent event) throws URISyntaxException {
+
+    MusicPlayer.playButtonSoundEffect();
 
     Object cancelDeleteImage = event.getSource();
 
@@ -371,9 +381,12 @@ public class UserProfileSceneController {
   /**
    * @param event tells us the fxid of the element that initiated the action
    *     <p>This function allows the user to confirm the deletion process
+   * @throws URISyntaxException
    */
   @FXML
-  private void onConfirmDeletion(MouseEvent event) {
+  private void onConfirmDeletion(MouseEvent event) throws URISyntaxException {
+
+    MusicPlayer.playButtonSoundEffect();
 
     Object confirmDeletionImage = event.getSource();
 
@@ -458,9 +471,12 @@ public class UserProfileSceneController {
    * @param event tells us the fxid of the element that initiated the action
    *     <p>This method allows the user to enter their own personal username. It then sets the
    *     username using the user class, and then resets the specific user
+   * @throws URISyntaxException
    */
   @FXML
-  private void onNameEntered(ActionEvent event) {
+  private void onNameEntered(ActionEvent event) throws URISyntaxException {
+
+    MusicPlayer.playButtonSoundEffect();
 
     Object userCreateTextField = event.getSource();
 
