@@ -253,11 +253,9 @@ public class UserHomeController {
     Scene currentScene = button.getScene();
 
     try {
-
       // change scene from user home page to zen game //currently set to normal game
       // as filler
-
-      currentScene.setRoot(App.loadFxml("canvas"));
+      currentScene.setRoot(App.loadFxml("zenMode"));
       Window window = currentScene.getWindow();
       window.setWidth(810); // set window width to 810
     } catch (IOException e) {
