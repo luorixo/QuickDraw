@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0" stylesheets="@../css/badgesCSS.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0" stylesheets="@../css/badgesCSS.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.BadgesController">
    <children>
       <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0">
          <children>
@@ -44,7 +44,7 @@
                            </effect>
                         </ImageView>
                         <VBox prefHeight="66.0" prefWidth="129.0" />
-                        <Button id="backButton" fx:id="backButton" alignment="CENTER" mnemonicParsing="false" prefHeight="49.0" prefWidth="49.0" style="-fx-background-radius: 1000; -fx-background-insets: 15;">
+                        <Button id="backButton" fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#onBackButton" prefHeight="49.0" prefWidth="49.0" style="-fx-background-radius: 1000; -fx-background-insets: 15;">
                            <graphic>
                               <ImageView fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -594,6 +594,9 @@
                            <image>
                               <Image url="@../images/badgesImages/sunglasses-bulb.png" />
                            </image>
+                           <effect>
+                              <Glow level="0.39" />
+                           </effect>
                         </ImageView>
                      </children>
                   </Pane>

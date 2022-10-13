@@ -194,6 +194,10 @@ public class CanvasController {
     canvas.setDisable(true);
     clearButton.setDisable(true);
     gameOverComponents.setVisible(true); // shows the game over components
+    // update badges
+    if (hasWon) {
+      BadgesController.updateBadges(userId, (startingTime - secondsLeft));
+    }
   }
 
   private void setBrushType(Color brushType, boolean isErase) {

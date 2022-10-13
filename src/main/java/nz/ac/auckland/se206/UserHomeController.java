@@ -279,7 +279,7 @@ public class UserHomeController {
 
     try {
       // change scene to badges //currently set to memories
-      currentScene.setRoot(App.loadFxml("memories"));
+      currentScene.setRoot(App.loadFxml("badges"));
     } catch (IOException e) {
       e.printStackTrace();
     }
