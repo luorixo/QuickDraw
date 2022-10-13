@@ -4,6 +4,7 @@ import java.net.URISyntaxException;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 public class MusicPlayer {
 
@@ -20,7 +21,6 @@ public class MusicPlayer {
 
     intialiseBackgroundSong();
     intialiseSoundEffects();
-    intialiseTextToSpeech();
   }
 
   private static void intialiseBackgroundSong() throws URISyntaxException {
@@ -29,23 +29,20 @@ public class MusicPlayer {
     playBackgroundSong = new MediaPlayer(backgroundSound);
   }
 
-  private static void intialiseSoundEffects() throws URISyntaxException {
-
-    buttonSound = new Media(App.class.getResource("/sounds/buttonClick.mp3").toURI().toString());
-    playButtonSoundEffect = new MediaPlayer(buttonSound);
-    startSound = new Media(App.class.getResource("/sounds/gameStart.mp3").toURI().toString());
-    startButtonSoundEffect = new MediaPlayer(startSound);
-    drawingSound = new Media(App.class.getResource("/sounds/drawingSound.mp3").toURI().toString());
-    drawingSoundEffect = new MediaPlayer(drawingSound);
-  }
-
-  private static void intialiseTextToSpeech() throws URISyntaxException {}
-
   public static void playBackgroundSong() throws URISyntaxException {
 
     playBackgroundSong.setMute(false);
     playBackgroundSong.seek(playBackgroundSong.getStartTime());
     playBackgroundSong.play();
+  }
+
+  public static void muteBackgroundSong(User user) throws URISyntaxException {
+
+    if (!user.getMusicState()) {
+      playBackgroundSong.setMute(true);
+    } else {
+      playBackgroundSong.setMute(false);
+    }
   }
 
   public static void playBackgroundSong(User user) throws URISyntaxException {
@@ -57,18 +54,14 @@ public class MusicPlayer {
     }
   }
 
-  public static void stopBackgroundSong() throws URISyntaxException {
+  private static void intialiseSoundEffects() throws URISyntaxException {
 
-    playBackgroundSong.stop();
-  }
-
-  public static void muteBackgroundSong(User user) throws URISyntaxException {
-
-    if (!user.getMusicState()) {
-      playBackgroundSong.setMute(true);
-    } else {
-      playBackgroundSong.setMute(false);
-    }
+    buttonSound = new Media(App.class.getResource("/sounds/buttonClick.mp3").toURI().toString());
+    playButtonSoundEffect = new MediaPlayer(buttonSound);
+    startSound = new Media(App.class.getResource("/sounds/gameStart.mp3").toURI().toString());
+    startButtonSoundEffect = new MediaPlayer(startSound);
+    drawingSound = new Media(App.class.getResource("/sounds/drawingSound.mp3").toURI().toString());
+    drawingSoundEffect = new MediaPlayer(drawingSound);
   }
 
   public static void playButtonSoundEffect() throws URISyntaxException {
@@ -102,6 +95,14 @@ public class MusicPlayer {
     if (user.getSoundEffectState()) {
       drawingSoundEffect.seek(drawingSoundEffect.getStartTime());
       drawingSoundEffect.play();
+    }
+  }
+
+  public static void TextToSpeech(User user, String speakString) throws URISyntaxException {
+
+    if (user.getTextToSpeechState()) {
+      TextToSpeech textToSpeech = new TextToSpeech();
+      textToSpeech.speak(speakString);
     }
   }
 }

@@ -60,6 +60,7 @@ public class UserHomeController {
    */
   @FXML
   private void onLeftButton() throws URISyntaxException {
+
     MusicPlayer.playButtonSoundEffect(user);
 
     // go to previous word, if was at first word then loop to last

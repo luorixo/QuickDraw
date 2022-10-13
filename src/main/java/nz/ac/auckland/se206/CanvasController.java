@@ -33,7 +33,6 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import javax.imageio.ImageIO;
 import nz.ac.auckland.se206.ml.DoodlePrediction;
-import nz.ac.auckland.se206.speech.TextToSpeech;
 import nz.ac.auckland.se206.words.CategorySelector;
 
 /**
@@ -85,13 +84,15 @@ public class CanvasController {
 
     backButton.setDisable(true); // disable back
     Timer timer = new Timer();
-    TextToSpeech textToSpeech = new TextToSpeech();
+
     // creates task to speak the random category name
+
     Task<Void> sayCategoryTask =
         new Task<Void>() {
+
           @Override
           protected Void call() throws Exception {
-            textToSpeech.speak(randomWord);
+            MusicPlayer.TextToSpeech(user, randomWord);
             this.cancel();
             return null;
           }
@@ -147,13 +148,13 @@ public class CanvasController {
    * @param hasWon the game win status
    */
   private void endGame(boolean hasWon) {
-    TextToSpeech textToSpeech = new TextToSpeech();
+
     if (hasWon) {
       Task<Void> sayYouWinTask =
           new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-              textToSpeech.speak("YOU WIN!");
+              MusicPlayer.TextToSpeech(user, "YOU WIN!");
               this.cancel();
               return null;
             }
