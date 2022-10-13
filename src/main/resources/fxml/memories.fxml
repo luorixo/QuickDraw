@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0" stylesheets="@../css/memoriesCSS.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.MemoriesController">
+   <children>
+      <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0">
+         <children>
+            <ImageView fitHeight="582.0" fitWidth="610.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/memoriesImages/invertedBackground.png" />
+               </image>
+            </ImageView>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <HBox layoutY="27.0" prefHeight="66.0" prefWidth="610.0">
+                     <children>
+                        <VBox prefHeight="53.0" prefWidth="30.0" />
+                        <ImageView id="imageLogo" fx:id="imageLogo" fitHeight="51.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/quick_draw_img.png" />
+                           </image>
+                        </ImageView>
+                        <VBox prefHeight="53.0" prefWidth="80.0" />
+                        <ImageView fitHeight="84.0" fitWidth="229.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/memoriesImages/memories.png" />
+                           </image>
+                           <effect>
+                              <DropShadow height="32.68" radius="15.84" spread="0.24" width="32.68" />
+                           </effect>
+                        </ImageView>
+                        <VBox prefHeight="57.0" prefWidth="84.0" />
+                        <Button id="buttonBack" fx:id="buttonBack" alignment="CENTER" mnemonicParsing="false" onAction="#onBackButton" prefHeight="49.0" prefWidth="49.0" style="-fx-background-radius: 1000; -fx-background-insets: 15;">
+                           <graphic>
+                              <ImageView fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/back-button.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <ImageView fitHeight="444.0" fitWidth="486.0" layoutX="13.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/memoriesImages/flagBulb.png" />
+                     </image>
+                  </ImageView>
+                  <Label id="statTitleLabel" fx:id="statTitleLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="94.0" layoutY="139.0" prefHeight="29.0" prefWidth="203.0" rotate="-8.1" textAlignment="CENTER">
+                     <font>
+                        <Font name="Times New Roman Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label id="statValueLabel" fx:id="statValueLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="119.0" layoutY="176.0" prefHeight="117.0" prefWidth="197.0" rotate="-8.1" textAlignment="CENTER">
+                     <font>
+                        <Font name="Times New Roman Bold" size="85.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="131.0" fitWidth="152.0" layoutX="455.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/memoriesImages/thoughtBubble.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+                  <Label id="thoughtLabel" fx:id="thoughtLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="479.0" layoutY="154.0" prefHeight="57.0" prefWidth="103.0" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font name="Times New Roman Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Button id="nextButton" fx:id="nextButton" layoutX="112.0" layoutY="357.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onNextButton" prefHeight="150.0" prefWidth="150.0" style="-fx-background-radius: 100000; -fx-background-color: null;">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/memoriesImages/nextArrow.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ImageView id="bowBulbImage" fx:id="bowBulbImage" fitHeight="219.0" fitWidth="185.0" layoutX="438.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/memoriesImages/bowBulb.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="glassesBulbImage" fx:id="glassesBulbImage" fitHeight="144.0" fitWidth="93.0" layoutX="298.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/memoriesImages/glassesBulb.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="littleBulbImage" fx:id="littleBulbImage" fitHeight="117.0" fitWidth="65.0" layoutX="343.0" layoutY="432.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/memoriesImages/happyBulb.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="partyBulbImage" fx:id="partyBulbImage" fitHeight="150.0" fitWidth="200.0" layoutX="432.0" layoutY="399.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/memoriesImages/partyHatBulb.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="jumpingBulbImage" fx:id="jumpingBulbImage" fitHeight="112.0" fitWidth="80.0" layoutX="376.0" layoutY="461.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/memoriesImages/jumpingBulb.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
