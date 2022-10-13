@@ -140,7 +140,7 @@
                   <HBox prefHeight="91.0" prefWidth="610.0">
                      <children>
                         <VBox prefHeight="95.0" prefWidth="201.0" />
-                        <Button id="zenButton" fx:id="zenButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onZenButton" prefHeight="75.0" prefWidth="88.0" style="-fx-background-radius: 1000; -fx-background-insets: 100;">
+                        <Button id="zenButton" fx:id="zenButton" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="88.0" style="-fx-background-radius: 1000; -fx-background-insets: 100;">
                            <graphic>
                               <ImageView fitHeight="77.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
