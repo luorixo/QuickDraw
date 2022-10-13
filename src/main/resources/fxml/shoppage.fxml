@@ -3,6 +3,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0" stylesheets="@../css/shopCSS.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0" stylesheets="@../css/shopCSS.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.ShopPageController">
    <children>
       <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0">
          <children>
@@ -38,7 +39,7 @@
                            </image>
                         </ImageView>
                         <VBox prefHeight="64.0" prefWidth="149.0" />
-                        <Button id="backButton" fx:id="backButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="49.0" prefWidth="49.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
+                        <Button id="backButton" fx:id="backButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBackButton" prefHeight="49.0" prefWidth="49.0" style="-fx-background-radius: 1000; -fx-background-color: null;">
                            <graphic>
                               <ImageView fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -116,26 +117,35 @@
                                           <Image url="@../images/shopImages/use_button.png" />
                                        </image>
                                     </ImageView>
-                                 </graphic></Button>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Apply background/ Buy background for 500 coins" />
+                                 </tooltip></Button>
                               <HBox prefHeight="50.0" prefWidth="77.0" />
                               <Button id="cityButton" fx:id="cityButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
                                  <graphic>
-                                    <ImageView fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView id="cityButtonImage" fx:id="cityButtonImage" fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/shopImages/buy_button.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Apply background/ Buy background for 500 coins" />
+                                 </tooltip>
                               </Button>
                               <HBox prefHeight="50.0" prefWidth="80.0" />
                               <Button id="dessertButton" fx:id="dessertButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
                                  <graphic>
-                                    <ImageView fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView id="dessertButtonImage" fx:id="dessertButtonImage" fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/shopImages/buy_button.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Apply background/ Buy background for 500 coins" />
+                                 </tooltip>
                               </Button>
                            </children>
                         </HBox>
@@ -178,32 +188,41 @@
                            <children>
                               <Button id="logButton" fx:id="logButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
                                  <graphic>
-                                    <ImageView fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView id="logButtonImage" fx:id="logButtonImage" fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/shopImages/buy_button.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Apply background/ Buy background for 500 coins" />
+                                 </tooltip>
                               </Button>
                               <HBox prefHeight="50.0" prefWidth="77.0" />
                               <Button id="skyButton" fx:id="skyButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
                                  <graphic>
-                                    <ImageView fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView id="skyButtonImage" fx:id="skyButtonImage" fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/shopImages/buy_button.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Apply background/ Buy background for 500 coins" />
+                                 </tooltip>
                               </Button>
                               <HBox prefHeight="50.0" prefWidth="80.0" />
-                              <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
+                              <Button id="spaceButton" fx:id="spaceButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
                                  <graphic>
-                                    <ImageView id="spaceButton" fx:id="spaceButton" fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView id="spaceButtonImage" fx:id="spaceButtonImage" fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/shopImages/buy_button.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Apply background/ Buy background for 500 coins" />
+                                 </tooltip>
                               </Button>
                            </children>
                         </HBox>

@@ -71,7 +71,7 @@ public class User {
   }
 
   private String name;
-  private String currentBackground = "purple_background";
+  private String currentBackground = "purple_background.png";
   private boolean[] backgrounds = new boolean[6];
   private boolean[] badges = new boolean[20];
   private Difficulty wordDifficulty = Difficulty.EASY;
