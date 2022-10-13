@@ -2,6 +2,7 @@ package nz.ac.auckland.se206;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,8 +38,11 @@ public class UserHomeController {
    * After userHome fxml and controller have been constructed this will set the current user and get
    * needed details. This method will also set the initial image in the image viewer - either to a
    * waiting image or the corresponding image from the first word in their played list.
+   *
+   * @throws URISyntaxException
    */
-  public void initialize() {
+  public void initialize() throws URISyntaxException {
+
     user = User.getUser(id);
     nameLabel.setText("Hi, " + user.getName() + "!"); // set the greeting label
     wordsSeen = user.getWordsSeen();
@@ -47,13 +51,17 @@ public class UserHomeController {
     }
     // load in users drawing as an image
     this.updateImage();
+
+    MusicPlayer.muteBackgroundSong(user);
   }
 
   /*
    * Updates image viewer image to the previous image from words seen list.
    */
   @FXML
-  private void onLeftButton() {
+  private void onLeftButton() throws URISyntaxException {
+    MusicPlayer.playButtonSoundEffect(user);
+
     // go to previous word, if was at first word then loop to last
     currentWordIndex -= 1;
     if (currentWordIndex < 0) {
@@ -66,7 +74,8 @@ public class UserHomeController {
    * Updates image viewer image to the next image from the words seen list.
    */
   @FXML
-  private void onRightButton() {
+  private void onRightButton() throws URISyntaxException {
+    MusicPlayer.playButtonSoundEffect(user);
     // go to next word, if was at last word then loop to first
     currentWordIndex += 1;
     if (currentWordIndex == wordsSeen.size()) {
@@ -122,9 +131,11 @@ public class UserHomeController {
    * On back button click this will set the scene back to the user select scene
    *
    * @param event
+   * @throws URISyntaxException
    */
   @FXML
-  private void onBackButton(ActionEvent event) {
+  private void onBackButton(ActionEvent event) throws URISyntaxException {
+    MusicPlayer.playButtonSoundEffect(user);
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
@@ -140,15 +151,17 @@ public class UserHomeController {
    * On back button click this will set the scene to the user stats scene
    *
    * @param event
+   * @throws URISyntaxException
    */
   @FXML
-  private void onStatsButton(ActionEvent event) {
+  private void onStatsButton(ActionEvent event) throws URISyntaxException {
+    MusicPlayer.playButtonSoundEffect(user);
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
     try {
       // change scene from user home page to user stats (memories page)
-      currentScene.setRoot(App.loadFxml("memories"));
+      currentScene.setRoot(App.loadFxml("settings"));
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -158,9 +171,11 @@ public class UserHomeController {
    * On back button click this will set the scene to the easy game
    *
    * @param event
+   * @throws URISyntaxException
    */
   @FXML
-  private void onEasyButton(ActionEvent event) {
+  private void onEasyButton(ActionEvent event) throws URISyntaxException {
+    MusicPlayer.playButtonSoundEffect(user);
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 

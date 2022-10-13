@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Timer;
@@ -78,7 +79,10 @@ public class CanvasController {
   private double currentY;
 
   @FXML
-  private void onStartGame() {
+  private void onStartGame() throws URISyntaxException {
+
+    MusicPlayer.startButtonSoundEffect(user);
+
     backButton.setDisable(true); // disable back
     Timer timer = new Timer();
     TextToSpeech textToSpeech = new TextToSpeech();
@@ -205,6 +209,12 @@ public class CanvasController {
 
     canvas.setOnMouseDragged(
         e -> {
+          try {
+            MusicPlayer.drawingSoundEffect(user);
+          } catch (URISyntaxException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+          }
           // Brush size (you can change this, it should not be too small or too large).
           double size = 6;
           if (isErase) {
