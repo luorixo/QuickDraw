@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -285,6 +286,18 @@
                         <Font name="Times New Roman Bold" size="16.0" />
                      </font>
                   </Label>
+               </children>
+            </Pane>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="100.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="64.0" layoutY="497.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/user_home_text/lightbulb.png" />
+                     </image>
+                     <effect>
+                        <Glow level="0.5" />
+                     </effect>
+                  </ImageView>
                </children>
             </Pane>
          </children>
