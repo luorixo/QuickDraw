@@ -2,6 +2,7 @@ package nz.ac.auckland.se206;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -35,7 +36,7 @@ public class SettingsController {
   @FXML private ImageView soundImage;
   private User user = User.getUser(UserHomeController.id);
 
-  public void initialize() {
+  public void initialize() throws URISyntaxException {
 
     // shorted tooltip delay
     ToolTipManager.sharedInstance().setInitialDelay(0);
@@ -349,9 +350,11 @@ public class SettingsController {
   /**
    * Function will switch settings for music. Will update image on button and will update users json
    * for preference.
+   *
+   * @throws URISyntaxException
    */
   @FXML
-  private void onChangeMusic() {
+  private void onChangeMusic() throws URISyntaxException {
     Boolean musicOn = user.getMusicState(); // get user current music settings
     File file;
 
@@ -367,6 +370,8 @@ public class SettingsController {
     musicImage.setImage(image);
 
     user.saveData();
+
+    MusicPlayer.muteBackgroundSong(user);
   }
 
   /**
