@@ -2,6 +2,7 @@ package nz.ac.auckland.se206;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -42,6 +43,7 @@ public class UserHomeController {
    * waiting image or the corresponding image from the first word in their played list.
    */
   public void initialize() {
+
     user = User.getUser(id);
     nameLabel.setText("Hi, " + user.getName() + "!"); // set the greeting label
     wordsSeen = user.getWordsSeen();
@@ -52,6 +54,13 @@ public class UserHomeController {
     this.updateImage();
     // set streak image and value
     setStreak();
+
+    try {
+      MusicPlayer.muteBackgroundSong(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
   }
 
   /**
@@ -77,6 +86,12 @@ public class UserHomeController {
    */
   @FXML
   private void onLeftButton() {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     // go to previous word, if was at first word then loop to last
     currentWordIndex -= 1;
     if (currentWordIndex < 0) {
@@ -90,6 +105,12 @@ public class UserHomeController {
    */
   @FXML
   private void onRightButton() {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     // go to next word, if was at last word then loop to first
     currentWordIndex += 1;
     if (currentWordIndex == wordsSeen.size()) {
@@ -148,6 +169,12 @@ public class UserHomeController {
    */
   @FXML
   private void onBackButton(ActionEvent event) {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
@@ -166,6 +193,12 @@ public class UserHomeController {
    */
   @FXML
   private void onStatsButton(ActionEvent event) {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
@@ -184,6 +217,12 @@ public class UserHomeController {
    */
   @FXML
   private void onGameButton(ActionEvent event) {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
@@ -204,6 +243,12 @@ public class UserHomeController {
    */
   @FXML
   private void onZenButton(ActionEvent event) {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
@@ -227,6 +272,12 @@ public class UserHomeController {
    */
   @FXML
   private void onDefinitionButton(ActionEvent event) {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
@@ -249,6 +300,12 @@ public class UserHomeController {
    */
   @FXML
   private void onSettingsButton(ActionEvent event) {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
@@ -267,6 +324,12 @@ public class UserHomeController {
    */
   @FXML
   private void onMemoriesButton(ActionEvent event) {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
@@ -285,6 +348,12 @@ public class UserHomeController {
    */
   @FXML
   private void onBadgesButton(ActionEvent event) {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
@@ -303,6 +372,12 @@ public class UserHomeController {
    */
   @FXML
   private void onShopButton(ActionEvent event) {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
