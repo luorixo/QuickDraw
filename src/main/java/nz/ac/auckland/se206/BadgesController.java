@@ -85,37 +85,63 @@ public class BadgesController {
    *
    * @param userId the integer id of the user the badges need to be updated for
    * @param gameTimeLeft the time left on a winning game
+   * @return return the number of badges the player has earned in this game
    */
-  public static void updateBadges(int userId, int gameTimeLeft) {
+  public static int updateBadges(int userId, int gameTimeLeft) {
     user = User.getUser(userId);
     boolean[] badgeState = user.getBadges();
+    int badgesWon = 0;
 
     // time badges
     if (gameTimeLeft <= 30) { // enable win in 30 sec
+      if (!badgeState[0]) {
+        badgesWon++;
+      }
       badgeState[0] = true;
     }
     if (gameTimeLeft <= 20) { // enable win in 20 sec
+      if (!badgeState[1]) {
+        badgesWon++;
+      }
       badgeState[1] = true;
     }
     if (gameTimeLeft <= 10) { // enable win in 10 sec
+      if (!badgeState[2]) {
+        badgesWon++;
+      }
       badgeState[2] = true;
     }
     if (gameTimeLeft <= 5) { // enable win in 5 sec
+      if (!badgeState[3]) {
+        badgesWon++;
+      }
       badgeState[3] = true;
     }
 
     // confidence badges
     switch (user.getConfidenceDifficulty()) {
       case EASY:
+        if (!badgeState[4]) {
+          badgesWon++;
+        }
         badgeState[4] = true;
         break;
       case MEDIUM:
+        if (!badgeState[5]) {
+          badgesWon++;
+        }
         badgeState[5] = true;
         break;
       case HARD:
+        if (!badgeState[6]) {
+          badgesWon++;
+        }
         badgeState[6] = true;
         break;
       case MASTER:
+        if (!badgeState[7]) {
+          badgesWon++;
+        }
         badgeState[7] = true;
         break;
     }
@@ -123,15 +149,27 @@ public class BadgesController {
     // streak badges
     switch (user.getWinStreak()) {
       case 5:
+        if (!badgeState[8]) {
+          badgesWon++;
+        }
         badgeState[8] = true;
         break;
       case 10:
+        if (!badgeState[9]) {
+          badgesWon++;
+        }
         badgeState[9] = true;
         break;
       case 15:
+        if (!badgeState[10]) {
+          badgesWon++;
+        }
         badgeState[10] = true;
         break;
       case 20:
+        if (!badgeState[11]) {
+          badgesWon++;
+        }
         badgeState[11] = true;
         break;
     }
@@ -139,15 +177,27 @@ public class BadgesController {
     // words badges
     switch (user.getWordDifficulty()) {
       case EASY:
+        if (!badgeState[12]) {
+          badgesWon++;
+        }
         badgeState[12] = true;
         break;
       case MEDIUM:
+        if (!badgeState[13]) {
+          badgesWon++;
+        }
         badgeState[13] = true;
         break;
       case HARD:
+        if (!badgeState[14]) {
+          badgesWon++;
+        }
         badgeState[14] = true;
         break;
       case MASTER:
+        if (!badgeState[15]) {
+          badgesWon++;
+        }
         badgeState[15] = true;
         break;
     }
@@ -155,12 +205,21 @@ public class BadgesController {
     // accuracy badges
     switch (user.getAccuracyDifficulty()) {
       case EASY:
+        if (!badgeState[16]) {
+          badgesWon++;
+        }
         badgeState[16] = true;
         break;
       case MEDIUM:
+        if (!badgeState[17]) {
+          badgesWon++;
+        }
         badgeState[17] = true;
         break;
       case HARD:
+        if (!badgeState[18]) {
+          badgesWon++;
+        }
         badgeState[18] = true;
         break;
       default:
@@ -169,11 +228,16 @@ public class BadgesController {
 
     // games won badge
     if (user.getGamesWon() == 100) {
+      if (!badgeState[19]) {
+        badgesWon++;
+      }
       badgeState[19] = true;
     }
 
     user.setBadges(badgeState);
     user.saveData();
+
+    return badgesWon;
   }
 
   /**
