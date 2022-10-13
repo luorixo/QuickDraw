@@ -33,7 +33,6 @@ import javax.imageio.ImageIO;
 import nz.ac.auckland.se206.ml.DoodlePrediction;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 import nz.ac.auckland.se206.words.CategorySelector;
-import nz.ac.auckland.se206.words.CategorySelector.Difficulty;
 
 /**
  * This is the controller of the canvas. You are free to modify this class and the corresponding
@@ -70,13 +69,13 @@ public class ZenModeController {
   @FXML private Button readyButton;
 
   private int userId = UserHomeController.id;
+  private User user = User.getUser(userId);
   private GraphicsContext graphic;
   private DoodlePrediction model;
   private int startingTime = 5;
   private int secondsLeft = 60;
   private int predictionWinNumber = 3;
   private boolean gameEnd = false;
-  private User user;
 
   private String randomWord;
 
@@ -275,7 +274,7 @@ public class ZenModeController {
     // displayPrediction(); // puts top 10 guesses on the listview
 
     CategorySelector categorySelector = new CategorySelector();
-    randomWord = categorySelector.getRandomCategory(Difficulty.E); // sets to easy mode
+    randomWord = categorySelector.getRandomCategory(user.getWordDifficulty()); // sets to easy mode
 
     canvas.setDisable(true);
     canvasPane.setVisible(true);
