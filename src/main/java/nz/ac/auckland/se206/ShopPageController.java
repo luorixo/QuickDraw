@@ -116,7 +116,6 @@ public class ShopPageController {
   private void onButton(ActionEvent event) {
     Button button = (Button) event.getSource();
     String buttonId = button.getId();
-
     switch (buttonId) {
       case "purpleButton": // purple is always owned so no need to check
         user.setCurrentBackground("purple_background.png");

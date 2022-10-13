@@ -110,7 +110,7 @@
                         </HBox>
                         <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="610.0">
                            <children>
-                              <Button id="purpleButton" fx:id="purpleButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
+                              <Button id="purpleButton" fx:id="purpleButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onButton" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
                                  <graphic>
                                     <ImageView fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -122,7 +122,7 @@
                                     <Tooltip text="Apply background/ Buy background for 500 coins" />
                                  </tooltip></Button>
                               <HBox prefHeight="50.0" prefWidth="77.0" />
-                              <Button id="cityButton" fx:id="cityButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
+                              <Button id="cityButton" fx:id="cityButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onButton" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
                                  <graphic>
                                     <ImageView id="cityButtonImage" fx:id="cityButtonImage" fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -135,7 +135,7 @@
                                  </tooltip>
                               </Button>
                               <HBox prefHeight="50.0" prefWidth="80.0" />
-                              <Button id="dessertButton" fx:id="dessertButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
+                              <Button id="dessertButton" fx:id="dessertButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onButton" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
                                  <graphic>
                                     <ImageView id="dessertButtonImage" fx:id="dessertButtonImage" fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -186,7 +186,7 @@
                         </HBox>
                         <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="610.0">
                            <children>
-                              <Button id="logButton" fx:id="logButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
+                              <Button id="logButton" fx:id="logButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onButton" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
                                  <graphic>
                                     <ImageView id="logButtonImage" fx:id="logButtonImage" fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -199,7 +199,7 @@
                                  </tooltip>
                               </Button>
                               <HBox prefHeight="50.0" prefWidth="77.0" />
-                              <Button id="skyButton" fx:id="skyButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
+                              <Button id="skyButton" fx:id="skyButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onButton" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
                                  <graphic>
                                     <ImageView id="skyButtonImage" fx:id="skyButtonImage" fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -212,7 +212,7 @@
                                  </tooltip>
                               </Button>
                               <HBox prefHeight="50.0" prefWidth="80.0" />
-                              <Button id="spaceButton" fx:id="spaceButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
+                              <Button id="spaceButton" fx:id="spaceButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onButton" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
                                  <graphic>
                                     <ImageView id="spaceButtonImage" fx:id="spaceButtonImage" fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
