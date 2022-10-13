@@ -23,6 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
@@ -64,6 +65,8 @@ public class ZenModeController {
   @FXML private Button lightBluePaintButton;
   @FXML private Button purplePaintButton;
   @FXML private Button pinkPaintButton;
+  @FXML private ImageView questionMark;
+  @FXML private ImageView lightbulb;
 
   @FXML private Pane canvasPane;
   @FXML private Button readyButton;
@@ -141,6 +144,7 @@ public class ZenModeController {
 
     canvas.setDisable(false);
     canvasPane.setVisible(true);
+    questionMark.setVisible(false);
   }
 
   /**
@@ -221,7 +225,7 @@ public class ZenModeController {
           protected Void call() throws Exception {
             ObservableList predictions =
                 (ObservableList)
-                    DoodlePrediction.getPredictionsList(
+                    DoodlePrediction.getBasePredictionsList(
                         model.getPredictions(thisImage, 10)); // get top 10 predictions
 
             boolean isInTop =
@@ -236,12 +240,52 @@ public class ZenModeController {
                   // puts the top 10 predictions in the list
                   predictionsList.setItems(predictions);
                   if (isInTop && secondsLeft != startingTime) {
-                    // if the chosen topic is in the top 3, then the game ends (user wins!)
-                    // endGame(true);
-                    // this.cancel();
-                  } else if (secondsLeft == 0) {
-                    // endGame(false);
-                    this.cancel();
+                    File file =
+                        new File(
+                            System.getProperty("user.dir")
+                                + "/src/main/resources/images/canvas_images/excitedBulb.png");
+                    Image image = new Image(file.toURI().toString());
+                    lightbulb.setImage(image);
+                  } else {
+                    try {
+                      if (DoodlePrediction.getBasePredictionsList(
+                              model.getPredictions(thisImage, 10))
+                          .contains(randomWord)) {
+                        File file =
+                            new File(
+                                System.getProperty("user.dir")
+                                    + "/src/main/resources/images/canvas_images/clueBulb.png");
+                        Image image = new Image(file.toURI().toString());
+                        lightbulb.setImage(image);
+                      } else if (DoodlePrediction.getBasePredictionsList(
+                              model.getPredictions(thisImage, 20))
+                          .contains(randomWord)) {
+                        File file =
+                            new File(
+                                System.getProperty("user.dir")
+                                    + "/src/main/resources/images/canvas_images/confusedBulb.png");
+                        Image image = new Image(file.toURI().toString());
+                        lightbulb.setImage(image);
+                      } else if (DoodlePrediction.getBasePredictionsList(
+                              model.getPredictions(thisImage, 30))
+                          .contains(randomWord)) {
+                        File file =
+                            new File(
+                                System.getProperty("user.dir")
+                                    + "/src/main/resources/images/canvas_images/sadBulb.png");
+                        Image image = new Image(file.toURI().toString());
+                        lightbulb.setImage(image);
+                      } else {
+                        File file =
+                            new File(
+                                System.getProperty("user.dir")
+                                    + "/src/main/resources/images/canvas_images/angryBulb.png");
+                        Image image = new Image(file.toURI().toString());
+                        lightbulb.setImage(image);
+                      }
+                    } catch (TranslateException e) {
+                      e.printStackTrace();
+                    }
                   }
                 });
             return null;

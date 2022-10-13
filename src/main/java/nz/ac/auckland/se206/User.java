@@ -170,13 +170,15 @@ public class User {
    *
    * @param gameTime The time taken to finish the game
    */
-  private void grantCoins(int gameTime) {
+  public int grantCoins(int gameTime) {
     int difficultyModifier =
         difficultyToValue(this.accuracyDifficulty)
             + difficultyToValue(this.confidenceDifficulty)
             + difficultyToValue(this.timeDifficulty)
             + difficultyToValue(this.wordDifficulty);
+
     this.coins += gameTime * difficultyModifier;
+    return gameTime * difficultyModifier;
   }
 
   /**
@@ -205,7 +207,6 @@ public class User {
     }
 
     this.totalTime = this.totalTime + gameTime;
-    grantCoins(gameTime);
   }
 
   /** Saves the fields of the current user to its JSON file */

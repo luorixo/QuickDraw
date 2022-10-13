@@ -15,8 +15,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="420.0" prefWidth="600.0" style="-fx-background-color: #005267;" stylesheets="@../css/canvasPageCSS.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.CanvasController">
-   <children>
+<VBox alignment="CENTER" prefHeight="420.0" prefWidth="600.0" style="-fx-background-color: #005267;" stylesheets="@../css/canvasPageCSS.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.DefinitionsController">
+  <children>
       <HBox prefHeight="582.0" prefWidth="600.0" style="-fx-background-color: #223043;">
          <children>
             <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="610.0">
@@ -47,15 +47,15 @@
                               </HBox>
                               <ImageView fitHeight="60.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/canvas_images/yourtopic.png" />
+                                    <Image url="@../images/canvas_images/Definition.png" />
                                  </image>
                                  <VBox.margin>
                                     <Insets top="-20.0" />
                                  </VBox.margin>
                               </ImageView>
-                              <Label fx:id="categoryLabel" alignment="CENTER" contentDisplay="CENTER" minHeight="50.0" minWidth="584.0" prefHeight="50.0" prefWidth="584.0" text="TOPIC" textAlignment="CENTER" textFill="WHITE">
+                              <Label fx:id="categoryLabel" alignment="CENTER" contentDisplay="CENTER" minHeight="50.0" minWidth="584.0" prefHeight="50.0" prefWidth="584.0" text="DEFINITION" textAlignment="CENTER" textFill="WHITE">
                                  <font>
-                                    <Font name="Source Sans 3 Black" size="25.0" />
+                                    <Font name="Source Sans 3 Black" size="15.0" />
                                  </font>
                                  <effect>
                                     <DropShadow />
@@ -96,7 +96,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="paintButton" alignment="CENTER" layoutX="528.0" layoutY="214.0" maxHeight="60.0" maxWidth="65.0" minHeight="60.0" minWidth="65.0" mnemonicParsing="false" onAction="#onPaint" prefHeight="60.0" prefWidth="65.0" style="-fx-background-color: #FFBA0E; -fx-background-radius: 15;" textFill="WHITE">
+                    <Button fx:id="paintButton" alignment="CENTER" layoutX="528.0" layoutY="214.0" maxHeight="60.0" maxWidth="65.0" minHeight="60.0" minWidth="65.0" mnemonicParsing="false" onAction="#onPaint" prefHeight="60.0" prefWidth="65.0" style="-fx-background-color: #FFBA0E; -fx-background-radius: 15;" textFill="WHITE">
                            <font>
                               <Font name="Source Sans Pro Black" size="25.0" />
                            </font>
@@ -124,11 +124,11 @@
                            <children>
                               <Pane fx:id="canvasPane" maxHeight="230.0" maxWidth="400.0" minHeight="230.0" minWidth="400.0" prefHeight="230.0" prefWidth="400.0" style="-fx-background-color: #ffffff;">
                                  <children>
-                                    <Canvas fx:id="canvas" height="230.0" layoutY="-1.0" width="400.0">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </Canvas>
+                                  <Canvas fx:id="canvas" height="230.0" layoutY="-1.0" width="400.0">
+                                    <cursor>
+                                      <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                  </Canvas>
                                  </children>
                                  <effect>
                                     <DropShadow offsetY="2.0" />
@@ -221,6 +221,11 @@
                               </ImageView>
                            </graphic>
                         </Button>
+                        <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="103.0" layoutY="474.0" prefHeight="78.0" prefWidth="419.0" text="HINT" textFill="WHITE">
+                           <font>
+                              <Font size="55.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                </children>
@@ -247,5 +252,6 @@
             </Pane>
          </children>
       </HBox>
-   </children>
+
+  </children>
 </VBox>

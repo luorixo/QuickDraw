@@ -6,7 +6,6 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Timer;
@@ -32,7 +31,10 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javax.imageio.ImageIO;
+import nz.ac.auckland.se206.dict.DictionaryLookup;
+import nz.ac.auckland.se206.dict.WordNotFoundException;
 import nz.ac.auckland.se206.ml.DoodlePrediction;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 import nz.ac.auckland.se206.words.CategorySelector;
 
 /**
@@ -47,11 +49,12 @@ import nz.ac.auckland.se206.words.CategorySelector;
  * the canvas size, the ML model will not work correctly. So be careful. If you make some changes in
  * the canvas and brush sizes, make sure that the prediction works fine.
  */
-public class CanvasController {
+public class DefinitionsController {
 
   @FXML private Canvas canvas;
   @FXML private Label categoryLabel;
   @FXML private Label timeLabel;
+  @FXML private Label hintLabel;
   @FXML private ListView<?> predictionsList;
   @FXML private Button clearButton;
   @FXML private Pane gameOverComponents;
@@ -74,29 +77,28 @@ public class CanvasController {
   private int startingTime = 60;
   private int secondsLeft;
   private int predictionWinNumber = 3;
+  private int hintTimer;
+  private int hintTimeRemaining = 0;
+  private int hintUpdateIndex = 0;
   private boolean gameEnd = false;
   private String randomWord;
+  private String randomDefinition;
+  private String hint;
 
   // mouse coordinates
   private double currentX;
   private double currentY;
 
   @FXML
-  private void onStartGame() throws URISyntaxException {
-
-    MusicPlayer.startButtonSoundEffect(user);
-
-    backButton.setDisable(true); // disable back
+  private void onStartGame() {
     Timer timer = new Timer();
-
+    TextToSpeech textToSpeech = new TextToSpeech();
     // creates task to speak the random category name
-
     Task<Void> sayCategoryTask =
         new Task<Void>() {
-
           @Override
           protected Void call() throws Exception {
-            MusicPlayer.TextToSpeech(user, randomWord);
+            textToSpeech.speak(randomDefinition);
             this.cancel();
             return null;
           }
@@ -143,6 +145,9 @@ public class CanvasController {
     readyButton.setVisible(false);
     canvas.setDisable(false);
     canvasPane.setVisible(true);
+    backButton.setDisable(true); // disable back
+    hintLabel.setVisible(true);
+    hintLabel.setDisable(false);
     questionMark.setVisible(false);
   }
 
@@ -153,13 +158,13 @@ public class CanvasController {
    * @param hasWon the game win status
    */
   private void endGame(boolean hasWon) {
-
+    TextToSpeech textToSpeech = new TextToSpeech();
     if (hasWon) {
       Task<Void> sayYouWinTask =
           new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-              MusicPlayer.TextToSpeech(user, "YOU WIN!");
+              textToSpeech.speak("YOU WIN!");
               this.cancel();
               return null;
             }
@@ -227,12 +232,6 @@ public class CanvasController {
 
     canvas.setOnMouseDragged(
         e -> {
-          try {
-            MusicPlayer.drawingSoundEffect(user);
-          } catch (URISyntaxException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-          }
           // Brush size (you can change this, it should not be too small or too large).
           double size = 6;
           if (isErase) {
@@ -255,6 +254,21 @@ public class CanvasController {
         });
   }
 
+  private void updateHint() {
+    this.hintTimeRemaining++;
+    if ((this.hintTimeRemaining >= this.hintTimer) && !(this.hint.equals(randomWord))) {
+
+      char[] newHint = this.hint.toCharArray();
+      char[] word = this.randomWord.toCharArray();
+      newHint[this.hintUpdateIndex] = word[this.hintUpdateIndex];
+      this.hint = String.valueOf(newHint);
+      this.hintUpdateIndex++;
+      this.hintTimeRemaining = 0;
+
+      hintLabel.setText(this.hint);
+    }
+  }
+
   /** displayPrediction task gets the predictions from the DL model and puts it into the list */
   private void displayPrediction() {
 
@@ -273,22 +287,31 @@ public class CanvasController {
             boolean isInTop =
                 DoodlePrediction.getPredictionsList(
                         model.getPredictions(thisImage, predictionWinNumber))
-                    .contains(randomWord); // get
-            // top
-            // predictions
-            // based
+                    .contains(randomWord); // get top predictions based
+
             Platform.runLater(
                 () -> {
+                  updateHint();
+
+                  try {
+                    if (DoodlePrediction.getPredictionsList(
+                            model.getPredictions(thisImage, predictionWinNumber))
+                        .contains(randomWord)) {}
+
+                  } catch (TranslateException e) {
+                    e.printStackTrace();
+                  }
+
                   // puts the top 10 predictions in the list
                   predictionsList.setItems(predictions);
                   if (isInTop && secondsLeft != startingTime) {
+                    // if the chosen topic is in the top 3, then the game ends (user wins!)
                     File file =
                         new File(
                             System.getProperty("user.dir")
                                 + "/src/main/resources/images/canvas_images/excitedBulb.png");
                     Image image = new Image(file.toURI().toString());
                     lightbulb.setImage(image);
-                    // if the chosen topic is in the top 3, then the game ends (user wins!)
                     endGame(true);
                     this.cancel();
                   } else if (secondsLeft == 0) {
@@ -378,12 +401,39 @@ public class CanvasController {
     model = new DoodlePrediction();
 
     CategorySelector categorySelector = new CategorySelector();
-    randomWord = categorySelector.getRandomCategory(user.getWordDifficulty()); // sets to easy mode
+    randomWord =
+        categorySelector.getRandomCategory(
+            user.getWordDifficulty()); // sets depending on difficulty
+    while (true) {
+      try {
+        this.randomDefinition =
+            DictionaryLookup.searchWordInfo(randomWord)
+                .getWordEntries()
+                .get(0)
+                .getDefinitions()
+                .get(0);
+        break;
+
+      } catch (IOException | WordNotFoundException e) {
+        randomWord = categorySelector.getRandomCategory(user.getWordDifficulty());
+      }
+    }
 
     gameOverComponents.setVisible(false);
     canvas.setDisable(true);
     canvasPane.setVisible(true);
-    categoryLabel.setText(randomWord);
+    categoryLabel.setText(randomDefinition);
+    categoryLabel.setWrapText(true);
+
+    this.hint = "_".repeat(randomWord.length());
+    hintLabel.setVisible(false);
+    hintLabel.setDisable(true);
+    hintLabel.setText(this.hint);
+
+    // this.hintTimer = (int) Math.ceil((double)this.startingTime / this.randomWord.length());
+    this.hintTimer = this.startingTime / this.randomWord.length();
+    System.out.println(hintTimer);
+    System.out.println(randomDefinition);
     timeLabel.setText(String.valueOf(secondsLeft));
   }
 

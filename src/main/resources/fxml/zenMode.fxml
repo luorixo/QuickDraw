@@ -261,38 +261,24 @@
                   </Pane>
                </children>
             </StackPane>
-            <Pane minWidth="200.0" prefHeight="200.0" prefWidth="112.0">
+            <Pane minWidth="200.0" prefHeight="200.0" prefWidth="112.0" style="-fx-background-color: #6387BA;">
                <children>
-                  <ListView fx:id="predictionsList" layoutX="17.0" layoutY="207.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="167.0" style="-fx-background-color: #223043; -fx-border-radius: 5px; -fx-opaque-insets: 20;" />
-                  <ImageView fitHeight="60.0" fitWidth="171.0" layoutX="15.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ListView fx:id="predictionsList" layoutX="17.0" layoutY="96.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="167.0" style="-fx-background-color: #6387BA; -fx-border-radius: 5px; -fx-opaque-insets: 20;" />
+                  <ImageView fitHeight="60.0" fitWidth="171.0" layoutX="15.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/canvas_images/toppredictions.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="categoryLabel1" alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="206.0" prefHeight="0.0" prefWidth="17.0" text="1" textAlignment="CENTER" textFill="#ff3636">
-                     <font>
-                        <Font name="Source Sans 3 Black" size="19.0" />
-                     </font>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </Label>
-                  <Label fx:id="categoryLabel11" alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="230.0" prefHeight="0.0" prefWidth="17.0" text="2" textAlignment="CENTER" textFill="#ff3636">
-                     <font>
-                        <Font name="Source Sans 3 Black" size="19.0" />
-                     </font>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </Label>
-                  <Label fx:id="categoryLabel12" alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="255.0" prefHeight="0.0" prefWidth="17.0" text="3" textAlignment="CENTER" textFill="#ff3636">
-                     <font>
-                        <Font name="Source Sans 3 Black" size="19.0" />
-                     </font>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </Label>
+                  <ImageView fx:id="questionMark" fitHeight="230.0" fitWidth="188.0" layoutX="29.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/canvas_images/%3F.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="lightbulb" fitHeight="178.0" fitWidth="110.0" layoutX="45.0" layoutY="377.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/canvas_images/confusedBulb.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
          </children>

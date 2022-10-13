@@ -98,6 +98,16 @@ public class DoodlePrediction {
     return predictionsList;
   }
 
+  public static List<String> getBasePredictionsList(
+      final List<Classifications.Classification> predictions) {
+    ObservableList<String> predictionsList = FXCollections.observableArrayList();
+    for (final Classifications.Classification classification : predictions) {
+      predictionsList.add(classification.getClassName().replaceAll("_", " "));
+    }
+
+    return predictionsList;
+  }
+
   private final ZooModel<Image, Classifications> model;
 
   /**
