@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="420.0" prefWidth="600.0" style="-fx-background-color: #005267;" stylesheets="@../css/canvasPageCSS.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.CanvasController">
+<VBox alignment="CENTER" prefHeight="420.0" prefWidth="600.0" style="-fx-background-color: #005267;" stylesheets="@../css/canvasPageCSS.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.DefinitionsController">
   <children>
       <HBox prefHeight="582.0" prefWidth="600.0" style="-fx-background-color: #223043;">
          <children>
@@ -29,7 +29,7 @@
                   </ImageView>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <VBox alignment="CENTER" layoutX="144.0" layoutY="43.0" prefHeight="162.0" prefWidth="333.0">
+                        <VBox alignment="CENTER" layoutX="13.0" layoutY="42.0" prefHeight="162.0" prefWidth="333.0">
                            <children>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                  <children>
@@ -48,51 +48,72 @@
                               </HBox>
                               <ImageView fitHeight="60.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/canvas_images/yourtopic.png" />
+                                    <Image url="@../images/canvas_images/Definition.png" />
                                  </image>
                                  <VBox.margin>
-                                    <Insets top="-5.0" />
+                                    <Insets top="-20.0" />
                                  </VBox.margin>
                               </ImageView>
-                              <Label fx:id="categoryLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="326.0" text="TOPIC" textAlignment="CENTER" textFill="WHITE">
+                              <Label fx:id="categoryLabel" alignment="CENTER" contentDisplay="CENTER" minHeight="50.0" minWidth="584.0" prefHeight="50.0" prefWidth="584.0" text="DEFINITION" textAlignment="CENTER" textFill="WHITE">
                                  <font>
-                                    <Font name="Source Sans 3 Black" size="25.0" />
+                                    <Font name="Source Sans 3 Black" size="15.0" />
                                  </font>
                                  <effect>
                                     <DropShadow />
                                  </effect>
                                  <VBox.margin>
-                                    <Insets top="-7.0" />
+                                    <Insets top="-9.0" />
                                  </VBox.margin>
                               </Label>
                            </children>
                         </VBox>
-                        <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="387.0" mnemonicParsing="false" onAction="#onClear" prefHeight="54.0" prefWidth="71.0" style="-fx-background-color: #FF3636; -fx-background-radius: 15;" text="🗑️" textFill="WHITE">
+                        <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="384.0" maxHeight="60.0" maxWidth="65.0" minHeight="60.0" minWidth="65.0" mnemonicParsing="false" onAction="#onClear" prefHeight="60.0" prefWidth="65.0" style="-fx-background-color: #FF3636; -fx-background-radius: 15;" textFill="WHITE">
                            <font>
                               <Font name="Source Sans Pro Black" size="25.0" />
                            </font>
                            <effect>
                               <DropShadow offsetY="2.0" />
                            </effect>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/canvas_images/trashcan.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </Button>
-                        <Button fx:id="eraseButton" layoutX="528.0" layoutY="281.0" mnemonicParsing="false" onAction="#onErase" prefHeight="54.0" prefWidth="71.0" style="-fx-background-color: #FF9736; -fx-background-radius: 15;" text="⌫" textFill="WHITE">
+                        <Button fx:id="eraseButton" layoutX="528.0" layoutY="282.0" maxHeight="60.0" maxWidth="65.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onErase" prefHeight="60.0" prefWidth="65.0" style="-fx-background-color: #FFBA0E; -fx-background-radius: 15;" textFill="WHITE">
                            <font>
                               <Font name="Source Sans Pro Black" size="25.0" />
                            </font>
                            <effect>
                               <DropShadow offsetY="2.0" />
                            </effect>
+                           <graphic>
+                              <ImageView fitHeight="29.0" fitWidth="159.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/canvas_images/eraser.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </Button>
-                    <Button fx:id="paintButton" alignment="CENTER" layoutX="528.0" layoutY="216.0" mnemonicParsing="false" onAction="#onPaint" prefHeight="54.0" prefWidth="71.0" style="-fx-background-color: #FF9736; -fx-background-radius: 15;" text="🖌" textFill="WHITE">
+                    <Button fx:id="paintButton" alignment="CENTER" layoutX="528.0" layoutY="214.0" maxHeight="60.0" maxWidth="65.0" minHeight="60.0" minWidth="65.0" mnemonicParsing="false" onAction="#onPaint" prefHeight="60.0" prefWidth="65.0" style="-fx-background-color: #FFBA0E; -fx-background-radius: 15;" textFill="WHITE">
                            <font>
                               <Font name="Source Sans Pro Black" size="25.0" />
                            </font>
                            <effect>
                               <DropShadow offsetY="2.0" />
                            </effect>
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/canvas_images/paintBrush.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </Button>
                         <Pane layoutX="140.0" layoutY="235.0" prefHeight="200.0" prefWidth="341.0" />
-                        <Button fx:id="readyButton" layoutX="179.0" layoutY="479.0" mnemonicParsing="false" onAction="#onStartGame" prefHeight="67.0" prefWidth="266.0" style="-fx-background-color: #FF9736; -fx-background-radius: 15;" text="START" textFill="WHITE">
+                        <Button fx:id="readyButton" layoutX="179.0" layoutY="479.0" mnemonicParsing="false" onAction="#onStartGame" prefHeight="67.0" prefWidth="266.0" style="-fx-background-color: #FFBA0E; -fx-background-radius: 15;" text="START" textFill="WHITE">
                            <font>
                               <Font name="Source Sans Pro Black" size="31.0" />
                            </font>
@@ -173,16 +194,26 @@
                               </ImageView>
                            </graphic>
                         </Button>
+                        <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="103.0" layoutY="474.0" prefHeight="78.0" prefWidth="419.0" text="HINT" textFill="WHITE">
+                           <font>
+                              <Font size="55.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                </children>
             </StackPane>
-            <Pane minWidth="200.0" prefHeight="200.0" prefWidth="112.0">
+            <Pane minWidth="200.0" prefHeight="200.0" prefWidth="112.0" style="-fx-background-color: #6387BA;">
                <children>
-                  <ListView fx:id="predictionsList" layoutX="17.0" layoutY="207.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="167.0" style="-fx-background-color: #223043; -fx-border-radius: 5px; -fx-opaque-insets: 20;" />
-                  <ImageView fitHeight="60.0" fitWidth="171.0" layoutX="15.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+                  <ListView fx:id="predictionsList" layoutX="17.0" layoutY="96.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="167.0" style="-fx-background-color: #6387BA; -fx-border-radius: 5px; -fx-opaque-insets: 20;" />
+                  <ImageView fitHeight="60.0" fitWidth="171.0" layoutX="15.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/canvas_images/toppredictions.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="178.0" fitWidth="110.0" layoutX="46.0" layoutY="384.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/canvas_images/excitedBulb.png" />
                      </image>
                   </ImageView>
                </children>

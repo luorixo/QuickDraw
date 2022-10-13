@@ -31,6 +31,8 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javax.imageio.ImageIO;
+import nz.ac.auckland.se206.dict.DictionaryLookup;
+import nz.ac.auckland.se206.dict.WordNotFoundException;
 import nz.ac.auckland.se206.ml.DoodlePrediction;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 import nz.ac.auckland.se206.words.CategorySelector;
@@ -47,11 +49,12 @@ import nz.ac.auckland.se206.words.CategorySelector;
  * the canvas size, the ML model will not work correctly. So be careful. If you make some changes in
  * the canvas and brush sizes, make sure that the prediction works fine.
  */
-public class CanvasController {
+public class DefinitionsController {
 
   @FXML private Canvas canvas;
   @FXML private Label categoryLabel;
   @FXML private Label timeLabel;
+  @FXML private Label hintLabel;
   @FXML private ListView<?> predictionsList;
   @FXML private Button clearButton;
   @FXML private VBox gameOverComponents;
@@ -70,8 +73,13 @@ public class CanvasController {
   private int startingTime = 60;
   private int secondsLeft;
   private int predictionWinNumber = 3;
+  private int hintTimer;
+  private int hintTimeRemaining = 0;
+  private int hintUpdateIndex = 0;
   private boolean gameEnd = false;
   private String randomWord;
+  private String randomDefinition;
+  private String hint;
 
   // mouse coordinates
   private double currentX;
@@ -79,7 +87,6 @@ public class CanvasController {
 
   @FXML
   private void onStartGame() {
-    backButton.setDisable(true); // disable back
     Timer timer = new Timer();
     TextToSpeech textToSpeech = new TextToSpeech();
     // creates task to speak the random category name
@@ -87,7 +94,7 @@ public class CanvasController {
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
-            textToSpeech.speak(randomWord);
+            textToSpeech.speak(randomDefinition);
             this.cancel();
             return null;
           }
@@ -134,6 +141,9 @@ public class CanvasController {
     readyButton.setVisible(false);
     canvas.setDisable(false);
     canvasPane.setVisible(true);
+    backButton.setDisable(true); // disable back
+    hintLabel.setVisible(true);
+    hintLabel.setDisable(false);
   }
 
   /**
@@ -227,6 +237,21 @@ public class CanvasController {
         });
   }
 
+  private void updateHint() {
+    this.hintTimeRemaining++;
+    if ((this.hintTimeRemaining >= this.hintTimer) && !(this.hint.equals(randomWord))) {
+
+      char[] newHint = this.hint.toCharArray();
+      char[] word = this.randomWord.toCharArray();
+      newHint[this.hintUpdateIndex] = word[this.hintUpdateIndex];
+      this.hint = String.valueOf(newHint);
+      this.hintUpdateIndex++;
+      this.hintTimeRemaining = 0;
+
+      hintLabel.setText(this.hint);
+    }
+  }
+
   /** displayPrediction task gets the predictions from the DL model and puts it into the list */
   private void displayPrediction() {
 
@@ -248,6 +273,7 @@ public class CanvasController {
                     .contains(randomWord); // get top predictions based
             Platform.runLater(
                 () -> {
+                  updateHint();
                   // puts the top 10 predictions in the list
                   predictionsList.setItems(predictions);
                   if (isInTop && secondsLeft != startingTime) {
@@ -299,15 +325,41 @@ public class CanvasController {
     setBrushType(Color.BLACK, false);
 
     model = new DoodlePrediction();
-    displayPrediction(); // puts top 10 guesses on the listview
 
     CategorySelector categorySelector = new CategorySelector();
-    randomWord = categorySelector.getRandomCategory(user.getWordDifficulty()); // sets to easy mode
+    randomWord =
+        categorySelector.getRandomCategory(
+            user.getWordDifficulty()); // sets depending on difficulty
+    while (true) {
+      try {
+        this.randomDefinition =
+            DictionaryLookup.searchWordInfo(randomWord)
+                .getWordEntries()
+                .get(0)
+                .getDefinitions()
+                .get(0);
+        break;
+
+      } catch (IOException | WordNotFoundException e) {
+        randomWord = categorySelector.getRandomCategory(user.getWordDifficulty());
+      }
+    }
 
     gameOverComponents.setVisible(false);
     canvas.setDisable(true);
     canvasPane.setVisible(true);
-    categoryLabel.setText(randomWord);
+    categoryLabel.setText(randomDefinition);
+    categoryLabel.setWrapText(true);
+
+    this.hint = "_".repeat(randomWord.length());
+    hintLabel.setVisible(false);
+    hintLabel.setDisable(true);
+    hintLabel.setText(this.hint);
+
+    // this.hintTimer = (int) Math.ceil((double)this.startingTime / this.randomWord.length());
+    this.hintTimer = this.startingTime / this.randomWord.length();
+    System.out.println(hintTimer);
+    System.out.println(randomDefinition);
     timeLabel.setText(String.valueOf(secondsLeft));
   }
 
