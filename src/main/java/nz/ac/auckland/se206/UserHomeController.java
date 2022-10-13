@@ -2,6 +2,7 @@ package nz.ac.auckland.se206;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,10 +26,13 @@ public class UserHomeController {
   @FXML private Label drawingLabel;
   @FXML private Button zenButton;
   @FXML private Button definitionButton;
-  @FXML private Button easyButton;
-  @FXML private Button mediumButton;
-  @FXML private Button hardButton;
-  @FXML private Button masterButton;
+  @FXML private Button gameButton;
+  @FXML private Label streakLabel;
+  @FXML private ImageView streakImage;
+  @FXML private Button storeButton;
+  @FXML private Button badgesButton;
+  @FXML private Button memoriesButton;
+  @FXML private Button settingsButton;
   private User user;
   private List<String> wordsSeen;
   private int currentWordIndex = 0;
@@ -39,6 +43,7 @@ public class UserHomeController {
    * waiting image or the corresponding image from the first word in their played list.
    */
   public void initialize() {
+
     user = User.getUser(id);
     nameLabel.setText("Hi, " + user.getName() + "!"); // set the greeting label
     wordsSeen = user.getWordsSeen();
@@ -47,6 +52,33 @@ public class UserHomeController {
     }
     // load in users drawing as an image
     this.updateImage();
+    // set streak image and value
+    setStreak();
+
+    try {
+      MusicPlayer.muteBackgroundSong(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * Sets the appropriate image and value for the streak fire depending on the users current win
+   * streak
+   */
+  @FXML
+  private void setStreak() {
+    File file;
+    if (user.getWinStreak() == 0) {
+      streakLabel.setText("");
+      file = new File("src/main/resources/images/user_home_text/blue-fire.png");
+    } else {
+      streakLabel.setText(String.valueOf(user.getWinStreak()));
+      file = new File("src/main/resources/images/user_home_text/red-fire.png");
+    }
+    Image image = new Image(file.toURI().toString());
+    streakImage.setImage(image);
   }
 
   /*
@@ -54,6 +86,12 @@ public class UserHomeController {
    */
   @FXML
   private void onLeftButton() {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     // go to previous word, if was at first word then loop to last
     currentWordIndex -= 1;
     if (currentWordIndex < 0) {
@@ -63,10 +101,16 @@ public class UserHomeController {
   }
 
   /*
-   *Updates image viewer image to the next image from the words seen list.
+   * Updates image viewer image to the next image from the words seen list.
    */
   @FXML
   private void onRightButton() {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     // go to next word, if was at last word then loop to first
     currentWordIndex += 1;
     if (currentWordIndex == wordsSeen.size()) {
@@ -107,9 +151,13 @@ public class UserHomeController {
       currentWord = currentWord.replace("-", " ");
       currentWord =
           currentWord.substring(0, 1).toUpperCase()
-              + currentWord
-                  .substring(1)
-                  .toLowerCase(); // formats so the first letter is captialised
+              + currentWord.substring(1).toLowerCase(); // formats
+      // so
+      // the
+      // first
+      // letter
+      // is
+      // captialised
     }
     drawingLabel.setText(currentWord); // set text to the label
   }
@@ -117,10 +165,16 @@ public class UserHomeController {
   /**
    * On back button click this will set the scene back to the user select scene
    *
-   * @param event
+   * @param event Button click that triggers function call
    */
   @FXML
   private void onBackButton(ActionEvent event) {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
@@ -135,16 +189,129 @@ public class UserHomeController {
   /**
    * On back button click this will set the scene to the user stats scene
    *
-   * @param event
+   * @param event Button click that triggers function call
    */
   @FXML
   private void onStatsButton(ActionEvent event) {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
     try {
-      // change scene from user home page to user stats
-      StatsPageController.id = id;
+      // change scene from user home page to user stats (memories page)
+      currentScene.setRoot(App.loadFxml("memories"));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * On game button click this will set the scene to the normal game
+   *
+   * @param event Button click that triggers function call
+   */
+  @FXML
+  private void onGameButton(ActionEvent event) {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    Button button = (Button) event.getSource();
+    Scene currentScene = button.getScene();
+
+    try {
+      // change scene from user home page to normal game
+      currentScene.setRoot(App.loadFxml("canvas"));
+
+      Window window = currentScene.getWindow();
+      window.setWidth(810); // set window width to 810
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * On zen mode click this will set the scene to the zen mode scene
+   *
+   * @param event Button click that triggers function call
+   */
+  @FXML
+  private void onZenButton(ActionEvent event) {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    Button button = (Button) event.getSource();
+    Scene currentScene = button.getScene();
+
+    try {
+
+      // change scene from user home page to zen game //currently set to normal game
+      // as filler
+
+      currentScene.setRoot(App.loadFxml("canvas"));
+      Window window = currentScene.getWindow();
+      window.setWidth(810); // set window width to 810
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * On definition mode click this will set the scene to the definition mode scene
+   *
+   * @param event Button click that triggers function call
+   */
+  @FXML
+  private void onDefinitionButton(ActionEvent event) {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    Button button = (Button) event.getSource();
+    Scene currentScene = button.getScene();
+
+    try {
+      // change scene from user home page to definition game //currently set to normal
+      // game as
+      // filler
+      currentScene.setRoot(App.loadFxml("canvas"));
+      Window window = currentScene.getWindow();
+      window.setWidth(810); // set window width to 810
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * On settings button click this will set the scene to the settings scene
+   *
+   * @param event Button click that triggers function call
+   */
+  @FXML
+  private void onSettingsButton(ActionEvent event) {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    Button button = (Button) event.getSource();
+    Scene currentScene = button.getScene();
+
+    try {
+      // change scene to settings
       currentScene.setRoot(App.loadFxml("settings"));
     } catch (IOException e) {
       e.printStackTrace();
@@ -152,20 +319,72 @@ public class UserHomeController {
   }
 
   /**
-   * On back button click this will set the scene to the easy game
+   * On memories button click this will set the scene to the memories scene
    *
-   * @param event
+   * @param event Button click that triggers function call
    */
   @FXML
-  private void onEasyButton(ActionEvent event) {
+  private void onMemoriesButton(ActionEvent event) {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
     try {
-      // change scene from user home page to easy game
-      currentScene.setRoot(App.loadFxml("definitions"));
-      Window window = currentScene.getWindow();
-      window.setWidth(810); // set window width to 810
+      // change scene to memories
+      currentScene.setRoot(App.loadFxml("memories"));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * On badges button click this will set the scene to the badges scene
+   *
+   * @param event Button click that triggers function call
+   */
+  @FXML
+  private void onBadgesButton(ActionEvent event) {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    Button button = (Button) event.getSource();
+    Scene currentScene = button.getScene();
+
+    try {
+      // change scene to badges //currently set to memories
+      currentScene.setRoot(App.loadFxml("memories"));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * On shop button click this will set the scene to the shop scene
+   *
+   * @param event Button click that triggers function call
+   */
+  @FXML
+  private void onShopButton(ActionEvent event) {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    Button button = (Button) event.getSource();
+    Scene currentScene = button.getScene();
+
+    try {
+      // change scene to shop //currently set to memories
+      currentScene.setRoot(App.loadFxml("memories"));
     } catch (IOException e) {
       e.printStackTrace();
     }
