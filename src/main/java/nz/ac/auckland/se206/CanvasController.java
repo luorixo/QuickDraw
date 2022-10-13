@@ -64,6 +64,8 @@ public class CanvasController {
   @FXML private Pane canvasPane;
   @FXML private ImageView questionMark;
   @FXML private ImageView lightbulb;
+  @FXML private Label coinsWon;
+  @FXML private Label badgesWon;
 
   private int userId = UserHomeController.id;
   private User user = User.getUser(userId);
@@ -202,6 +204,18 @@ public class CanvasController {
     canvas.setDisable(true);
     clearButton.setDisable(true);
     gameOverComponents.setVisible(true); // shows the game over components
+
+    if (hasWon) {
+      int badgesWon = BadgesController.updateBadges(userId, startingTime - secondsLeft);
+      User user = User.getUser(userId);
+      int coinsWon = user.grantCoins(secondsLeft);
+      user.addCoins(badgesWon * 50);
+      user.saveData();
+      coinsWon += badgesWon * 50;
+
+      this.coinsWon.setText(String.valueOf(coinsWon));
+      this.badgesWon.setText(String.valueOf(badgesWon));
+    }
   }
 
   private void setBrushType(Color brushType, boolean isErase) {
