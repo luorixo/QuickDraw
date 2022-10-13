@@ -23,8 +23,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -57,7 +57,7 @@ public class DefinitionsController {
   @FXML private Label hintLabel;
   @FXML private ListView<?> predictionsList;
   @FXML private Button clearButton;
-  @FXML private VBox gameOverComponents;
+  @FXML private Pane gameOverComponents;
   @FXML private Label gameOverLabel;
   @FXML private Button restartButton;
   @FXML private Button backButton;
@@ -65,6 +65,7 @@ public class DefinitionsController {
   @FXML private Button eraseButton;
   @FXML private Button paintButton;
   @FXML private Pane canvasPane;
+  @FXML private ImageView questionMark;
 
   private int userId = UserHomeController.id;
   private User user = User.getUser(userId);
@@ -276,6 +277,11 @@ public class DefinitionsController {
                   updateHint();
                   // puts the top 10 predictions in the list
                   predictionsList.setItems(predictions);
+                  if (predictions.size() == 0) {
+                    questionMark.setVisible(true);
+                  } else {
+                    questionMark.setVisible(false);
+                  }
                   if (isInTop && secondsLeft != startingTime) {
                     // if the chosen topic is in the top 3, then the game ends (user wins!)
                     endGame(true);
@@ -361,6 +367,8 @@ public class DefinitionsController {
     System.out.println(hintTimer);
     System.out.println(randomDefinition);
     timeLabel.setText(String.valueOf(secondsLeft));
+
+    questionMark.setVisible(false);
   }
 
   /** This method is called when the "Clear" button is pressed. */
