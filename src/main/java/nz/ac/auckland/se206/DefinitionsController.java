@@ -218,8 +218,8 @@ public class DefinitionsController {
       user.saveData();
       coinsWon += badgesWon * 50;
 
-      this.coinsWon.setText(String.valueOf(coinsWon));
-      this.badgesWon.setText(String.valueOf(badgesWon));
+      this.coinsWon.setText("+" + String.valueOf(coinsWon));
+      this.badgesWon.setText("+" + String.valueOf(badgesWon));
     }
   }
 

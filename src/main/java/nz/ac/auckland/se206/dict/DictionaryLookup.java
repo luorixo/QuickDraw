@@ -15,6 +15,14 @@ public class DictionaryLookup {
 
   private static final String API_URL = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
+  /**
+   * searches for the word's definition using the string as input
+   *
+   * @param query The definition to look for
+   * @return the word info associated with it
+   * @throws IOException
+   * @throws WordNotFoundException
+   */
   public static WordInfo searchWordInfo(String query) throws IOException, WordNotFoundException {
 
     OkHttpClient client = new OkHttpClient();
@@ -32,9 +40,11 @@ public class DictionaryLookup {
     } catch (ClassCastException e) {
     }
 
+    // returns as a JSON array
     JSONArray jArray = (JSONArray) new JSONTokener(jsonString).nextValue();
     List<WordEntry> entries = new ArrayList<WordEntry>();
 
+    // CODE FROM CONCURRENCY LAB
     for (int e = 0; e < jArray.length(); e++) {
       JSONObject jsonEntryObj = jArray.getJSONObject(e);
       JSONArray jsonMeanings = jsonEntryObj.getJSONArray("meanings");
@@ -60,7 +70,7 @@ public class DictionaryLookup {
           }
         }
       }
-
+      // adds it to word entry
       WordEntry wordEntry = new WordEntry(partOfSpeech, definitions);
       entries.add(wordEntry);
     }
