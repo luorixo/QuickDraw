@@ -89,6 +89,10 @@ public class DefinitionsController {
   private double currentX;
   private double currentY;
 
+  /**
+   * This methods starts the game the user requests. It includes a button sound effect, a
+   * texttospeech thread and a timer thread.
+   */
   @FXML
   private void onStartGame() {
     Timer timer = new Timer();
@@ -218,11 +222,17 @@ public class DefinitionsController {
       user.saveData();
       coinsWon += badgesWon * 50;
 
-      this.coinsWon.setText(String.valueOf(coinsWon));
-      this.badgesWon.setText(String.valueOf(badgesWon));
+      this.coinsWon.setText("+" + String.valueOf(coinsWon));
+      this.badgesWon.setText("+" + String.valueOf(badgesWon));
     }
   }
 
+  /**
+   * This function sets the brush size, different sizes for the erase and pencil
+   *
+   * @param brushType
+   * @param isErase
+   */
   private void setBrushType(Color brushType, boolean isErase) {
     canvas.setOnMousePressed(
         e -> {
@@ -254,6 +264,7 @@ public class DefinitionsController {
         });
   }
 
+  /** This function gives a hint to the user if the definition provided it not enough */
   private void updateHint() {
     this.hintTimeRemaining++;
     if ((this.hintTimeRemaining >= this.hintTimer) && !(this.hint.equals(randomWord))) {
@@ -287,7 +298,10 @@ public class DefinitionsController {
             boolean isInTop =
                 DoodlePrediction.getPredictionsList(
                         model.getPredictions(thisImage, predictionWinNumber))
-                    .contains(randomWord); // get top predictions based
+                    .contains(randomWord); // get
+            // top
+            // predictions
+            // based
 
             Platform.runLater(
                 () -> {
@@ -430,7 +444,8 @@ public class DefinitionsController {
     hintLabel.setDisable(true);
     hintLabel.setText(this.hint);
 
-    // this.hintTimer = (int) Math.ceil((double)this.startingTime / this.randomWord.length());
+    // this.hintTimer = (int) Math.ceil((double)this.startingTime /
+    // this.randomWord.length());
     this.hintTimer = this.startingTime / this.randomWord.length();
     System.out.println(hintTimer);
     System.out.println(randomDefinition);
@@ -443,11 +458,13 @@ public class DefinitionsController {
     graphic.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
   }
 
+  /** This method is called when the user chooses to draw */
   @FXML
   private void onPaint() {
     setBrushType(Color.BLACK, false);
   }
 
+  /** This method is called when the user chooses to erase */
   @FXML
   private void onErase() {
     setBrushType(Color.WHITE, true);
@@ -463,6 +480,11 @@ public class DefinitionsController {
   @FXML
   private void onPredict() throws TranslateException {}
 
+  /**
+   * This method is called when the user wants to go back to the user home
+   *
+   * @param event
+   */
   @FXML
   private void onBackHome(ActionEvent event) {
     Button button = (Button) event.getSource();
@@ -479,6 +501,11 @@ public class DefinitionsController {
     }
   }
 
+  /**
+   * This method is called when the user wants to save an image
+   *
+   * @param event
+   */
   @FXML
   private void onSaveImage(ActionEvent event) {
     Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();

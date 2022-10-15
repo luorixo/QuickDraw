@@ -36,6 +36,12 @@ public class SettingsController {
   @FXML private ImageView soundImage;
   private User user = User.getUser(UserHomeController.id);
 
+  /**
+   * This function is called before the GUI elements are set up when the user enters the settings
+   * page. It intialises the page.
+   *
+   * @throws URISyntaxException
+   */
   public void initialize() throws URISyntaxException {
 
     // shorted tooltip delay

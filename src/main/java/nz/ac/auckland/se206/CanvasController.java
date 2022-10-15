@@ -81,6 +81,12 @@ public class CanvasController {
   private double currentX;
   private double currentY;
 
+  /**
+   * This methods starts the game the user requests. It includes a button sound effect, a
+   * texttospeech thread and a timer thread.
+   *
+   * @throws URISyntaxException
+   */
   @FXML
   private void onStartGame() throws URISyntaxException {
 
@@ -213,8 +219,8 @@ public class CanvasController {
       user.saveData();
       coinsWon += badgesWon * 50;
 
-      this.coinsWon.setText(String.valueOf(coinsWon));
-      this.badgesWon.setText(String.valueOf(badgesWon));
+      this.coinsWon.setText("+" + String.valueOf(coinsWon));
+      this.badgesWon.setText("+" + String.valueOf(badgesWon));
     }
   }
 
@@ -393,11 +399,13 @@ public class CanvasController {
     graphic.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
   }
 
+  /** This method is called when the user chooses to draw */
   @FXML
   private void onPaint() {
     setBrushType(Color.BLACK, false);
   }
 
+  /** This method is called when the user chooses to erase */
   @FXML
   private void onErase() {
     setBrushType(Color.WHITE, true);
@@ -413,6 +421,11 @@ public class CanvasController {
   @FXML
   private void onPredict() throws TranslateException {}
 
+  /**
+   * This method is called when the user wants to go back to the user home
+   *
+   * @param event
+   */
   @FXML
   private void onBackHome(ActionEvent event) {
     Button button = (Button) event.getSource();
@@ -429,6 +442,11 @@ public class CanvasController {
     }
   }
 
+  /**
+   * This method is called when the user wants to save an image
+   *
+   * @param event
+   */
   @FXML
   private void onSaveImage(ActionEvent event) {
     Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();

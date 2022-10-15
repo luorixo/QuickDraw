@@ -17,18 +17,33 @@ public class MusicPlayer {
   public static MediaPlayer startButtonSoundEffect;
   public static MediaPlayer drawingSoundEffect;
 
+  /**
+   * This function intialises the background song and the sound effects the game uses
+   *
+   * @throws URISyntaxException
+   */
   public static void intilalise() throws URISyntaxException {
 
     intialiseBackgroundSong();
     intialiseSoundEffects();
   }
 
+  /**
+   * THis function downloads the background song from resources
+   *
+   * @throws URISyntaxException
+   */
   private static void intialiseBackgroundSong() throws URISyntaxException {
     backgroundSound =
         new Media(App.class.getResource("/sounds/backgroundSong.mp3").toURI().toString());
     playBackgroundSong = new MediaPlayer(backgroundSound);
   }
 
+  /**
+   * This function is called when we want to play the background song
+   *
+   * @throws URISyntaxException
+   */
   public static void playBackgroundSong() throws URISyntaxException {
 
     playBackgroundSong.setMute(false);
@@ -36,6 +51,12 @@ public class MusicPlayer {
     playBackgroundSong.play();
   }
 
+  /**
+   * This function is called when the user chooses to mute the background song
+   *
+   * @param user
+   * @throws URISyntaxException
+   */
   public static void muteBackgroundSong(User user) throws URISyntaxException {
 
     if (!user.getMusicState()) {
@@ -45,6 +66,12 @@ public class MusicPlayer {
     }
   }
 
+  /**
+   * This function allows us to play the background song if the user decides to
+   *
+   * @param user
+   * @throws URISyntaxException
+   */
   public static void playBackgroundSong(User user) throws URISyntaxException {
 
     if (user.getMusicState()) {
@@ -54,6 +81,11 @@ public class MusicPlayer {
     }
   }
 
+  /**
+   * This function downloads all the sounds effects that will be used in the game from resources
+   *
+   * @throws URISyntaxException
+   */
   private static void intialiseSoundEffects() throws URISyntaxException {
 
     buttonSound = new Media(App.class.getResource("/sounds/buttonClick.mp3").toURI().toString());
@@ -64,12 +96,23 @@ public class MusicPlayer {
     drawingSoundEffect = new MediaPlayer(drawingSound);
   }
 
+  /**
+   * This method plays the button sound effect on the landing page
+   *
+   * @throws URISyntaxException
+   */
   public static void playButtonSoundEffect() throws URISyntaxException {
 
     playButtonSoundEffect.seek(playButtonSoundEffect.getStartTime());
     playButtonSoundEffect.play();
   }
 
+  /**
+   * This methods plays the button sound effect on every other page
+   *
+   * @param user
+   * @throws URISyntaxException
+   */
   public static void playButtonSoundEffect(User user) throws URISyntaxException {
 
     if (user.getSoundEffectState()) {
@@ -78,6 +121,12 @@ public class MusicPlayer {
     }
   }
 
+  /**
+   * This method plays the start button sound effect
+   *
+   * @param user
+   * @throws URISyntaxException
+   */
   public static void startButtonSoundEffect(User user) throws URISyntaxException {
 
     if (user.getSoundEffectState()) {
@@ -86,6 +135,12 @@ public class MusicPlayer {
     }
   }
 
+  /**
+   * This method plays the drawing sound effect when the plays chooses to draw
+   *
+   * @param user
+   * @throws URISyntaxException
+   */
   public static void drawingSoundEffect(User user) throws URISyntaxException {
 
     drawingSoundEffect.getTotalDuration();
@@ -98,6 +153,13 @@ public class MusicPlayer {
     }
   }
 
+  /**
+   * Whenever a class uses texttospeech they will pass it through this function here
+   *
+   * @param user
+   * @param speakString
+   * @throws URISyntaxException
+   */
   public static void TextToSpeech(User user, String speakString) throws URISyntaxException {
 
     if (user.getTextToSpeechState()) {

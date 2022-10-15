@@ -40,7 +40,7 @@ public class ShopPageController {
   private User user = User.getUser(UserHomeController.id);
 
   /**
-   * This function is called when the FXML is initialized. THis will set the correct display
+   * This function is called when the FXML is initialized. This will set the correct display
    * depending on the users state for each background.
    */
   public void initialize() {
