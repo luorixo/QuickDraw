@@ -9,78 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
 public class BadgesController {
-
-  @FXML private ImageView imageLogo;
-  @FXML private Label bronzeTimeLabel;
-  @FXML private Label silverTimeLabel;
-  @FXML private Label goldTimeLabel;
-  @FXML private Label legendaryTimeLabel;
-  @FXML private Label bronzeConfLabel;
-  @FXML private Label silverConfLabel;
-  @FXML private Label goldConfLabel;
-  @FXML private Label legendaryConfLabel;
-  @FXML private Label bronzeStreakLabel;
-  @FXML private Label silverStreakLabel;
-  @FXML private Label goldStreakLabel;
-  @FXML private Label legendaryStreakLabel;
-  @FXML private Label bronzeWordLabel;
-  @FXML private Label silverWordLabel;
-  @FXML private Label goldWordLabel;
-  @FXML private Label legendaryWordLabel;
-  @FXML private Label bronzeAccuracyLabel;
-  @FXML private Label silverAccuracyLabel;
-  @FXML private Label goldAccuracyLabel;
-  @FXML private Label LegendaryGamesLabel;
-  private Label[] badgeArray;
+  // static fields and methods
   private static User user;
-
-  /**
-   * Initialize runs when the FXML scene is called. This function creates a badge array with all of
-   * the badge labels and calls the display function.
-   */
-  public void initialize() {
-    badgeArray =
-        new Label[] {
-          bronzeTimeLabel,
-          silverTimeLabel,
-          goldTimeLabel,
-          legendaryTimeLabel,
-          bronzeConfLabel,
-          silverConfLabel,
-          goldConfLabel,
-          legendaryConfLabel,
-          bronzeStreakLabel,
-          silverStreakLabel,
-          goldStreakLabel,
-          legendaryStreakLabel,
-          bronzeWordLabel,
-          silverWordLabel,
-          goldWordLabel,
-          legendaryWordLabel,
-          bronzeAccuracyLabel,
-          silverAccuracyLabel,
-          goldAccuracyLabel,
-          LegendaryGamesLabel
-        };
-    user = User.getUser(UserHomeController.id);
-    displayBadges();
-  }
-
-  /**
-   * This function will get the users badge states and appropriately enable the labels for the
-   * badges the user has won. All badge labels are disabled by default
-   */
-  @FXML
-  private void displayBadges() {
-    boolean[] badgesWon = user.getBadges();
-    // go through all badges, if badge true (won) then enable display of appropriate label
-    for (int i = 0; i < 20; i++) {
-      if (badgesWon[i]) {
-        badgeArray[i].setDisable(false);
-      }
-    }
-  }
-
   /**
    * This function is too be called by game functions if a user has won a game. This should only be
    * called after all stats have been updated - DO NOT CALL IF USER HAS LOST THE GAME - DO NOT CALL
@@ -243,6 +173,76 @@ public class BadgesController {
     user.saveData();
 
     return badgesWon;
+  }
+
+  @FXML private ImageView imageLogo;
+  @FXML private Label bronzeTimeLabel;
+  @FXML private Label silverTimeLabel;
+  @FXML private Label goldTimeLabel;
+  @FXML private Label legendaryTimeLabel;
+  @FXML private Label bronzeConfLabel;
+  @FXML private Label silverConfLabel;
+  @FXML private Label goldConfLabel;
+  @FXML private Label legendaryConfLabel;
+  @FXML private Label bronzeStreakLabel;
+  @FXML private Label silverStreakLabel;
+  @FXML private Label goldStreakLabel;
+  @FXML private Label legendaryStreakLabel;
+  @FXML private Label bronzeWordLabel;
+  @FXML private Label silverWordLabel;
+  @FXML private Label goldWordLabel;
+  @FXML private Label legendaryWordLabel;
+  @FXML private Label bronzeAccuracyLabel;
+  @FXML private Label silverAccuracyLabel;
+  @FXML private Label goldAccuracyLabel;
+  @FXML private Label LegendaryGamesLabel;
+  private Label[] badgeArray;
+
+  /**
+   * Initialize runs when the FXML scene is called. This function creates a badge array with all of
+   * the badge labels and calls the display function.
+   */
+  public void initialize() {
+    badgeArray =
+        new Label[] {
+          bronzeTimeLabel,
+          silverTimeLabel,
+          goldTimeLabel,
+          legendaryTimeLabel,
+          bronzeConfLabel,
+          silverConfLabel,
+          goldConfLabel,
+          legendaryConfLabel,
+          bronzeStreakLabel,
+          silverStreakLabel,
+          goldStreakLabel,
+          legendaryStreakLabel,
+          bronzeWordLabel,
+          silverWordLabel,
+          goldWordLabel,
+          legendaryWordLabel,
+          bronzeAccuracyLabel,
+          silverAccuracyLabel,
+          goldAccuracyLabel,
+          LegendaryGamesLabel
+        };
+    user = User.getUser(UserHomeController.id);
+    displayBadges();
+  }
+
+  /**
+   * This function will get the users badge states and appropriately enable the labels for the
+   * badges the user has won. All badge labels are disabled by default
+   */
+  @FXML
+  private void displayBadges() {
+    boolean[] badgesWon = user.getBadges();
+    // go through all badges, if badge true (won) then enable display of appropriate label
+    for (int i = 0; i < 20; i++) {
+      if (badgesWon[i]) {
+        badgeArray[i].setDisable(false);
+      }
+    }
   }
 
   /**
