@@ -34,6 +34,10 @@ public class BadgesController {
   private Label[] badgeArray;
   private static User user;
 
+  /**
+   * Initialize runs when the FXML scene is called. This function creates a badge array with all of
+   * the badge labels and calls the display function.
+   */
   public void initialize() {
     badgeArray =
         new Label[] {
@@ -81,7 +85,8 @@ public class BadgesController {
    * This function is too be called by game functions if a user has won a game. This should only be
    * called after all stats have been updated - DO NOT CALL IF USER HAS LOST THE GAME - DO NOT CALL
    * BEFORE ANY UPDATING STATISTICS OR USER JSON VALUES. This function must also be passed in the
-   * user id and the number of seconds the user had left in the game.
+   * user id and the number of seconds the user had left in the game. The function returns an
+   * integer value of how many badges the user earned from the game.
    *
    * @param userId the integer id of the user the badges need to be updated for
    * @param gameTimeLeft the time left on a winning game
@@ -118,7 +123,7 @@ public class BadgesController {
       badgeState[3] = true;
     }
 
-    // confidence badges
+    // confidence badges for winning at each difficulty
     switch (user.getConfidenceDifficulty()) {
       case EASY:
         if (!badgeState[4]) {
@@ -146,7 +151,7 @@ public class BadgesController {
         break;
     }
 
-    // streak badges
+    // streak badges for 5,10,15,20 consecutive wins
     switch (user.getWinStreak()) {
       case 5:
         if (!badgeState[8]) {
@@ -174,7 +179,7 @@ public class BadgesController {
         break;
     }
 
-    // words badges
+    // words badges for winning at each difficulty
     switch (user.getWordDifficulty()) {
       case EASY:
         if (!badgeState[12]) {
@@ -202,7 +207,7 @@ public class BadgesController {
         break;
     }
 
-    // accuracy badges
+    // accuracy badges for winning at each difficulty
     switch (user.getAccuracyDifficulty()) {
       case EASY:
         if (!badgeState[16]) {
@@ -226,7 +231,7 @@ public class BadgesController {
         break;
     }
 
-    // games won badge
+    // games won badge for winning 100 games
     if (user.getGamesWon() == 100) {
       if (!badgeState[19]) {
         badgesWon++;
@@ -243,7 +248,7 @@ public class BadgesController {
   /**
    * On back button click this will set the scene back to the user home
    *
-   * @param event
+   * @param event Button click that triggers this function call - back button
    */
   @FXML
   private void onBackButton(ActionEvent event) {
