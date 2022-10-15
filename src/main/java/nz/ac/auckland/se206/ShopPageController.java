@@ -2,6 +2,7 @@ package nz.ac.auckland.se206;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -179,6 +180,14 @@ public class ShopPageController {
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
+    // play sound effect
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e1) {
+      // TODO Auto-generated catch block
+      e1.printStackTrace();
+    }
+
     try {
       // change scene from settings page back to user home
       currentScene.setRoot(App.loadFxml("userHome"));
@@ -197,6 +206,15 @@ public class ShopPageController {
   private void onButton(ActionEvent event) {
     Button button = (Button) event.getSource();
     String buttonId = button.getId();
+
+    // play sound effect
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e1) {
+      // TODO Auto-generated catch block
+      e1.printStackTrace();
+    }
+
     switch (buttonId) {
       case "purpleButton": // purple is always owned so no need to check
         user.setCurrentBackground("purple_background.png");
@@ -368,6 +386,15 @@ public class ShopPageController {
   @FXML
   private void onCancelButton(ActionEvent event) {
     Button button = (Button) event.getSource();
+
+    // play sound effect
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e1) {
+      // TODO Auto-generated catch block
+      e1.printStackTrace();
+    }
+
     button.setDisable(true);
     button.setVisible(false);
     displayOwned();

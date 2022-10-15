@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -38,6 +39,13 @@ public class MemoriesController {
   /** Handles the switching of statistics displays when the next button is clicked. */
   @FXML
   private void onNextButton() {
+    // play sound effect
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e1) {
+      // TODO Auto-generated catch block
+      e1.printStackTrace();
+    }
     // depending on the cycle head display the appropriate display
     switch (statCycleNum) {
       case 1:
@@ -243,6 +251,14 @@ public class MemoriesController {
   private void onBackButton(ActionEvent event) {
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
+
+    // play sound effect
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e1) {
+      // TODO Auto-generated catch block
+      e1.printStackTrace();
+    }
 
     try {
       // change scene from stats page back to user home

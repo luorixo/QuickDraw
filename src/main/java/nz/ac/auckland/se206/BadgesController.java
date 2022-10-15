@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -254,6 +255,13 @@ public class BadgesController {
   private void onBackButton(ActionEvent event) {
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
+    // play sound effect
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e1) {
+      // TODO Auto-generated catch block
+      e1.printStackTrace();
+    }
 
     try {
       // change scene from badges page back to user home
