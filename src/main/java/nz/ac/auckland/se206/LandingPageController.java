@@ -42,6 +42,12 @@ public class LandingPageController {
     backgroundMusicThread.start();
   }
 
+  /**
+   * This function is called when the user wants to start the game!
+   *
+   * @param event
+   * @throws URISyntaxException
+   */
   @FXML
   private void onStartGame(ActionEvent event) throws URISyntaxException {
     Button button = (Button) event.getSource();

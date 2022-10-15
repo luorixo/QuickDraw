@@ -33,6 +33,7 @@ public class ShopPageController {
   @FXML private Button spaceButton;
   private User user = User.getUser(UserHomeController.id);
 
+  /** This function is called when the user enters the shop page */
   public void initialize() {
     displayOwned();
     coinsLabel.setText("$ " + user.getCoins());
