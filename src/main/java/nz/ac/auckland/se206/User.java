@@ -98,8 +98,8 @@ public class User {
   /**
    * user constructor, makes user instance and sets fields
    *
-   * @param name
-   * @param id
+   * @param name the name of the user
+   * @param id the id of the user
    */
   public User(String name, int id) {
     this.name = name;
@@ -235,7 +235,7 @@ public class User {
   /**
    * gets the name of the user
    *
-   * @return name
+   * @return name name
    */
   public String getName() {
     return this.name;
