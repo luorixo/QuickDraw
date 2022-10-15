@@ -179,7 +179,7 @@
                                           <Image url="@../images/canvas_images/badge.png" />
                                        </image>
                                     </ImageView>
-                                    <Label fx:id="badgesWon" layoutX="309.0" layoutY="174.0" text="+2" textFill="WHITE">
+                                    <Label fx:id="badgesWon" layoutX="309.0" layoutY="174.0" text="+0" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="22.0" />
                                        </font>
@@ -189,7 +189,7 @@
                                           <Image url="@../images/canvas_images/coins.png" />
                                        </image>
                                     </ImageView>
-                                    <Label fx:id="coinsWon" alignment="CENTER" layoutX="117.0" layoutY="114.0" prefHeight="42.0" prefWidth="153.0" text="+220" textFill="WHITE">
+                                    <Label fx:id="coinsWon" alignment="CENTER" layoutX="117.0" layoutY="114.0" prefHeight="42.0" prefWidth="153.0" text="+0" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="22.0" />
                                        </font>
@@ -245,7 +245,7 @@
                   </ImageView>
                   <ImageView fx:id="questionMark" fitHeight="230.0" fitWidth="188.0" layoutX="29.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/canvas_images/%3F.png" />
+                        <Image url="@../images/canvas_images/q.png" />
                      </image>
                   </ImageView>
                </children>
