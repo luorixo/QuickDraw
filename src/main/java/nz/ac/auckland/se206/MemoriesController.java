@@ -25,6 +25,10 @@ public class MemoriesController {
   private int statCycleNum;
   private User user = User.getUser(UserHomeController.id);
 
+  /**
+   * Called on the initialisation of the FXML scene, this function will set the scene to show the
+   * first statistic - games played
+   */
   public void initialize() {
     statCycleNum = 1;
     // set to default statistic display
@@ -34,6 +38,7 @@ public class MemoriesController {
   /** Handles the switching of statistics displays when the next button is clicked. */
   @FXML
   private void onNextButton() {
+    // depending on the cycle head display the appropriate display
     switch (statCycleNum) {
       case 1:
         displayGamesWon();
@@ -232,7 +237,7 @@ public class MemoriesController {
   /**
    * On back button click this will set the scene back to the user home
    *
-   * @param event
+   * @param event Button click that triggers function call
    */
   @FXML
   private void onBackButton(ActionEvent event) {

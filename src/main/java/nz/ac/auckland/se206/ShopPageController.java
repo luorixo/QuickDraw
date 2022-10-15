@@ -39,6 +39,10 @@ public class ShopPageController {
   @FXML private Button spaceCancel;
   private User user = User.getUser(UserHomeController.id);
 
+  /**
+   * This function is called when the FXML is initialized. THis will set the correct display
+   * depending on the users state for each background.
+   */
   public void initialize() {
     displayOwned();
     coinsLabel.setText("$ " + user.getCoins());
@@ -168,7 +172,7 @@ public class ShopPageController {
   /**
    * On back button click this will set the scene back to the user home
    *
-   * @param event
+   * @param event Button click that will trigger this function call - back button
    */
   @FXML
   private void onBackButton(ActionEvent event) {
@@ -187,7 +191,7 @@ public class ShopPageController {
    * This function is used by the buttons in the shop fxml. It will call the appropriate buy or set
    * function depending on the state of the buttons.
    *
-   * @param event
+   * @param event Button event that will trigger function call - $500, buy, use button
    */
   @FXML
   private void onButton(ActionEvent event) {
@@ -247,7 +251,8 @@ public class ShopPageController {
    * pressed for the first time then the buttons enter the confirm state. If the button is in the
    * confirm state then the payment and buying process goes through.
    *
-   * @param backgroundNum
+   * @param backgroundNum int value of which background is being referred to , number matches index
+   *     number of state in user json array
    */
   private void confirmOrBuy(int backgroundNum) {
     // get confirm buy image
@@ -358,7 +363,7 @@ public class ShopPageController {
    * This function is called when a cancel button is clicked. This will exit the button out of the
    * confirm buy state and hide the cancel button again.
    *
-   * @param event
+   * @param event Button event which triggers function - cancel red cross button
    */
   @FXML
   private void onCancelButton(ActionEvent event) {

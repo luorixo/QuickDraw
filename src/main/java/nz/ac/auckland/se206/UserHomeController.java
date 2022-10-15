@@ -76,6 +76,7 @@ public class UserHomeController {
   @FXML
   private void setStreak() {
     File file;
+    // set red fire if streak, set blue fire if no streak
     if (user.getWinStreak() == 0) {
       streakLabel.setText("");
       file = new File("src/main/resources/images/user_home_text/blue-fire.png");
@@ -193,7 +194,7 @@ public class UserHomeController {
   }
 
   /**
-   * On back button click this will set the scene to the user stats scene
+   * On back button click this will set the scene to the user stats/memories scene
    *
    * @param event Button click that triggers function call
    */
@@ -260,8 +261,7 @@ public class UserHomeController {
     Scene currentScene = button.getScene();
 
     try {
-      // change scene from user home page to zen game //currently set to normal game
-      // as filler
+      // change scene from user home page to zen game
       currentScene.setRoot(App.loadFxml("zenMode"));
       Window window = currentScene.getWindow();
       window.setWidth(810); // set window width to 810
@@ -287,9 +287,7 @@ public class UserHomeController {
     Scene currentScene = button.getScene();
 
     try {
-      // change scene from user home page to definition game //currently set to normal
-      // game as
-      // filler
+      // change scene from user home page to definition game
       currentScene.setRoot(App.loadFxml("definitions"));
       Window window = currentScene.getWindow();
       window.setWidth(810); // set window width to 810
