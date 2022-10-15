@@ -108,11 +108,12 @@
                               <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="165.0" prefWidth="25.0" />
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="610.0">
+                        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="610.0">
                            <children>
+                              <HBox prefHeight="50.0" prefWidth="52.0" />
                               <Button id="purpleButton" fx:id="purpleButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onButton" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
                                  <graphic>
-                                    <ImageView fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView id="purpleButtonImage" fx:id="purpleButtonImage" fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/shopImages/use_button.png" />
                                        </image>
@@ -120,13 +121,14 @@
                                  </graphic>
                                  <tooltip>
                                     <Tooltip text="Apply background/ Buy background for 500 coins" />
-                                 </tooltip></Button>
-                              <HBox prefHeight="50.0" prefWidth="77.0" />
+                                 </tooltip>
+                              </Button>
+                              <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="74.0" />
                               <Button id="cityButton" fx:id="cityButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onButton" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
                                  <graphic>
                                     <ImageView id="cityButtonImage" fx:id="cityButtonImage" fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../images/shopImages/buy_button.png" />
+                                          <Image url="@../images/shopImages/cost-button.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -134,18 +136,44 @@
                                     <Tooltip text="Apply background/ Buy background for 500 coins" />
                                  </tooltip>
                               </Button>
-                              <HBox prefHeight="50.0" prefWidth="80.0" />
+                              <HBox prefHeight="50.0" prefWidth="9.0" />
+                              <Button id="cityCancel" fx:id="cityCancel" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onCancelButton" prefHeight="20.0" prefWidth="20.0" style="-fx-background-radius: 1000; -fx-background-color: null;" visible="false">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/shopImages/redDeleteButton.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="49.0" />
                               <Button id="dessertButton" fx:id="dessertButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onButton" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
                                  <graphic>
                                     <ImageView id="dessertButtonImage" fx:id="dessertButtonImage" fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../images/shopImages/buy_button.png" />
+                                          <Image url="@../images/shopImages/cost-button.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
                                  <tooltip>
                                     <Tooltip text="Apply background/ Buy background for 500 coins" />
                                  </tooltip>
+                              </Button>
+                              <HBox prefHeight="50.0" prefWidth="9.0" />
+                              <Button id="dessertCancel" fx:id="dessertCancel" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onCancelButton" prefHeight="20.0" prefWidth="20.0" style="-fx-background-radius: 1000; -fx-background-color: null;" visible="false">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/shopImages/redDeleteButton.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Button>
                            </children>
                         </HBox>
@@ -184,13 +212,14 @@
                               <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="165.0" prefWidth="25.0" />
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="610.0">
+                        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="610.0">
                            <children>
+                              <HBox prefHeight="50.0" prefWidth="52.0" />
                               <Button id="logButton" fx:id="logButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onButton" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
                                  <graphic>
                                     <ImageView id="logButtonImage" fx:id="logButtonImage" fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../images/shopImages/buy_button.png" />
+                                          <Image url="@../images/shopImages/cost-button.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -198,12 +227,25 @@
                                     <Tooltip text="Apply background/ Buy background for 500 coins" />
                                  </tooltip>
                               </Button>
-                              <HBox prefHeight="50.0" prefWidth="77.0" />
+                              <HBox prefHeight="50.0" prefWidth="9.0" />
+                              <Button id="logCancel" fx:id="logCancel" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onCancelButton" prefHeight="20.0" prefWidth="20.0" style="-fx-background-radius: 1000; -fx-background-color: null;" visible="false">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/shopImages/redDeleteButton.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="45.0" />
                               <Button id="skyButton" fx:id="skyButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onButton" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
                                  <graphic>
                                     <ImageView id="skyButtonImage" fx:id="skyButtonImage" fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../images/shopImages/buy_button.png" />
+                                          <Image url="@../images/shopImages/cost-button.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -211,18 +253,44 @@
                                     <Tooltip text="Apply background/ Buy background for 500 coins" />
                                  </tooltip>
                               </Button>
-                              <HBox prefHeight="50.0" prefWidth="80.0" />
+                              <HBox prefHeight="50.0" prefWidth="9.0" />
+                              <Button id="skyCancel" fx:id="skyCancel" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onCancelButton" prefHeight="20.0" prefWidth="20.0" style="-fx-background-radius: 1000; -fx-background-color: null;" visible="false">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/shopImages/redDeleteButton.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="49.0" />
                               <Button id="spaceButton" fx:id="spaceButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onButton" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: null;">
                                  <graphic>
                                     <ImageView id="spaceButtonImage" fx:id="spaceButtonImage" fitHeight="35.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../images/shopImages/buy_button.png" />
+                                          <Image url="@../images/shopImages/cost-button.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
                                  <tooltip>
                                     <Tooltip text="Apply background/ Buy background for 500 coins" />
                                  </tooltip>
+                              </Button>
+                              <HBox prefHeight="50.0" prefWidth="9.0" />
+                              <Button id="spaceCancel" fx:id="spaceCancel" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onCancelButton" prefHeight="20.0" prefWidth="20.0" style="-fx-background-radius: 1000; -fx-background-color: null;" visible="false">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/shopImages/redDeleteButton.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Button>
                            </children>
                         </HBox>
