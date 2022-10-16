@@ -54,22 +54,22 @@ public class SettingsController {
     confidenceLabel.setText(convertDifficultyToString(user.getConfidenceDifficulty()));
     timeLabel.setText(convertDifficultyToString(user.getTimeDifficulty()));
 
-    // if user current audio states are off then switch from default (default is on)
+    // if user current audio states are off then switch image from default (default is on)
     if (!user.getMusicState()) {
-      user.setMusic(true);
-      user.saveData();
-      onChangeMusic();
+      File file = new File("src/main/resources/images/settings_text/no-music.png");
+      Image image = new Image(file.toURI().toString());
+      musicImage.setImage(image);
     }
 
     if (!user.getSoundEffectState()) {
-      user.setSoundEffects(true);
-      user.saveData();
-      onChangeSound();
+      File file = new File("src/main/resources/images/settings_text/no-sound-effects.png");
+      Image image = new Image(file.toURI().toString());
+      soundImage.setImage(image);
     }
     if (!user.getTextToSpeechState()) {
-      user.setTextToSpeech(true);
-      user.saveData();
-      onChangeSpeech();
+      File file = new File("src/main/resources/images/settings_text/no-speech.png");
+      Image image = new Image(file.toURI().toString());
+      speechImage.setImage(image);
     }
   }
 

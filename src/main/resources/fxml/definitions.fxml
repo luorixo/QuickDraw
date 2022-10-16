@@ -217,10 +217,13 @@
                               <Insets top="-20.0" />
                            </padding>
                         </StackPane>
-                        <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="103.0" layoutY="474.0" prefHeight="78.0" prefWidth="419.0" text="HINT" textFill="WHITE">
+                        <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="103.0" layoutY="455.0" prefHeight="78.0" prefWidth="419.0" text="HINT" textFill="WHITE">
                            <font>
-                              <Font size="55.0" />
+                              <Font size="100.0" />
                            </font>
+                           <effect>
+                              <DropShadow offsetX="2.0" offsetY="10.0" radius="8.47" width="14.88" />
+                           </effect>
                         </Label>
                      </children>
                   </Pane>

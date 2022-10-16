@@ -88,7 +88,7 @@ public class CanvasController {
    * This methods starts the game the user requests. It includes a button sound effect, a
    * texttospeech thread and a timer thread.
    *
-   * @throws URISyntaxException
+   * @throws URISyntaxException syntax exception
    */
   @FXML
   private void onStartGame() throws URISyntaxException {
@@ -236,6 +236,12 @@ public class CanvasController {
     }
   }
 
+  /**
+   * This function sets the brush size, different sizes for the erase and pencil
+   *
+   * @param brushType the brush type
+   * @param isErase if it is an eraser
+   */
   private void setBrushType(Color brushType, boolean isErase) {
     canvas.setOnMousePressed(
         e -> {
@@ -458,7 +464,7 @@ public class CanvasController {
   /**
    * This method is called when the user wants to go back to the user home
    *
-   * @param event
+   * @param event the event
    */
   @FXML
   private void onBackHome(ActionEvent event) {
@@ -484,7 +490,7 @@ public class CanvasController {
   /**
    * This method is called when the user wants to save an image
    *
-   * @param event
+   * @param event the current event
    */
   @FXML
   private void onSaveImage(ActionEvent event) {
