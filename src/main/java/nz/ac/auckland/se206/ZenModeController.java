@@ -156,6 +156,8 @@ public class ZenModeController {
    */
   private void finishGame() {
 
+    this.user.addToWordsSeen(randomWord);
+
     try {
       // creates image directory if it doesn't exist
       Files.createDirectories(
