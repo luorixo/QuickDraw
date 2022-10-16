@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Timer;
@@ -32,7 +33,6 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import javax.imageio.ImageIO;
 import nz.ac.auckland.se206.ml.DoodlePrediction;
-import nz.ac.auckland.se206.speech.TextToSpeech;
 import nz.ac.auckland.se206.words.CategorySelector;
 
 /**
@@ -93,14 +93,21 @@ public class ZenModeController {
     eraseButton.setVisible(true);
     clearButton.setVisible(true);
     user = User.getUser(userId);
+    try {
+      MusicPlayer.startButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     Timer timer = new Timer();
-    TextToSpeech textToSpeech = new TextToSpeech();
     // creates task to speak the random category name
+
     Task<Void> sayCategoryTask =
         new Task<Void>() {
+
           @Override
           protected Void call() throws Exception {
-            textToSpeech.speak(randomWord);
+            MusicPlayer.TextToSpeech(user, randomWord);
             this.cancel();
             return null;
           }
@@ -147,13 +154,10 @@ public class ZenModeController {
     questionMark.setVisible(false);
   }
 
-  /**
-   * finishGame is called whenever the player has won/run out of time. It sets certain nodes
-   * off/invisible
-   *
-   * @param hasWon the game win status
-   */
+  /** finishGame is called whenever the player has pressed the back button */
   private void finishGame() {
+
+    this.user.addToWordsSeen(randomWord);
 
     try {
       // creates image directory if it doesn't exist
@@ -176,7 +180,7 @@ public class ZenModeController {
                 + ".png");
 
     try {
-      ImageIO.write(getCurrentSnapshot(), "png", newImage);
+      ImageIO.write(getCurrentSnapshotColour(), "png", newImage);
     } catch (IOException e) {
       e.printStackTrace();
     } // Save the image to a file
@@ -191,6 +195,12 @@ public class ZenModeController {
 
     canvas.setOnMouseDragged(
         e -> {
+          try {
+            MusicPlayer.drawingSoundEffect(user);
+          } catch (URISyntaxException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+          }
           // Brush size (you can change this, it should not be too small or too large).
           double size = 6;
           if (isErase) {
@@ -336,6 +346,13 @@ public class ZenModeController {
   @FXML
   private void onPaint(ActionEvent event) {
 
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
     Object penButton = event.getTarget();
 
     if (penButton.equals(blackPaintButton)) {
@@ -381,6 +398,12 @@ public class ZenModeController {
 
   @FXML
   private void onErase() {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     setBrushType(Color.WHITE, true);
   }
 
@@ -396,7 +419,12 @@ public class ZenModeController {
 
   @FXML
   private void onBackHome(ActionEvent event) {
-
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     finishGame();
 
     Button button = (Button) event.getSource();
@@ -416,7 +444,12 @@ public class ZenModeController {
   @FXML
   private void onSaveImage(ActionEvent event) {
     Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     try {
       // saves the image
       saveCurrentSnapshotOnFile(stage);
@@ -449,6 +482,29 @@ public class ZenModeController {
   }
 
   /**
+   * Get the current snapshot of the canvas.
+   *
+   * @return The BufferedImage corresponding to the current canvas content.
+   */
+  private BufferedImage getCurrentSnapshotColour() {
+    final Image snapshot = canvas.snapshot(null, null);
+    final BufferedImage image = SwingFXUtils.fromFXImage(snapshot, null);
+
+    // Convert into a binary image.
+    final BufferedImage imageBinary =
+        new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_USHORT_565_RGB);
+
+    final Graphics2D graphics = imageBinary.createGraphics();
+
+    graphics.drawImage(image, 0, 0, null);
+
+    // To release memory we dispose.
+    graphics.dispose();
+
+    return imageBinary;
+  }
+
+  /**
    * Save the current snapshot on a bitmap file.
    *
    * @return The file of the saved image.
@@ -463,7 +519,7 @@ public class ZenModeController {
     File tmpFolder = fileChooser.showSaveDialog(stage);
 
     final File imageToClassify = new File(tmpFolder.getCanonicalPath() + ".bmp");
-    ImageIO.write(getCurrentSnapshot(), "bmp", imageToClassify); // Save the image to a file
+    ImageIO.write(getCurrentSnapshotColour(), "bmp", imageToClassify); // Save the image to a file
 
     return imageToClassify;
   }

@@ -37,7 +37,7 @@ public class PreDefinitionsController {
 
   private int userId = UserHomeController.id;
   private User user = User.getUser(userId);
-  private int startingTime = 15;
+  private int startingTime = 30;
   private int secondsLeft = startingTime;
   public static String randomWord;
   public static String randomDefinition;

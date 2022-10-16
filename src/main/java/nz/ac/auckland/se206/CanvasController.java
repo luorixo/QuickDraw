@@ -61,10 +61,13 @@ public class CanvasController {
   @FXML private Button readyButton;
   @FXML private Button eraseButton;
   @FXML private Button paintButton;
+  @FXML private Button saveButton;
   @FXML private Pane canvasPane;
   @FXML private ImageView questionMark;
   @FXML private ImageView lightbulb;
-  @FXML private Label coinsWon;
+  @FXML private Label gameCoinLabel;
+  @FXML private Label badgeCoinLabel;
+  @FXML private Label totalCoinLabel;
   @FXML private Label badgesWon;
 
   private int userId = UserHomeController.id;
@@ -213,6 +216,8 @@ public class CanvasController {
     canvas.setDisable(true);
     clearButton.setDisable(true);
     gameOverComponents.setVisible(true); // shows the game over components
+    eraseButton.setDisable(true);
+    paintButton.setDisable(true);
 
     if (hasWon) {
       MusicPlayer.playCoinSoundEffect(user);
@@ -221,9 +226,12 @@ public class CanvasController {
       int coinsWon = user.grantCoins(secondsLeft);
       user.addCoins(badgesWon * 50);
       user.saveData();
-      coinsWon += badgesWon * 50;
-
-      this.coinsWon.setText("+" + String.valueOf(coinsWon));
+      int badgeBonus = badgesWon * 50;
+      int totalCoin = coinsWon + badgeBonus;
+      // set all coin labels
+      this.gameCoinLabel.setText("+ $" + String.valueOf(coinsWon));
+      this.badgeCoinLabel.setText("+ $" + String.valueOf(badgeBonus));
+      this.totalCoinLabel.setText("+ $" + String.valueOf(totalCoin));
       this.badgesWon.setText("+" + String.valueOf(badgesWon));
     }
   }
@@ -403,18 +411,37 @@ public class CanvasController {
   /** This method is called when the "Clear" button is pressed. */
   @FXML
   private void onClear() {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
     graphic.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
   }
 
   /** This method is called when the user chooses to draw */
   @FXML
   private void onPaint() {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     setBrushType(Color.BLACK, false);
   }
 
   /** This method is called when the user chooses to erase */
   @FXML
   private void onErase() {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     setBrushType(Color.WHITE, true);
   }
 
@@ -437,7 +464,12 @@ public class CanvasController {
   private void onBackHome(ActionEvent event) {
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
-
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     try {
       Window window = currentScene.getWindow();
       window.setWidth(610);
@@ -457,7 +489,12 @@ public class CanvasController {
   @FXML
   private void onSaveImage(ActionEvent event) {
     Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     try {
       // saves the image
       saveCurrentSnapshotOnFile(stage);
