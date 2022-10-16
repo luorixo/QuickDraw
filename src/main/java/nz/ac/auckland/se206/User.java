@@ -568,4 +568,14 @@ public class User {
   public void addCoins(int coins) {
     this.coins += coins;
   }
+
+  /**
+   * setter to add word to wordSeen list
+   *
+   * @param wordSeen the word seen
+   */
+  public void addToWordsSeen(String wordSeen) {
+    this.wordsSeen.add(wordSeen);
+    this.saveData();
+  }
 }
