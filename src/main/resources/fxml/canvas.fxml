@@ -40,29 +40,32 @@
                                           <DropShadow />
                                        </effect>
                                        <HBox.margin>
-                                          <Insets top="-25.0" />
+                                          <Insets top="-28.0" />
                                        </HBox.margin>
                                     </Label>
                                  </children>
                               </HBox>
-                              <ImageView fitHeight="60.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="32.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/canvas_images/yourtopic.png" />
                                  </image>
                                  <VBox.margin>
-                                    <Insets top="-20.0" />
+                                    <Insets />
                                  </VBox.margin>
                               </ImageView>
-                              <Label fx:id="categoryLabel" alignment="CENTER" contentDisplay="CENTER" minHeight="50.0" minWidth="584.0" prefHeight="50.0" prefWidth="584.0" text="TOPIC" textAlignment="CENTER" textFill="WHITE">
+                              <Label fx:id="categoryLabel" alignment="CENTER" contentDisplay="CENTER" minHeight="50.0" minWidth="584.0" prefHeight="69.0" prefWidth="584.0" text="TOPIC" textAlignment="CENTER" textFill="WHITE">
                                  <font>
-                                    <Font name="Source Sans 3 Black" size="25.0" />
+                                    <Font name="Source Sans 3 Black" size="50.0" />
                                  </font>
                                  <effect>
                                     <DropShadow />
                                  </effect>
                                  <VBox.margin>
-                                    <Insets top="-9.0" />
+                                    <Insets top="-10.0" />
                                  </VBox.margin>
+                                 <StackPane.margin>
+                                    <Insets />
+                                 </StackPane.margin>
                               </Label>
                            </children>
                         </VBox>
@@ -174,14 +177,14 @@
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <ImageView fitHeight="50.0" fitWidth="42.0" layoutX="260.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="50.0" fitWidth="42.0" layoutX="255.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/canvas_images/badge.png" />
                                        </image>
                                     </ImageView>
-                                    <Label fx:id="badgesWon" layoutX="309.0" layoutY="174.0" text="+0" textFill="WHITE">
+                                    <Label fx:id="badgesWon" layoutX="301.0" layoutY="173.0" text="+0" textFill="WHITE">
                                        <font>
-                                          <Font name="System Bold" size="22.0" />
+                                          <Font name="System Bold" size="24.0" />
                                        </font>
                                     </Label>
                                     <ImageView fitHeight="60.0" fitWidth="57.0" layoutX="167.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
@@ -189,9 +192,9 @@
                                           <Image url="@../images/canvas_images/coins.png" />
                                        </image>
                                     </ImageView>
-                                    <Label fx:id="coinsWon" alignment="CENTER" layoutX="117.0" layoutY="114.0" prefHeight="42.0" prefWidth="153.0" text="+0" textFill="WHITE">
+                                    <Label fx:id="coinsWon" alignment="CENTER" layoutX="117.0" layoutY="115.0" prefHeight="42.0" prefWidth="153.0" text="+0" textFill="WHITE">
                                        <font>
-                                          <Font name="System Bold" size="22.0" />
+                                          <Font name="System Bold" size="28.0" />
                                        </font>
                                     </Label>
                                  </children>
