@@ -136,7 +136,7 @@
                               </Pane>
                               <Pane fx:id="gameOverComponents" maxHeight="230.0" maxWidth="400.0" minHeight="230.0" minWidth="400.0" prefHeight="230.0" prefWidth="400.0" style="-fx-background-color: #6387BA;">
                                  <children>
-                                    <Label fx:id="gameOverLabel" alignment="CENTER" contentDisplay="TOP" layoutX="41.0" layoutY="6.0" prefHeight="50.0" prefWidth="319.0" text="TIME'S UP" textAlignment="CENTER" textFill="WHITE">
+                                    <Label fx:id="gameOverLabel" alignment="CENTER" contentDisplay="TOP" layoutX="41.0" layoutY="6.0" prefHeight="50.0" prefWidth="319.0" text="GAME OVER" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Source Sans 3 Black" size="35.0" />
                                        </font>
