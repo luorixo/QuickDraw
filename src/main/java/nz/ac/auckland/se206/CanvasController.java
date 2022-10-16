@@ -61,10 +61,13 @@ public class CanvasController {
   @FXML private Button readyButton;
   @FXML private Button eraseButton;
   @FXML private Button paintButton;
+  @FXML private Button saveButton;
   @FXML private Pane canvasPane;
   @FXML private ImageView questionMark;
   @FXML private ImageView lightbulb;
-  @FXML private Label coinsWon;
+  @FXML private Label gameCoinLabel;
+  @FXML private Label badgeCoinLabel;
+  @FXML private Label totalCoinLabel;
   @FXML private Label badgesWon;
 
   private int userId = UserHomeController.id;
@@ -218,9 +221,12 @@ public class CanvasController {
       int coinsWon = user.grantCoins(secondsLeft);
       user.addCoins(badgesWon * 50);
       user.saveData();
-      coinsWon += badgesWon * 50;
-
-      this.coinsWon.setText("+" + String.valueOf(coinsWon));
+      int badgeBonus = badgesWon * 50;
+      int totalCoin = coinsWon + badgeBonus;
+      // set all coin labels
+      this.gameCoinLabel.setText("+ $" + String.valueOf(coinsWon));
+      this.badgeCoinLabel.setText("+ $" + String.valueOf(badgeBonus));
+      this.totalCoinLabel.setText("+ $" + String.valueOf(totalCoin));
       this.badgesWon.setText("+" + String.valueOf(badgesWon));
     }
   }
