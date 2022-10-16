@@ -137,7 +137,7 @@ public class UserHomeController {
               "src/main/resources/users/user"
                   + id
                   + "/images/"
-                  + wordsSeen.get(currentWordIndex)
+                  + wordsSeen.get(currentWordIndex).replace(" ", "-")
                   + ".png");
     }
     // set image to image viewer
