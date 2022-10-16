@@ -39,6 +39,7 @@ public class MusicPlayer {
     backgroundSound =
         new Media(App.class.getResource("/sounds/backgroundSong.mp3").toURI().toString());
     playBackgroundSong = new MediaPlayer(backgroundSound);
+    playBackgroundSong.setCycleCount(MediaPlayer.INDEFINITE);
   }
 
   /**
