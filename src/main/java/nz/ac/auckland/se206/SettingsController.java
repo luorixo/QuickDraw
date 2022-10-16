@@ -108,6 +108,14 @@ public class SettingsController {
     User.Difficulty difficulty = null;
     String difficultyText = "";
 
+    // play sound effect
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e1) {
+      // TODO Auto-generated catch block
+      e1.printStackTrace();
+    }
+
     // get current difficulty of relevant metric
     switch (buttonName) {
       case "wordsLeft":
@@ -172,6 +180,14 @@ public class SettingsController {
     String buttonName = rightButton.getId();
     User.Difficulty difficulty = null;
     String difficultyText = "";
+
+    // play sound effect
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e1) {
+      // TODO Auto-generated catch block
+      e1.printStackTrace();
+    }
 
     // get current difficulty of relevant metric
     switch (buttonName) {
@@ -238,6 +254,14 @@ public class SettingsController {
     User.Difficulty difficulty = null;
     String difficultyText = "";
 
+    // play sound effect
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e1) {
+      // TODO Auto-generated catch block
+      e1.printStackTrace();
+    }
+
     if (buttonName.equals("accuracyLeft")) {
       difficulty = user.getAccuracyDifficulty();
     }
@@ -282,6 +306,14 @@ public class SettingsController {
     User.Difficulty difficulty = null;
     String difficultyText = "";
 
+    // play sound effect
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e1) {
+      // TODO Auto-generated catch block
+      e1.printStackTrace();
+    }
+
     if (buttonName.equals("accuracyRight")) {
       difficulty = user.getAccuracyDifficulty();
     }
@@ -322,6 +354,14 @@ public class SettingsController {
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
 
+    // play sound effect
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e1) {
+      // TODO Auto-generated catch block
+      e1.printStackTrace();
+    }
+
     try {
       // change scene from settings page back to user home
       currentScene.setRoot(App.loadFxml("userHome"));
@@ -338,6 +378,14 @@ public class SettingsController {
   private void onChangeSpeech() {
     Boolean speechOn = user.getTextToSpeechState(); // get user current speech to text settings
     File file;
+
+    // play sound effect
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e1) {
+      // TODO Auto-generated catch block
+      e1.printStackTrace();
+    }
 
     if (speechOn) { // if on then turn off and change image
       user.setTextToSpeech(false);
@@ -364,6 +412,14 @@ public class SettingsController {
     Boolean musicOn = user.getMusicState(); // get user current music settings
     File file;
 
+    // play sound effect
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e1) {
+      // TODO Auto-generated catch block
+      e1.printStackTrace();
+    }
+
     if (musicOn) { // if on then turn off and change image
       user.setMusic(false);
       file = new File("src/main/resources/images/settings_text/no-music.png");
@@ -388,6 +444,14 @@ public class SettingsController {
   private void onChangeSound() {
     Boolean soundOn = user.getSoundEffectState(); // get user current sound effects settings
     File file;
+
+    // play sound effect
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e1) {
+      // TODO Auto-generated catch block
+      e1.printStackTrace();
+    }
 
     if (soundOn) { // if on then turn off and change image
       user.setSoundEffects(false);

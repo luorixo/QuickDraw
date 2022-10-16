@@ -12,10 +12,12 @@ public class MusicPlayer {
   public static Media buttonSound;
   public static Media startSound;
   public static Media drawingSound;
+  public static Media coinSound;
   public static MediaPlayer playBackgroundSong;
   public static MediaPlayer playButtonSoundEffect;
   public static MediaPlayer startButtonSoundEffect;
   public static MediaPlayer drawingSoundEffect;
+  public static MediaPlayer coinSoundEffect;
 
   /**
    * This function intialises the background song and the sound effects the game uses
@@ -82,6 +84,18 @@ public class MusicPlayer {
   }
 
   /**
+   * This function plays the coin sound effect if the user has the preference on.
+   *
+   * @param user User type object that contains user preferences.
+   */
+  public static void playCoinSoundEffect(User user) {
+    if (user.getSoundEffectState()) {
+      coinSoundEffect.seek(coinSoundEffect.getStartTime());
+      coinSoundEffect.play();
+    }
+  }
+
+  /**
    * This function downloads all the sounds effects that will be used in the game from resources
    *
    * @throws URISyntaxException
@@ -94,6 +108,8 @@ public class MusicPlayer {
     startButtonSoundEffect = new MediaPlayer(startSound);
     drawingSound = new Media(App.class.getResource("/sounds/drawingSound.mp3").toURI().toString());
     drawingSoundEffect = new MediaPlayer(drawingSound);
+    coinSound = new Media(App.class.getResource("/sounds/coinsSound.mp3").toURI().toString());
+    coinSoundEffect = new MediaPlayer(coinSound);
   }
 
   /**

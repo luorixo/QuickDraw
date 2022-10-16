@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -25,6 +26,10 @@ public class MemoriesController {
   private int statCycleNum;
   private User user = User.getUser(UserHomeController.id);
 
+  /**
+   * Called on the initialisation of the FXML scene, this function will set the scene to show the
+   * first statistic - games played
+   */
   public void initialize() {
     statCycleNum = 1;
     // set to default statistic display
@@ -34,6 +39,14 @@ public class MemoriesController {
   /** Handles the switching of statistics displays when the next button is clicked. */
   @FXML
   private void onNextButton() {
+    // play sound effect
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e1) {
+      // TODO Auto-generated catch block
+      e1.printStackTrace();
+    }
+    // depending on the cycle head display the appropriate display
     switch (statCycleNum) {
       case 1:
         displayGamesWon();
@@ -232,12 +245,20 @@ public class MemoriesController {
   /**
    * On back button click this will set the scene back to the user home
    *
-   * @param event
+   * @param event Button click that triggers function call
    */
   @FXML
   private void onBackButton(ActionEvent event) {
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
+
+    // play sound effect
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e1) {
+      // TODO Auto-generated catch block
+      e1.printStackTrace();
+    }
 
     try {
       // change scene from stats page back to user home
