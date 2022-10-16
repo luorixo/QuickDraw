@@ -40,7 +40,7 @@ public class SettingsController {
    * This function is called before the GUI elements are set up when the user enters the settings
    * page. It intialises the page.
    *
-   * @throws URISyntaxException
+   * @throws URISyntaxException for the images conversion
    */
   public void initialize() throws URISyntaxException {
 
@@ -347,7 +347,7 @@ public class SettingsController {
   /**
    * On back button click this will set the scene back to the user home
    *
-   * @param event
+   * @param event button event that triggers function - back button
    */
   @FXML
   private void onBackButton(ActionEvent event) {
@@ -405,7 +405,7 @@ public class SettingsController {
    * Function will switch settings for music. Will update image on button and will update users json
    * for preference.
    *
-   * @throws URISyntaxException
+   * @throws URISyntaxException - exception due to sound effect
    */
   @FXML
   private void onChangeMusic() throws URISyntaxException {

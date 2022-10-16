@@ -88,9 +88,7 @@ public class UserHomeController {
     streakImage.setImage(image);
   }
 
-  /*
-   * Updates image viewer image to the previous image from words seen list.
-   */
+  /** Updates image viewer image to the previous image from words seen list. */
   @FXML
   private void onLeftButton() {
     try {
@@ -107,9 +105,7 @@ public class UserHomeController {
     this.updateImage();
   }
 
-  /*
-   * Updates image viewer image to the next image from the words seen list.
-   */
+  /** Updates image viewer image to the next image from the words seen list. */
   @FXML
   private void onRightButton() {
     try {
@@ -126,6 +122,10 @@ public class UserHomeController {
     this.updateImage();
   }
 
+  /**
+   * This will update the first image on the slideshow, or set the waiting image if the user has not
+   * drawn anything.
+   */
   private void updateImage() {
     // load in users drawing as an image
     File file;
@@ -147,6 +147,10 @@ public class UserHomeController {
     this.updateImageName();
   }
 
+  /**
+   * This will update the label to show the name of the slide show image or the appropriate message
+   * if they have not drawn anything yet.
+   */
   private void updateImageName() {
 
     String currentWord;
