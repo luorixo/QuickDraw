@@ -86,7 +86,6 @@ public class ZenModeController {
   private double currentX;
   private double currentY;
 
-  /** This function is called when the user wants to start a new game */
   @FXML
   private void onStartGame() {
     allPaintButtonsVisible(true);
@@ -187,13 +186,6 @@ public class ZenModeController {
     } // Save the image to a file
   }
 
-  /**
-   * This function is used to set the brush sizes depending on whether the user is drawing or
-   * erasing
-   *
-   * @param brushType
-   * @param isErase
-   */
   private void setBrushType(Color brushType, boolean isErase) {
     canvas.setOnMousePressed(
         e -> {
@@ -351,11 +343,6 @@ public class ZenModeController {
     graphic.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
   }
 
-  /**
-   * This function allows the user to switch between the colours when drawing
-   *
-   * @param event
-   */
   @FXML
   private void onPaint(ActionEvent event) {
 
@@ -409,7 +396,6 @@ public class ZenModeController {
     }
   }
 
-  /** This function allows the user to erases what they have drawn */
   @FXML
   private void onErase() {
     try {
@@ -431,11 +417,6 @@ public class ZenModeController {
   @FXML
   private void onPredict() throws TranslateException {}
 
-  /**
-   * This function allows the user to go back to the user home page
-   *
-   * @param event
-   */
   @FXML
   private void onBackHome(ActionEvent event) {
     try {
@@ -460,11 +441,6 @@ public class ZenModeController {
     }
   }
 
-  /**
-   * This function allows the user to save their image
-   *
-   * @param event
-   */
   @FXML
   private void onSaveImage(ActionEvent event) {
     Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
@@ -548,11 +524,6 @@ public class ZenModeController {
     return imageToClassify;
   }
 
-  /**
-   * This function is called when we want to make all the coloured pencils (in)visible
-   *
-   * @param visible
-   */
   private void allPaintButtonsVisible(boolean visible) {
     blackPaintButton.setVisible(visible);
 

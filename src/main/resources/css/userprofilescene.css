@@ -1,7 +1,7 @@
 
 
 .button:hover {
-	-fx-border-color: #FF9736;
+	-fx-border-color: #FFD203;
 }
 
 .pane{
@@ -9,13 +9,12 @@
   }
   
 .pane:hover {
-	-fx-border-color: #FF9736;
-	-fx-border-radius: 100px;
+	-fx-border-color: #FFD203;
+	-fx-border-radius: 150px;
+	-fx-opacity: 0.8;
 }
 
-
-
 #quickDrawLogo:hover {
-	-fx-scale-x: 120%;
-	-fx-scale-y: 120%;
+	-fx-scale-x: 110%;
+	-fx-scale-y: 110%;
 }

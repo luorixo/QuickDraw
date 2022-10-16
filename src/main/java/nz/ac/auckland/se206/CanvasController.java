@@ -153,6 +153,9 @@ public class CanvasController {
     canvas.setDisable(false);
     canvasPane.setVisible(true);
     questionMark.setVisible(false);
+    eraseButton.setDisable(false);
+    paintButton.setDisable(false);
+    clearButton.setDisable(false);
   }
 
   /**
@@ -213,6 +216,8 @@ public class CanvasController {
     canvas.setDisable(true);
     clearButton.setDisable(true);
     gameOverComponents.setVisible(true); // shows the game over components
+    eraseButton.setDisable(true);
+    paintButton.setDisable(true);
 
     if (hasWon) {
       MusicPlayer.playCoinSoundEffect(user);
@@ -398,6 +403,9 @@ public class CanvasController {
     canvasPane.setVisible(true);
     categoryLabel.setText(randomWord);
     timeLabel.setText(String.valueOf(secondsLeft));
+    eraseButton.setDisable(true);
+    paintButton.setDisable(true);
+    clearButton.setDisable(true);
   }
 
   /** This method is called when the "Clear" button is pressed. */
