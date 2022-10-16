@@ -403,18 +403,37 @@ public class CanvasController {
   /** This method is called when the "Clear" button is pressed. */
   @FXML
   private void onClear() {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
     graphic.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
   }
 
   /** This method is called when the user chooses to draw */
   @FXML
   private void onPaint() {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     setBrushType(Color.BLACK, false);
   }
 
   /** This method is called when the user chooses to erase */
   @FXML
   private void onErase() {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     setBrushType(Color.WHITE, true);
   }
 
@@ -437,7 +456,12 @@ public class CanvasController {
   private void onBackHome(ActionEvent event) {
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
-
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     try {
       Window window = currentScene.getWindow();
       window.setWidth(610);
@@ -457,7 +481,12 @@ public class CanvasController {
   @FXML
   private void onSaveImage(ActionEvent event) {
     Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     try {
       // saves the image
       saveCurrentSnapshotOnFile(stage);

@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Timer;
@@ -34,7 +35,6 @@ import javax.imageio.ImageIO;
 import nz.ac.auckland.se206.dict.DictionaryLookup;
 import nz.ac.auckland.se206.dict.WordNotFoundException;
 import nz.ac.auckland.se206.ml.DoodlePrediction;
-import nz.ac.auckland.se206.speech.TextToSpeech;
 import nz.ac.auckland.se206.words.CategorySelector;
 
 /**
@@ -99,6 +99,13 @@ public class DefinitionsController {
   @FXML
   private void onStartGame() {
     Timer timer = new Timer();
+
+    try {
+      MusicPlayer.startButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
 
     // creates task to speak the random category name
     Task<Void> sayCategoryTask =
@@ -165,13 +172,12 @@ public class DefinitionsController {
    * @param hasWon the game win status
    */
   private void endGame(boolean hasWon) {
-    TextToSpeech textToSpeech = new TextToSpeech();
     if (hasWon) {
       Task<Void> sayYouWinTask =
           new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-              textToSpeech.speak("YOU WIN!");
+              MusicPlayer.TextToSpeech(user, "YOU WIN!");
               this.cancel();
               return null;
             }
@@ -249,6 +255,12 @@ public class DefinitionsController {
 
     canvas.setOnMouseDragged(
         e -> {
+          try {
+            MusicPlayer.drawingSoundEffect(user);
+          } catch (URISyntaxException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+          }
           // Brush size (you can change this, it should not be too small or too large).
           double size = 6;
           if (isErase) {
@@ -462,18 +474,36 @@ public class DefinitionsController {
   /** This method is called when the "Clear" button is pressed. */
   @FXML
   private void onClear() {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     graphic.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
   }
 
   /** This method is called when the user chooses to draw */
   @FXML
   private void onPaint() {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     setBrushType(Color.BLACK, false);
   }
 
   /** This method is called when the user chooses to erase */
   @FXML
   private void onErase() {
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     setBrushType(Color.WHITE, true);
   }
 
@@ -496,7 +526,12 @@ public class DefinitionsController {
   private void onBackHome(ActionEvent event) {
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
-
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     try {
       Window window = currentScene.getWindow();
       window.setWidth(610);
@@ -516,7 +551,12 @@ public class DefinitionsController {
   @FXML
   private void onSaveImage(ActionEvent event) {
     Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-
+    try {
+      MusicPlayer.playButtonSoundEffect(user);
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     try {
       // saves the image
       saveCurrentSnapshotOnFile(stage);
