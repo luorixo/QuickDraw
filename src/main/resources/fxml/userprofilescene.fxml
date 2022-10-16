@@ -23,7 +23,7 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </ImageView>
-      <HBox alignment="CENTER" layoutX="172.0" layoutY="95.0" prefHeight="106.0" prefWidth="239.0">
+      <HBox alignment="CENTER" layoutX="172.0" layoutY="117.0" prefHeight="106.0" prefWidth="239.0">
          <children>
             <ImageView fx:id="quickDrawLogo" fitHeight="134.0" fitWidth="265.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -81,7 +81,7 @@
                <children>
                   <Label fx:id="usernameTwo" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="119.0" style="-fx-text-alignment: center;" text="Username">
                      <font>
-                        <Font name="Century Gothic" size="14.0" />
+                        <Font size="14.0" />
                      </font></Label>
                </children>
             </HBox>
