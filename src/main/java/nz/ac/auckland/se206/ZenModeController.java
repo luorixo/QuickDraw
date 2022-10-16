@@ -86,6 +86,7 @@ public class ZenModeController {
   private double currentX;
   private double currentY;
 
+  /** This method here starts the game when the user is ready */
   @FXML
   private void onStartGame() {
     allPaintButtonsVisible(true);
@@ -186,6 +187,12 @@ public class ZenModeController {
     } // Save the image to a file
   }
 
+  /**
+   * This method sets the brush type either eraser or a pencil
+   *
+   * @param brushType the colour of the drawing
+   * @param isErase whether the user is wanting to erase
+   */
   private void setBrushType(Color brushType, boolean isErase) {
     canvas.setOnMousePressed(
         e -> {
@@ -343,6 +350,11 @@ public class ZenModeController {
     graphic.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
   }
 
+  /**
+   * This method changes the colour of the pencil drawings
+   *
+   * @param event this allows us to get the fxid of what is clicked
+   */
   @FXML
   private void onPaint(ActionEvent event) {
 
@@ -396,6 +408,7 @@ public class ZenModeController {
     }
   }
 
+  /** This function allows the user to erase the drawings of what they have done */
   @FXML
   private void onErase() {
     try {
@@ -441,6 +454,11 @@ public class ZenModeController {
     }
   }
 
+  /**
+   * This function allows the user to save their own image
+   *
+   * @param event allows us to get the stage of the window
+   */
   @FXML
   private void onSaveImage(ActionEvent event) {
     Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
@@ -482,7 +500,7 @@ public class ZenModeController {
   }
 
   /**
-   * Get the current snapshot of the canvas.
+   * Get the current snapshot of the canvas in colour.
    *
    * @return The BufferedImage corresponding to the current canvas content.
    */
@@ -524,6 +542,11 @@ public class ZenModeController {
     return imageToClassify;
   }
 
+  /**
+   * This sets all the pencils the user will use to (in)visible
+   *
+   * @param visible is the boolean to change the visibility of the pencils
+   */
   private void allPaintButtonsVisible(boolean visible) {
     blackPaintButton.setVisible(visible);
 
