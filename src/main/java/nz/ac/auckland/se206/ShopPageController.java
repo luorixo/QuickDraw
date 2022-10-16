@@ -338,6 +338,9 @@ public class ShopPageController {
   private void buyBackground(int backgroundNum) {
     if (user.getCoins() >= 500) { // if the user can pay
       user.addCoins(-500); // charge
+
+      MusicPlayer.playCoinSoundEffect(user);
+
       // set images to appropriate image views, set current background and hide cancel buttons
       switch (backgroundNum) {
         case 1: // city

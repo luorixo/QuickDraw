@@ -212,6 +212,7 @@ public class CanvasController {
     gameOverComponents.setVisible(true); // shows the game over components
 
     if (hasWon) {
+      MusicPlayer.playCoinSoundEffect(user);
       int badgesWon = BadgesController.updateBadges(userId, startingTime - secondsLeft);
       User user = User.getUser(userId);
       int coinsWon = user.grantCoins(secondsLeft);
