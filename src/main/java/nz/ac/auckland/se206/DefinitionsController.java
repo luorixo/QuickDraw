@@ -31,11 +31,8 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javax.imageio.ImageIO;
-import nz.ac.auckland.se206.dict.DictionaryLookup;
-import nz.ac.auckland.se206.dict.WordNotFoundException;
 import nz.ac.auckland.se206.ml.DoodlePrediction;
 import nz.ac.auckland.se206.speech.TextToSpeech;
-import nz.ac.auckland.se206.words.CategorySelector;
 
 /**
  * This is the controller of the canvas. You are free to modify this class and the corresponding
@@ -52,7 +49,6 @@ import nz.ac.auckland.se206.words.CategorySelector;
 public class DefinitionsController {
 
   @FXML private Canvas canvas;
-  @FXML private Label categoryLabel;
   @FXML private Label timeLabel;
   @FXML private Label hintLabel;
   @FXML private ListView<?> predictionsList;
@@ -82,7 +78,6 @@ public class DefinitionsController {
   private int hintUpdateIndex = 0;
   private boolean gameEnd = false;
   private String randomWord;
-  private String randomDefinition;
   private String hint;
 
   // mouse coordinates
@@ -96,22 +91,6 @@ public class DefinitionsController {
   @FXML
   private void onStartGame() {
     Timer timer = new Timer();
-
-    // creates task to speak the random category name
-    Task<Void> sayCategoryTask =
-        new Task<Void>() {
-          @Override
-          protected Void call() throws Exception {
-            MusicPlayer.TextToSpeech(user, randomDefinition);
-            this.cancel();
-            return null;
-          }
-        };
-
-    // assigns speaking task to thread
-    Thread newThreadTwo = new Thread(sayCategoryTask);
-    newThreadTwo.setDaemon(true);
-    newThreadTwo.start();
 
     // create a new timer task for updating top 10 predictions list
     TimerTask timedTask =
@@ -153,6 +132,9 @@ public class DefinitionsController {
     hintLabel.setVisible(true);
     hintLabel.setDisable(false);
     questionMark.setVisible(false);
+    eraseButton.setDisable(false);
+    paintButton.setDisable(false);
+    clearButton.setDisable(false);
   }
 
   /**
@@ -213,6 +195,8 @@ public class DefinitionsController {
     canvas.setDisable(true);
     clearButton.setDisable(true);
     gameOverComponents.setVisible(true); // shows the game over components
+    hintLabel.setText(randomWord.toUpperCase());
+    hintLabel.setTextFill(Color.rgb(255, 210, 3));
 
     if (hasWon) {
       MusicPlayer.playCoinSoundEffect(user);
@@ -415,30 +399,11 @@ public class DefinitionsController {
 
     model = new DoodlePrediction();
 
-    CategorySelector categorySelector = new CategorySelector();
-    randomWord =
-        categorySelector.getRandomCategory(
-            user.getWordDifficulty()); // sets depending on difficulty
-    while (true) {
-      try {
-        this.randomDefinition =
-            DictionaryLookup.searchWordInfo(randomWord)
-                .getWordEntries()
-                .get(0)
-                .getDefinitions()
-                .get(0);
-        break;
-
-      } catch (IOException | WordNotFoundException e) {
-        randomWord = categorySelector.getRandomCategory(user.getWordDifficulty());
-      }
-    }
+    this.randomWord = PreDefinitionsController.randomWord;
 
     gameOverComponents.setVisible(false);
     canvas.setDisable(true);
     canvasPane.setVisible(true);
-    categoryLabel.setText(randomDefinition);
-    categoryLabel.setWrapText(true);
 
     this.hint = "_".repeat(randomWord.length());
     hintLabel.setVisible(false);
@@ -448,9 +413,10 @@ public class DefinitionsController {
     // this.hintTimer = (int) Math.ceil((double)this.startingTime /
     // this.randomWord.length());
     this.hintTimer = this.startingTime / this.randomWord.length();
-    System.out.println(hintTimer);
-    System.out.println(randomDefinition);
     timeLabel.setText(String.valueOf(secondsLeft));
+    eraseButton.setDisable(true);
+    paintButton.setDisable(true);
+    clearButton.setDisable(true);
   }
 
   /** This method is called when the "Clear" button is pressed. */

@@ -9,17 +9,11 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.stage.Window;
 import nz.ac.auckland.se206.dict.DictionaryLookup;
 import nz.ac.auckland.se206.dict.WordNotFoundException;
-import nz.ac.auckland.se206.ml.DoodlePrediction;
 import nz.ac.auckland.se206.words.CategorySelector;
 
 /**
@@ -36,47 +30,27 @@ import nz.ac.auckland.se206.words.CategorySelector;
  */
 public class PreDefinitionsController {
 
-  @FXML private Canvas canvas;
   @FXML private Label categoryLabel;
   @FXML private Label timeLabel;
   @FXML private Label hintLabel;
-  @FXML private ListView<?> predictionsList;
-  @FXML private Button clearButton;
-  @FXML private Pane gameOverComponents;
-  @FXML private Label gameOverLabel;
-  @FXML private Button restartButton;
-  @FXML private Button backButton;
-  @FXML private Button readyButton;
-  @FXML private Button eraseButton;
-  @FXML private Button paintButton;
-  @FXML private Pane canvasPane;
-  @FXML private ImageView questionMark;
-  @FXML private ImageView lightbulb;
-  @FXML private Label coinsWon;
-  @FXML private Label badgesWon;
+  @FXML private Button skipButton;
 
   private int userId = UserHomeController.id;
   private User user = User.getUser(userId);
-  private GraphicsContext graphic;
-  private DoodlePrediction model;
-  private int startingTime = 25;
-  private int secondsLeft;
-  private int predictionWinNumber = 3;
-  private int hintTimer;
-  private int hintTimeRemaining = 0;
-  private int hintUpdateIndex = 0;
-  private boolean gameEnd = false;
-  private String randomWord;
-  private String randomDefinition;
+  private int startingTime = 15;
+  private int secondsLeft = startingTime;
+  public static String randomWord;
+  public static String randomDefinition;
   private String hint;
+  private TimerTask timedTask;
 
   /**
    * endGame is called whenever the player has won/run out of time. It sets certain nodes
    * off/invisible
-   *
-   * @param hasWon the game win status
    */
-  private void endGame(boolean hasWon) {}
+  private void endGame() {
+    skipButton.fire();
+  }
 
   /**
    * JavaFX calls this method once the GUI elements are loaded. In our case we create a listener for
@@ -87,6 +61,25 @@ public class PreDefinitionsController {
    */
   public void initialize() throws ModelException, IOException {
     Timer timer = new Timer();
+
+    CategorySelector categorySelector = new CategorySelector();
+    randomWord =
+        categorySelector.getRandomCategory(
+            user.getWordDifficulty()); // sets depending on difficulty
+    while (true) {
+      try {
+        randomDefinition =
+            DictionaryLookup.searchWordInfo(randomWord)
+                .getWordEntries()
+                .get(0)
+                .getDefinitions()
+                .get(0);
+        break;
+
+      } catch (IOException | WordNotFoundException e) {
+        randomWord = categorySelector.getRandomCategory(user.getWordDifficulty());
+      }
+    }
 
     // creates task to speak the random category name
     Task<Void> sayCategoryTask =
@@ -105,7 +98,7 @@ public class PreDefinitionsController {
     newThreadTwo.start();
 
     // create a new timer task for updating top 10 predictions list
-    TimerTask timedTask =
+    timedTask =
         new TimerTask() {
           public void run() {
             secondsLeft--;
@@ -113,7 +106,11 @@ public class PreDefinitionsController {
                 () -> {
                   timeLabel.setText(String.valueOf(secondsLeft)); // sets timer
                 });
-            if (secondsLeft == 0) {}
+            if (secondsLeft == 0) {
+              this.cancel();
+              timer.cancel();
+              endGame();
+            }
           }
         };
 
@@ -131,25 +128,6 @@ public class PreDefinitionsController {
     Thread newThread = new Thread(updateTimerTask);
     newThread.setDaemon(true);
     newThread.start();
-
-    CategorySelector categorySelector = new CategorySelector();
-    randomWord =
-        categorySelector.getRandomCategory(
-            user.getWordDifficulty()); // sets depending on difficulty
-    while (true) {
-      try {
-        this.randomDefinition =
-            DictionaryLookup.searchWordInfo(randomWord)
-                .getWordEntries()
-                .get(0)
-                .getDefinitions()
-                .get(0);
-        break;
-
-      } catch (IOException | WordNotFoundException e) {
-        randomWord = categorySelector.getRandomCategory(user.getWordDifficulty());
-      }
-    }
 
     System.out.println(randomWord);
 
@@ -172,12 +150,13 @@ public class PreDefinitionsController {
   private void onSkip(ActionEvent event) {
     Button button = (Button) event.getSource();
     Scene currentScene = button.getScene();
+    timedTask.cancel();
 
     try {
       Window window = currentScene.getWindow();
-      window.setWidth(610);
+      window.setWidth(810); // set window width to 810
       // restarts game back to the home page
-      currentScene.setRoot(App.loadFxml("Definitions"));
+      currentScene.setRoot(App.loadFxml("definitions"));
 
     } catch (IOException e) {
       e.printStackTrace();

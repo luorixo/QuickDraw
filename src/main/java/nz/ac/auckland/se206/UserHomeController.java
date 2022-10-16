@@ -288,9 +288,7 @@ public class UserHomeController {
 
     try {
       // change scene from user home page to definition game
-      currentScene.setRoot(App.loadFxml("definitions"));
-      Window window = currentScene.getWindow();
-      window.setWidth(810); // set window width to 810
+      currentScene.setRoot(App.loadFxml("preDefinitions"));
     } catch (IOException e) {
       e.printStackTrace();
     }

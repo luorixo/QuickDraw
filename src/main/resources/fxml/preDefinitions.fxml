@@ -24,7 +24,7 @@
                   </ImageView>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="timeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="266.0" layoutY="24.0" prefHeight="20.0" prefWidth="91.0" textAlignment="CENTER" textFill="WHITE">
+                        <Label fx:id="timeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="260.0" layoutY="29.0" prefHeight="20.0" prefWidth="91.0" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Source Sans 3 Bold" size="70.0" />
                            </font>
@@ -32,16 +32,16 @@
                               <DropShadow />
                            </effect>
                         </Label>
-                        <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="102.0" layoutY="470.0" prefHeight="78.0" prefWidth="419.0" text="HINT" textFill="WHITE">
+                        <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="96.0" layoutY="470.0" prefHeight="78.0" prefWidth="419.0" text="HINT" textFill="WHITE">
                            <font>
                               <Font size="55.0" />
                            </font>
                         </Label>
                         <Pane layoutY="219.0" prefHeight="200.0" prefWidth="610.0">
                            <children>
-                              <Label fx:id="categoryLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="4.0" minHeight="50.0" minWidth="584.0" prefHeight="50.0" prefWidth="584.0" text="DEFINITION" textAlignment="CENTER" textFill="WHITE">
+                              <Label fx:id="categoryLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="9.0" maxHeight="166.0" maxWidth="584.0" minHeight="166.0" minWidth="584.0" prefHeight="166.0" prefWidth="584.0" text="DEFINITION" textAlignment="CENTER" textFill="WHITE">
                                  <font>
-                                    <Font name="Source Sans 3" size="30.0" />
+                                    <Font name="Source Sans 3" size="22.0" />
                                  </font>
                                  <effect>
                                     <DropShadow />
@@ -49,12 +49,12 @@
                               </Label>
                            </children>
                         </Pane>
-                        <ImageView fitHeight="70.0" fitWidth="305.0" layoutX="159.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="70.0" fitWidth="305.0" layoutX="153.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/canvas_images/Definition.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="onSkip" layoutX="282.0" layoutY="410.0" maxHeight="30.0" maxWidth="30.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" prefHeight="12.0" prefWidth="26.0" style="-fx-background-color: #FFBA0E; -fx-background-radius: 50;">
+                        <Button fx:id="skipButton" layoutX="275.0" layoutY="410.0" maxHeight="30.0" maxWidth="30.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onSkip" prefHeight="12.0" prefWidth="26.0" style="-fx-background-color: #FFBA0E; -fx-background-radius: 50;">
                            <graphic>
                               <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
