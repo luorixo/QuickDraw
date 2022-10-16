@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inika:wght@700&family=Inter&family=Mountains+of+Christmas:wght@700&display=swap');
+
+.label {
+	-fx-font-family: 'Mountains of Christmas', cursive;
+}
+
 .button:hover {
 	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, .7), 10, 0.3, 0.0, 0.0);
     -fx-scale-x: 1.3;

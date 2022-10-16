@@ -35,7 +35,7 @@
                               <Image url="@../images/quick_draw_img.png" />
                            </image>
                         </ImageView>
-                        <Label id="nameLabel" fx:id="nameLabel" alignment="CENTER" prefHeight="64.0" prefWidth="380.0" style="-fx-text-fill: white;" textAlignment="CENTER">
+                        <Label id="nameLabel" fx:id="nameLabel" alignment="CENTER" prefHeight="64.0" prefWidth="374.0" style="-fx-text-fill: white;" textAlignment="CENTER">
                            <font>
                               <Font name="Times New Roman Bold" size="34.0" />
                            </font>
@@ -283,7 +283,7 @@
                   </Label>
                   <Label layoutY="85.0" prefHeight="43.0" prefWidth="75.0" text="WIN STREAK" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
-                        <Font name="Times New Roman Bold" size="16.0" />
+                        <Font size="14.0" />
                      </font>
                   </Label>
                </children>
