@@ -234,7 +234,7 @@
                               </Button>
                            </children>
                         </HBox>
-                        <Button fx:id="readyButton" layoutX="172.0" layoutY="479.0" mnemonicParsing="false" onAction="#onStartGame" prefHeight="67.0" prefWidth="266.0" style="-fx-background-color: #FF9736; -fx-background-radius: 15;" text="START" textFill="WHITE">
+                        <Button fx:id="readyButton" layoutX="172.0" layoutY="479.0" mnemonicParsing="false" onAction="#onStartGame" prefHeight="67.0" prefWidth="266.0" style="-fx-background-color: #FFBA0E; -fx-background-radius: 15;" text="START" textFill="WHITE">
                            <font>
                               <Font name="Source Sans Pro Black" size="31.0" />
                            </font>

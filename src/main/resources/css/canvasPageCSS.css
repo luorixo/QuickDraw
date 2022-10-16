@@ -17,6 +17,10 @@
 	-fx-font-family: 'Mountains of Christmas', cursive;
 }
 
+#readyButton:hover {
+	-fx-font-size: 30px;
+}
+
 .button:hover {
 	/*Gives button a shadow and enlargement effect when mouse hovers over it */
 	/*-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, .7), 20, 0.3, 0.0, 0.0);*/
