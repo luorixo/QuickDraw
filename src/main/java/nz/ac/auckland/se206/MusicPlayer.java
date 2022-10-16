@@ -8,21 +8,21 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
 
 public class MusicPlayer {
 
-  public static Media backgroundSound;
-  public static Media buttonSound;
-  public static Media startSound;
-  public static Media drawingSound;
-  public static Media coinSound;
-  public static MediaPlayer playBackgroundSong;
-  public static MediaPlayer playButtonSoundEffect;
-  public static MediaPlayer startButtonSoundEffect;
-  public static MediaPlayer drawingSoundEffect;
-  public static MediaPlayer coinSoundEffect;
+  private static Media backgroundSound;
+  private static Media buttonSound;
+  private static Media startSound;
+  private static Media drawingSound;
+  private static Media coinSound;
+  private static MediaPlayer playBackgroundSong;
+  private static MediaPlayer playButtonSoundEffect;
+  private static MediaPlayer startButtonSoundEffect;
+  private static MediaPlayer drawingSoundEffect;
+  private static MediaPlayer coinSoundEffect;
 
   /**
    * This function intialises the background song and the sound effects the game uses
    *
-   * @throws URISyntaxException
+   * @throws URISyntaxException in case the URI is wrong
    */
   public static void intilalise() throws URISyntaxException {
 
@@ -33,7 +33,7 @@ public class MusicPlayer {
   /**
    * THis function downloads the background song from resources
    *
-   * @throws URISyntaxException
+   * @throws URISyntaxException in case the URI is wrong
    */
   private static void intialiseBackgroundSong() throws URISyntaxException {
     backgroundSound =
@@ -45,7 +45,7 @@ public class MusicPlayer {
   /**
    * This function is called when we want to play the background song
    *
-   * @throws URISyntaxException
+   * @throws URISyntaxException in case the URI is wrong
    */
   public static void playBackgroundSong() throws URISyntaxException {
 
@@ -57,8 +57,8 @@ public class MusicPlayer {
   /**
    * This function is called when the user chooses to mute the background song
    *
-   * @param user
-   * @throws URISyntaxException
+   * @param user allows us to check the user setting
+   * @throws URISyntaxException in case the URI is wrong
    */
   public static void muteBackgroundSong(User user) throws URISyntaxException {
 
@@ -72,8 +72,8 @@ public class MusicPlayer {
   /**
    * This function allows us to play the background song if the user decides to
    *
-   * @param user
-   * @throws URISyntaxException
+   * @param user allows us to check the user setting
+   * @throws URISyntaxException in case the URI is wrong
    */
   public static void playBackgroundSong(User user) throws URISyntaxException {
 
@@ -99,7 +99,7 @@ public class MusicPlayer {
   /**
    * This function downloads all the sounds effects that will be used in the game from resources
    *
-   * @throws URISyntaxException
+   * @throws URISyntaxException in case the URI is wrong
    */
   private static void intialiseSoundEffects() throws URISyntaxException {
 
@@ -116,7 +116,7 @@ public class MusicPlayer {
   /**
    * This method plays the button sound effect on the landing page
    *
-   * @throws URISyntaxException
+   * @throws URISyntaxException in case the URI is wrong
    */
   public static void playButtonSoundEffect() throws URISyntaxException {
 
@@ -127,8 +127,8 @@ public class MusicPlayer {
   /**
    * This methods plays the button sound effect on every other page
    *
-   * @param user
-   * @throws URISyntaxException
+   * @param user allows us to check the user settings for sound effects
+   * @throws URISyntaxException in case the URI is wrong
    */
   public static void playButtonSoundEffect(User user) throws URISyntaxException {
 
@@ -141,8 +141,8 @@ public class MusicPlayer {
   /**
    * This method plays the start button sound effect
    *
-   * @param user
-   * @throws URISyntaxException
+   * @param user allows us to check the user settings for sound effects
+   * @throws URISyntaxException in case the URI is wrong
    */
   public static void startButtonSoundEffect(User user) throws URISyntaxException {
 
@@ -155,8 +155,8 @@ public class MusicPlayer {
   /**
    * This method plays the drawing sound effect when the plays chooses to draw
    *
-   * @param user
-   * @throws URISyntaxException
+   * @param user allows us to check the user settings for sound effects
+   * @throws URISyntaxException in case the URI is wrong
    */
   public static void drawingSoundEffect(User user) throws URISyntaxException {
 
@@ -173,9 +173,9 @@ public class MusicPlayer {
   /**
    * Whenever a class uses texttospeech they will pass it through this function here
    *
-   * @param user
-   * @param speakString
-   * @throws URISyntaxException
+   * @param user allows us to check the user's settings for text to speech
+   * @param speakString the string of what the text to speech will say
+   * @throws URISyntaxException in case the URI is wrong
    */
   public static void TextToSpeech(User user, String speakString) throws URISyntaxException {
 
