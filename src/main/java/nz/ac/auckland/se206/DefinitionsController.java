@@ -222,9 +222,8 @@ public class DefinitionsController {
     clearButton.setDisable(true);
     gameOverComponents.setVisible(true); // shows the game over components
     hintLabel.setText(randomWord.toUpperCase());
-    hintLabel.setTextFill(Color.rgb(255, 210, 3));
-    eraseButton.setDisable(false);
-    paintButton.setDisable(false);
+    eraseButton.setDisable(true);
+    paintButton.setDisable(true);
 
     if (hasWon) {
       MusicPlayer.playCoinSoundEffect(user);
@@ -246,8 +245,8 @@ public class DefinitionsController {
   /**
    * This function sets the brush size, different sizes for the erase and pencil
    *
-   * @param brushType
-   * @param isErase
+   * @param brushType the brush type
+   * @param isErase if it is an eraser
    */
   private void setBrushType(Color brushType, boolean isErase) {
     canvas.setOnMousePressed(
@@ -505,7 +504,7 @@ public class DefinitionsController {
   /**
    * This method is called when the user wants to go back to the user home
    *
-   * @param event
+   * @param event the current event
    */
   @FXML
   private void onBackHome(ActionEvent event) {
@@ -531,7 +530,7 @@ public class DefinitionsController {
   /**
    * This method is called when the user wants to save an image
    *
-   * @param event
+   * @param event the current event
    */
   @FXML
   private void onSaveImage(ActionEvent event) {

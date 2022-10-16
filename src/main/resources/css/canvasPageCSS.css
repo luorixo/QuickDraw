@@ -8,6 +8,11 @@
 	-fx-font-family: 'Inika', serif;
 }
 
+#hintLabel {
+	-fx-font-size: 70px;
+	-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0.0, 0.0);
+}
+
 .button {
 	-fx-font-family: 'Mountains of Christmas', cursive;
 }

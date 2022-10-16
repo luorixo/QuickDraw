@@ -33,6 +33,7 @@ public class CategorySelector {
   // Maps difficulty to a list of drawing categories
   private Map<Difficulty, List<String>> difficultyToCategories;
 
+  /** category selector constructor to initialise stuff */
   public CategorySelector() {
     difficultyToCategories = new HashMap<>();
 
@@ -94,9 +95,9 @@ public class CategorySelector {
    * Gets a list of lines (strings) in the category_difficulty.csv file
    *
    * @return A list of lines (strings) in the category_difficulty.csv file
-   * @throws IOException
-   * @throws CsvException
-   * @throws URISyntaxException
+   * @throws IOException ioexception
+   * @throws CsvException csvexception
+   * @throws URISyntaxException urisyntaxexception
    */
   protected List<String[]> getLines() throws IOException, CsvException, URISyntaxException {
     File file = new File(App.class.getResource("/category_difficulty.csv").toURI());
