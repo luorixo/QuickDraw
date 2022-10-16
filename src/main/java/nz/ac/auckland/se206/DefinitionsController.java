@@ -96,13 +96,13 @@ public class DefinitionsController {
   @FXML
   private void onStartGame() {
     Timer timer = new Timer();
-    TextToSpeech textToSpeech = new TextToSpeech();
+
     // creates task to speak the random category name
     Task<Void> sayCategoryTask =
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
-            textToSpeech.speak(randomDefinition);
+            MusicPlayer.TextToSpeech(user, randomDefinition);
             this.cancel();
             return null;
           }
