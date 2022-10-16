@@ -168,7 +168,7 @@ public class DefinitionsController {
           new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-              textToSpeech.speak("YOU WIN!");
+              textToSpeech.speak("GAME OVER!");
               this.cancel();
               return null;
             }
