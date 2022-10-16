@@ -177,7 +177,7 @@ public class ZenModeController {
                 + ".png");
 
     try {
-      ImageIO.write(getCurrentSnapshot(), "png", newImage);
+      ImageIO.write(getCurrentSnapshotColour(), "png", newImage);
     } catch (IOException e) {
       e.printStackTrace();
     } // Save the image to a file
@@ -473,6 +473,29 @@ public class ZenModeController {
   }
 
   /**
+   * Get the current snapshot of the canvas.
+   *
+   * @return The BufferedImage corresponding to the current canvas content.
+   */
+  private BufferedImage getCurrentSnapshotColour() {
+    final Image snapshot = canvas.snapshot(null, null);
+    final BufferedImage image = SwingFXUtils.fromFXImage(snapshot, null);
+
+    // Convert into a binary image.
+    final BufferedImage imageBinary =
+        new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_USHORT_565_RGB);
+
+    final Graphics2D graphics = imageBinary.createGraphics();
+
+    graphics.drawImage(image, 0, 0, null);
+
+    // To release memory we dispose.
+    graphics.dispose();
+
+    return imageBinary;
+  }
+
+  /**
    * Save the current snapshot on a bitmap file.
    *
    * @return The file of the saved image.
@@ -487,7 +510,7 @@ public class ZenModeController {
     File tmpFolder = fileChooser.showSaveDialog(stage);
 
     final File imageToClassify = new File(tmpFolder.getCanonicalPath() + ".bmp");
-    ImageIO.write(getCurrentSnapshot(), "bmp", imageToClassify); // Save the image to a file
+    ImageIO.write(getCurrentSnapshotColour(), "bmp", imageToClassify); // Save the image to a file
 
     return imageToClassify;
   }
