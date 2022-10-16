@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inika:wght@700&family=Inter&family=Mountains+of+Christmas:wght@700&display=swap');
+
+.label {
+	-fx-font-family: 'Mountains of Christmas', cursive;
+}
+
 .button:hover {
 	/*Gives button a shadow and enlargement effect when mouse hovers over it */
 	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, .7), 20, 0.3, 0.0, 0.0);

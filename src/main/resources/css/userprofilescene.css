@@ -1,10 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inika:wght@700&family=Inter&family=Mountains+of+Christmas:wght@700&display=swap');
 
+.label {
+	-fx-font-family: 'Mountains of Christmas', cursive;
+	-fx-font-size: 18px;
+}
 
 .button:hover {
 	-fx-border-color: #FFD203;
 }
 
-.pane{
+.pane {
     -fx-background-radius: 20px;
   }
   
