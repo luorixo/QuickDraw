@@ -1,6 +1,18 @@
-# SE206 - 2022 - Beta & Final Releases
+# Quick Draw! 206 Edition
 
-### Quick, Draw! 
+### A competitive speed doodling game for children :)
+#### Languages: `Java` `JavaFX`
+
+#### Compete in 3 speed drawing modes:
+- Defintion Mode (you get 10 seconds to figure out the word from it's definition... then draw!)
+- Normal Mode (a random topic is selected randomly... draw it before the time runs out!)
+- Free Play Mode (draw to your heart's content)
+
+#### Features:
+- A mini in-game economy: earn coins with every win and buy in-game content
+- Reactive badge/award system (earn more coins and collect all the achievements!)
+- Multiple players on one game! Users can set multiple profiles so multiple friends/family members can play
+- A deep learning model trained on Google's Quick Draw dataset to present drawing predictions to players on the fly!
 
 **Requirements**
 
@@ -9,34 +21,3 @@
   and JAVA_HOME env variable properly set
 - Scene Builder (download it
   here [https://gluonhq.com/products/scene-builder/#download](https://gluonhq.com/products/scene-builder/#download))
-
-
-**What to do first?**
-
-Make sure that the provided tests pass.
-
-Unix/MacOsX:  
-`./mvnw clean test`
-
-Windows:  
-`.\mvnw.cmd clean test`
-
-This will also install the GIT pre-commit hooks to activate the auto-formatting at every GIT commit.
-
-**How to run the game?**
-
-Unix/MacOsX:  
-`./mvnw clean javafx:run`
-
-Windows:  
-`.\mvnw.cmd clean javafx:run`
-
-**How to format the Java code?**
-
-You can format the code at any time by running the command:
-
-Unix/MacOsX:  
-`./mvnw git-code-format:format-code `
-
-Windows:  
-`.\mvnw.cmd git-code-format:format-code `
